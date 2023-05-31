@@ -1,4 +1,4 @@
-package com.mindhub.homebanking;
+package com.mindhub.homebanking.models;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -17,33 +17,53 @@ public class Client {
     private String lastName;
     private String email;
 
-    public Client(){ }
+    // métodos constructores
+    public Client() {
+    }
 
-    public Client(String first, String last, String mail){
+    public Client(String first, String last) {
+        firstName = first;
+        lastName = last;
+    }
+
+    public Client(String first, String last, String mail) {
         firstName = first;
         lastName = last;
         email = mail;
     }
-    public String getFirstName(){
+
+    // métodos accesores
+    public String getFirstName() {
         return firstName;
-    }
-    public String setFirstName(){
-        return firstName;
-    }
-    public String getLastName(){
-        return lastName;
-    }
-    public String setLastName(){
-        return lastName;
-    }
-    public String getEmail(){
-        return email;
-    }
-    public String setEmail(){
-        return email;
-    }
-    public String toString(){
-        return firstName + " " + lastName;
     }
 
+    public String setFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String setLastName() {
+        return lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String setEmail() {
+        return email;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    // métodos impresores
+@Override
+    public String toString() {
+        return firstName + " " + lastName + " " + email;
+    }
 }
