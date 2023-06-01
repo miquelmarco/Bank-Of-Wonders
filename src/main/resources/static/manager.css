@@ -1,0 +1,102 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /* border: 1px red solid; */
+}
+
+body {
+    background-image: url(./assets/images/fondo.png);
+    background-size: cover;
+}
+
+header {
+    height: 5vh;
+}
+
+main {
+    min-height: 90vh;
+}
+
+footer {
+    height: 5vh;
+}
+
+th,
+td {
+    width: 15rem;
+    height: 3rem;
+    /* border: solid blue 1px; */
+}
+
+caption {
+    caption-side: top;
+    color: white;
+    font-size: 1.5rem;
+}
+
+label {
+    color: white;
+    font-weight: 700;
+}
+
+input {
+    width: 25rem;
+    margin: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.buttonAdd {
+    margin: 0.3rem;
+    border-radius: 1rem;
+    color: white;
+    width: 10rem;
+}
+
+#jsonContainer {
+    background: rgb(34, 193, 195);
+    background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%);
+    border-radius: 1rem;
+    color: white;
+    font-weight: 900;
+    font-size: 0.73rem;
+    width: 30rem;
+    margin-top: 1.3rem;
+    height: 55rem;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+#mainTable {
+    background: rgb(34, 193, 195);
+    background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(135, 45, 253, 1) 100%);
+    border-radius: 1rem;
+    border: none;
+    color: white;
+    font-weight: 500;
+    font-size: 1rem;
+    width: 40rem;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+h1 {
+    color: white;
+    background: rgb(34, 193, 195);
+    background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(135, 45, 253, 1) 100%);
+    padding: 0.5rem;
+    border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+#mainForm {
+    width: 40rem;
+    background: rgb(34, 193, 195);
+    background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(135, 45, 253, 1) 100%);
+    border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+@media only screen and (max-width: 1300px){
+    main{
+        flex-direction: column;
+    }
+}

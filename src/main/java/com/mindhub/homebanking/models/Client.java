@@ -64,6 +64,6 @@ public class Client {
     // métodos impresores
 @Override
     public String toString() {
-        return firstName + " " + lastName + " " + email;
+        return firstName + " " + lastName + " " + email + " " + id;
     }
 }
