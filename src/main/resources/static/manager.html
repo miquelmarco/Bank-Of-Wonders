@@ -22,11 +22,11 @@
             <div id="mainForm" class="d-flex justify-content-center align-items-center m-3">
                 <form action="" method="" class="d-flex flex-column align-items-center text-center m-2">
                     <label for="firstName">First Name:</label>
-                    <input v-model="newClient.firstName" type="text" id="firstName" name="firstName" placeholder="Write your first name">
+                    <input v-model="newClient.firstName" type="text" id="firstName" name="firstName" placeholder="Enter first name">
                     <label for="lastName">Last Name:</label>
-                    <input v-model="newClient.lastName" type="text" id="lastName" name="lastName" placeholder="Write your last name">
+                    <input v-model="newClient.lastName" type="text" id="lastName" name="lastName" placeholder="Enter last name">
                     <label for="email">Email:</label>
-                    <input v-model="newClient.email" type="email" id="email" name="email" placeholder="Enter your email">
+                    <input v-model="newClient.email" type="email" id="email" name="email" placeholder="Enter the email">
 
                     <input @click="addClient()" class="buttonAdd bg-success text-center" type="button" value="add client">
                 </form>
