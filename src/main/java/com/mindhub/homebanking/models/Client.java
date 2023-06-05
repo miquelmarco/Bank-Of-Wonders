@@ -4,6 +4,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -17,7 +18,7 @@ public class Client {
     private String email;
 
     @OneToMany(mappedBy = "owner", fetch = FetchType.EAGER)
-    public Set<Account> accounts = new HashSet<>();
+    private Set<Account> accounts = new HashSet<>();
 
     // métodos constructores
     public Client() {
@@ -65,8 +66,13 @@ public class Client {
         return id;
     }
 
+
     public Set<Account> getAccounts() {
         return accounts;
+    }
+
+    public void setAccounts(Set<Account> accounts) {
+        this.accounts = accounts;
     }
 
     public void addAccount(Account account) {

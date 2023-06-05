@@ -29,11 +29,13 @@ public class HomebankingApplication {
             clientRepository.save(client1);
             client1.addAccount(account1);
             client1.addAccount(account2);
+            accountRepository.save(account1);
+            accountRepository.save(account2);
             clientRepository.save(client2);
             client2.addAccount(account3);
             client2.addAccount(account4);
+            accountRepository.save(account3);
+            accountRepository.save(account4);
         };
     }
-
 };
-

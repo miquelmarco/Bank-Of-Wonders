@@ -1,5 +1,7 @@
 package com.mindhub.homebanking.models;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -54,6 +56,11 @@ public class Account {
         this.balance = balance;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    @JsonIgnore
     public Client getOwner() {
         return owner;
     }
@@ -61,6 +68,8 @@ public class Account {
     public void setOwner(Client owner) {
         this.owner = owner;
     }
+
+
 
     //impresores
     @Override
@@ -73,5 +82,4 @@ public class Account {
                 ", owner=" + owner +
                 '}';
     }
-
 }
