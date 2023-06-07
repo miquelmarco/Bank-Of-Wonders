@@ -22,10 +22,10 @@ public class HomebankingApplication {
         return args -> {
             Client client1 = new Client("Melba", "Morel", "melba@mindhub.com");
             Client client2 = new Client("Fede", "Paez", "fedepaez@outlook.com");
-            Account account1 = new Account("VIN001", LocalDate.now(), 5000.00);
-            Account account2 = new Account("VIN002", LocalDate.now().plusDays(1), 7500.00);
-            Account account3 = new Account("VIN003", LocalDate.now().plusDays(2), 3000000.00);
-            Account account4 = new Account("VIN004", LocalDate.now().plusDays(4), 5000000.00);
+            Account account1 = new Account("VIN001", LocalDate.now(), 5000.34);
+            Account account2 = new Account("VIN002", LocalDate.now().plusDays(1), 7500.76);
+            Account account3 = new Account("VIN003", LocalDate.now().plusDays(2), 3000000.42);
+            Account account4 = new Account("VIN004", LocalDate.now().plusDays(4), 5000000.37);
             clientRepository.save(client1);
             client1.addAccount(account1);
             client1.addAccount(account2);
