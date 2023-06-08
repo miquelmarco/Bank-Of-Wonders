@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/styles/style.css">
     <link rel="shortcut icon" href="../assets/images/faviconnb.png" type="image/x-icon">
-    <title>My Accounts</title>
+    <title>Account Details</title>
 </head>
 <body>
     <header class="d-flex justify-content-around align-items-center">
@@ -34,20 +34,35 @@
             <input type="password" name="password">
         </div>
     </header>
+
     <main id="app" class="d-flex align-items-center flex-column">
-        <div id="titleContainer" class="d-flex flex-column w-50 justify-content-center align-items-center m-5">
-            <h1 id="mainTitle" class="text-center m-1 text-white">MY ACCOUNTS</h1>
-            <p class="text-center m-1 text-white">Hello {{clientName}}, in this page you can see your accounts information</p>
-        </div>
-        <div class="d-flex gap-3 flex-wrap justify-content-center">
-            <div id="accountCard" v-for="account of accounts" class=" m-3 d-flex flex-column justify-content-center text-white gap-2">
-                <h2 class="mx-2">Account: {{account.number}}</h2>
-                <h4 class="mx-2">Balance: $ {{account.balance}}</h4>
-                <h4 class="mx-2">Account opening date: {{account.creationDate}}</h4>
-                <a v-bind:href="`./account.html?_id=${account.id}`">See Details</a>
+            <div id="titleContainer" class="d-flex flex-column justify-content-center align-items-center m-5">
+                <h1 id="mainTitle" class="text-center m-1 text-white">ACCOUNT DETAILS</h1>
+                <p class="text-center m-1 text-white">Here you can see dettails of your account</p>
             </div>
-        </div>
+            <div>
+                <div v-for="transaction of accountFilterById" :key="transaction.id">
+                    <table class="text-center">
+                        <caption id="captionAccountDetails" class="text-white text-center">Transactions</caption>
+                        <thead>
+                            <tr>
+                                <th>Amount</th>
+                                <th>Description</th>
+                                <th>Type</th>
+                                <th>Date</th>
+                            </tr>
+                            <tr>
+                                <td>{{ transaction.amount }}</td>
+                                <td>{{ transaction.description }}</td>
+                                <td>{{ transaction.type }}</td>
+                                <td>{{ transaction.date }}</td>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
     </main>
+
     <footer class="d-flex justify-content-between align-items-center">
         <div class="d-flex flex-column m-3">
             <p class="footerP text-white">Follow us for daily updates</p>
@@ -65,7 +80,7 @@
         crossorigin="anonymous"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="../assets/scripts/accounts.js"></script>
+    <script src="../assets/scripts/account.js"></script>
 </body>
 
 </html>

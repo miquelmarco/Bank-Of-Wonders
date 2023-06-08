@@ -4,9 +4,7 @@ createApp({
     data() {
         return {
             clientName: '',
-            accountOne: {},
-            accountTwo: {},
-            selectedAccount: ''
+            accounts: []
         }
     },
     created() {
@@ -18,8 +16,8 @@ createApp({
                 .then(res => {
                     this.client = res.data
                     this.clientName = this.client.firstName + ' ' + this.client.lastName
-                    this.accountOne = res.data.accounts[0]
-                    this.accountTwo = res.data.accounts[1]
+                    this.accounts = this.client.accounts
+                    console.log(this.accounts)
                 }).catch(err => console.error(err))
         },
     }

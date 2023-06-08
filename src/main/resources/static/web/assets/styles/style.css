@@ -2,7 +2,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    /* border: solid red 1px; */
+    border: solid red 1px;
     /* font-family: 'Be Vietnam Pro', sans-serif; */
 }
 
@@ -70,46 +70,11 @@ footer {
     box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
 }
 
-#imgAccount {
-    width: 30rem;
-    height: 20rem;
-    border-radius: 1rem;
-    background: rgb(128, 45, 45);
+#accountCard {
+    width: 28rem;
+    height: 11rem;
+    border-radius: 2rem;    background: rgb(128, 45, 45);
     background: linear-gradient(0deg, rgba(128, 45, 45, 1) 0%, rgba(255, 0, 0, 0.6951155462184874) 100%);
-}
-
-#accountInfo {
-    width: 30rem;
-    font-family: 'Be Vietnam Pro', sans-serif;
-    font-weight: 800;
-}
-
-#accountMainContainer {
-    height: 18rem;
-    border-radius: 1rem;
-    background-image: url(../images/accountImg.jpg);
-    background-size: cover;
-}
-
-.accountContainer {
-    background: rgb(128, 45, 45);
-    background: linear-gradient(0deg, rgba(128, 45, 45, 1) 0%, rgba(255, 0, 0, 0.6951155462184874) 100%);
-    border-radius: 1rem;
-    font-family: 'Be Vietnam Pro', sans-serif;
-    font-weight: 1000;
-    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
-}
-
-#selectAccountBar {
-    position: relative;
-    top: 15px;
-    width: 75%;
-}
-
-#selectAccountMsg {
-    background: rgb(128, 45, 45);
-    background: linear-gradient(0deg, rgba(128, 45, 45, 1) 0%, rgba(255, 0, 0, 0.6951155462184874) 100%);
-    border-radius: 1rem;
 }
 
 /* footer edit */
@@ -122,6 +87,17 @@ footer {
 #footerLogo {
     width: 4.5rem;
     height: 3rem;
+}
+
+/* table details edit */
+
+th, td {
+    width: 20rem;
+    height: 2rem;
+}
+
+#captionAccountDetails {
+    caption-side: top;
 }
 
 /* mediaquerys */
