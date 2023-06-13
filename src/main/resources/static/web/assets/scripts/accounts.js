@@ -17,7 +17,6 @@ createApp({
                     this.client = res.data
                     this.clientName = this.client.firstName + ' ' + this.client.lastName
                     this.accounts = this.client.accounts
-                    console.log(this.accounts)
                 }).catch(err => console.error(err))
         },
     }

@@ -3,7 +3,9 @@ let { createApp } = Vue;
 createApp({
     data() {
         return {
-            allAccounts:[],
+            transactions: [],
+            queryId: '',
+            transInDescenOrder:[]
         }
     },
     created() {
@@ -11,11 +13,28 @@ createApp({
     },
     methods: {
         loadData() {
-            axios.get(`http://localhost:8080/api/accounts/{id}`)
+            this.queryId = new URLSearchParams(location.search).get('id')
+            axios.get(`http://localhost:8080/api/accounts/${this.queryId}`)
                 .then(res => {
-                    this.allAccounts = res.data
-                    console.log(this.allAccounts)
+                    this.transactions = res.data.transactions
+                    console.log(this.transactions)
                 }).catch(err => console.error(err))
         },
+        changeClassByTransaction(transaction) {
+            if (transaction.type === 'DEBIT') {
+                return 'debit';
+            } else if (transaction.type === 'CREDIT') {
+                return 'credit';
+            } else {
+                return 'standarTable';
+            }
+        }
+    },
+    computed: {
+        orderedTransactions () {
+            let transInDescenOrder = [...this.transactions]
+            transInDescenOrder.sort((a, b) => b.id - a.id)
+            return transInDescenOrder
+        }
     }
 }).mount("#app")

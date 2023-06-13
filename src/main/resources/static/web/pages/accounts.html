@@ -10,55 +10,60 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Orbitron&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/styles/style.css">
-    <link rel="shortcut icon" href="../assets/images/faviconnb.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/images/wonderFaviconNobg.png" type="image/x-icon">
     <title>My Accounts</title>
 </head>
+
 <body>
     <header class="d-flex justify-content-around align-items-center">
-        <img id="headerLogo" class="p-3" src="../assets/images/logobignb.png" alt="bank logo">
+        <img id="headerLogo" class="p-3" src="../assets/images/wonderLogoNobg2.png" alt="bank logo">
         <div id="navbarContainer">
             <nav id="navbar" class="d-flex gap-5 justify-content-around">
-                <a href="#">HOME</a>
+                <a href="../index.html">HOME</a>
                 <a href="#">MY PROFILE</a>
-                <a href="#">ACOUNTS</a>
+                <a href="#">ACCOUNTS</a>
                 <a href="#">CONTACT US</a>
-                <a href="#">ABOUT US</a>
+                <a href="./aboutUs.html">ABOUT US</a>
             </nav>
         </div>
-        <div id="navInputs">
-            <label class="text-white" for="">User</label>
-            <input type="text">
-            <label class="text-white" for="">Password</label>
-            <input type="password" name="password">
+        <div id="navInputs" class="d-flex flex-column gap-3">
+            <div class="d-flex justify-content-end">
+                <label class="labelLogin" for="user">User </label>
+                <input type="text" id="user">
+            </div>
+            <div class="d-flex justify-content-end">
+                <label class="labelLogin" for="password">Password </label>
+                <input type="password" name="password" id="password">
+            </div>
         </div>
     </header>
-    <main id="app" class="d-flex align-items-center flex-column">
-        <div id="titleContainer" class="d-flex flex-column w-50 justify-content-center align-items-center m-5">
+    <main id="app" class="d-flex align-items-center justify-content-center flex-column">
+        <div id="titleContainer" class="mainTitleContainer d-flex flex-column w-25 justify-content-center align-items-center m-5">
             <h1 id="mainTitle" class="text-center m-1 text-white">MY ACCOUNTS</h1>
-            <p class="text-center m-1 text-white">Hello {{clientName}}, in this page you can see your accounts information</p>
+            <p class="text-center m-1">Hello {{clientName}}, in this page you can see your accounts information</p>
         </div>
-        <div class="d-flex gap-3 flex-wrap justify-content-center">
-            <div id="accountCard" v-for="account of accounts" class=" m-3 d-flex flex-column justify-content-center text-white gap-2">
-                <h2 class="mx-2">Account: {{account.number}}</h2>
-                <h4 class="mx-2">Balance: $ {{account.balance}}</h4>
-                <h4 class="mx-2">Account opening date: {{account.creationDate}}</h4>
-                <a v-bind:href="`./account.html?_id=${account.id}`">See Details</a>
+        <div class="d-flex flex-wrap justify-content-center flex-column">
+            <div id="accountCard" v-for="account of accounts"
+                class=" m-3 d-flex flex-column justify-content-center text-white gap-4 text-center">
+                <h2 class="accountTxt">Account: {{account.number}}</h2>
+                <p class="accountTxt">Balance: $ {{account.balance}}</p>
+                <p class="accountTxt">Account opening date: {{account.creationDate}}</p>
+                <div class="justify-content-center">
+                    <a class="p-2" id="cardBtn" v-bind:href="`./account.html?id=${account.id}`">See Details</a>
+                </div>
             </div>
         </div>
     </main>
     <footer class="d-flex justify-content-between align-items-center">
-        <div class="d-flex flex-column m-3">
+        <div id="footerTxt" class="d-flex flex-column m-3">
             <p class="footerP text-white">Follow us for daily updates</p>
             <p class="footerP text-white">Privacy and Security Policies</p>
             <p class="footerP text-white">Code of Conduct and Good Practices for Banks and Financial Institutions</p>
             <p class="footerP text-white">©DevByMarcoMiquel</p>
         </div>
-        <div>
-            <img src="../assets/images/wonder.png" alt="slogan">
-            <img id="footerLogo" class="m-3" src="../assets/images/faviconnb.png" alt="logo">
-        </div>
+            <img id="footerLogo" class="m-3" src="../assets/images/wonderFaviconNobg.png" alt="logo">
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"

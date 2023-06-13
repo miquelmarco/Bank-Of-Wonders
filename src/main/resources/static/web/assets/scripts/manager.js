@@ -4,7 +4,7 @@ createApp({
     data() {
         return {
             clients: [],
-            todoJSON: "",
+            // todoJSON: "",
             newClient: { firstName: '', lastName: '', email: ''}
         }
     },
@@ -13,11 +13,11 @@ createApp({
     },
     methods: {
         loadData() {
-            axios.get(`http://localhost:8080/clients`)
+            axios.get(`http://localhost:8080/api/clients`)
                 .then(res => {
-                    this.todoJSON = res.data
-                    this.clients = res.data._embedded.clients
-                    console.log(this.todoJSON)
+                    // this.todoJSON = res.data
+                    this.clients = res.data
+                    console.log(this.clients)
                 }).catch(err => console.error(err))
         },
         addClient() {
@@ -28,7 +28,7 @@ createApp({
             }
         },
         postClient() {
-            axios.post(`http://localhost:8080/clients`,{firstName: this.newClient.firstName, lastName: this.newClient.lastName, email: this.newClient.email})
+            axios.post(`http://localhost:8080/rest/clients`,{firstName: this.newClient.firstName, lastName: this.newClient.lastName, email: this.newClient.email})
                 .then(res => {
                     this.loadData()
                     this.eraseFields()

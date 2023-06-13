@@ -25,6 +25,8 @@ public class ClientController {
 
     @RequestMapping("/clients/{id}")
     public ClientDTO getOneClient(@PathVariable Long id) {
-        return clientRepository.findById(id).map(client -> new ClientDTO(client)).orElse(null);
+        return clientRepository.findById(id)
+                .map(client -> new ClientDTO(client))
+                .orElse(null);
     }
 }

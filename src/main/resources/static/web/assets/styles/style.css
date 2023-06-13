@@ -1,30 +1,31 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    border: solid red 1px;
-    /* font-family: 'Be Vietnam Pro', sans-serif; */
+    padding: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    /* border: solid red 1px; */
+    /* font-family: 'Caveat', cursive;
+    font-family: 'Orbitron', sans-serif; */
 }
 
 body {
-    background-image: url(../images/bgSkyPink2.jpg);
+    background-image: url(../images/bruce-mars-S8ffHr_dxHo-unsplash.jpg);
     background-size: cover;
 }
 
 header {
-    height: 15vh;
-    background: rgb(128, 45, 45);
-    background: linear-gradient(0deg, rgba(128, 45, 45, 1) 0%, rgba(255, 0, 0, 0.6951155462184874) 100%);
+    height: 10vh;
+    background: rgb(208, 207, 96);
+    background: linear-gradient(0deg, rgba(208, 207, 96, 0.5578606442577031) 0%, rgba(207, 187, 108, 0.577468487394958) 100%);
 }
 
 main {
-    min-height: 75vh;
+    min-height: 80vh;
 }
 
 footer {
     height: 10vh;
-    background: rgb(128, 45, 45);
-    background: linear-gradient(0deg, rgba(128, 45, 45, 1) 0%, rgba(255, 0, 0, 0.6951155462184874) 100%);
+    background: rgb(208, 207, 96);
+    background: linear-gradient(0deg, rgba(208, 207, 96, 0.5578606442577031) 0%, rgba(207, 187, 108, 0.577468487394958) 100%);
 }
 
 /* header edit */
@@ -34,47 +35,95 @@ footer {
     height: 100%;
 }
 
+#navbar {
+    padding: 1rem !important;
+}
+
 #navbarContainer {
-    background: rgb(128, 45, 45);
-    background: linear-gradient(0deg, rgba(128, 45, 45, 1) 0%, rgba(255, 0, 0, 0.6951155462184874) 100%);
+    background: rgb(208, 207, 96);
+    background: linear-gradient(0deg, rgba(208, 207, 96, 0.5578606442577031) 0%, rgba(207, 187, 108, 0.577468487394958) 100%);
     padding: 1.3rem;
-    border-radius: 1rem;
+    border-radius: 0.3rem;
     box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
 }
 
 #navbar a {
     text-decoration: none;
-    font-family: 'Be Vietnam Pro', sans-serif;
+    font-family: 'Orbitron', sans-serif;
     font-weight: 1000;
-    color: white;
+    color: #606C5D;
 }
 
 #navbar a:hover {
-    color: rgb(0, 0, 0);
+    color: 606C5Drgb(0, 0, 0);
     transform: scale(1.2);
     transition: color 0.5s ease;
+}
+
+#navInputs {
+    font-family: 'Orbitron', sans-serif;
+    width: 20rem;
+}
+
+#user,
+#password {
+    width: 60%;
+}
+
+.labelLogin {
+    color: #606C5D !important;
+    font-weight: 600;
 }
 
 /* main edit */
 
 #mainTitle {
     text-shadow: black 1px 3px;
+    color: #606C5D !important;
 }
 
 #titleContainer {
-    font-family: 'Be Vietnam Pro', sans-serif;
+    font-family: 'Orbitron', sans-serif;
     font-weight: 800;
-    background: rgb(128, 45, 45);
-    background: linear-gradient(0deg, rgba(128, 45, 45, 1) 0%, rgba(255, 0, 0, 0.6951155462184874) 100%);
-    border-radius: 1rem;
-    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    background: rgb(208, 207, 96);
+    background: linear-gradient(0deg, rgba(208, 207, 96, 0.5578606442577031) 0%, rgba(207, 187, 108, 0.577468487394958) 100%);
+    border-radius: 0.3rem;
+    /* box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset; */
+}
+
+.titleContainerHome {
+    height: 40rem;
+    width: 30rem;
+}
+
+.mainHomeTxt {
+    color: #606C5D !important;
+}
+
+/* accounts edit */
+
+.accountTxt {
+    color: #606C5D !important;
 }
 
 #accountCard {
     width: 28rem;
-    height: 11rem;
-    border-radius: 2rem;    background: rgb(128, 45, 45);
-    background: linear-gradient(0deg, rgba(128, 45, 45, 1) 0%, rgba(255, 0, 0, 0.6951155462184874) 100%);
+    height: 14rem;
+    border-radius: 0.3rem;
+    background-color: white;
+}
+
+#cardBtn {
+    background: rgb(208, 207, 96);
+    background: linear-gradient(0deg, rgba(208, 207, 96, 0.5578606442577031) 0%, rgba(207, 187, 108, 0.577468487394958) 100%);
+    text-decoration: none;
+    color: #606C5D;
+    border-radius: 1rem;
+}
+
+#cardBtn:hover {
+    background-color: blue;
+    color: white;
 }
 
 /* footer edit */
@@ -82,6 +131,9 @@ footer {
 .footerP {
     margin: 0rem !important;
     font-size: x-small;
+    color: #606C5D !important;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
 }
 
 #footerLogo {
@@ -91,62 +143,127 @@ footer {
 
 /* table details edit */
 
-th, td {
+th,
+td {
     width: 20rem;
     height: 2rem;
+    border: #606C5D 1px solid;
 }
 
 #captionAccountDetails {
     caption-side: top;
+    background-color: white;
+    color: #606C5D !important;
+    font-size: 2rem !important;
+    border: #606C5D 1px solid;
+}
+
+.debit {
+    color: rgb(241, 20, 20);
+}
+
+.credit {
+    color: rgb(6, 221, 6);
+}
+
+.goBackBtn {
+    font-size: 1.2rem !important;
+    background-color: rgb(226, 224, 72) !important;
+    color: #606C5D !important;
+    border-style: outset !important;
+}
+
+.goBackBtn:hover {
+    color: White !important;
+    background-color: blue !important;
 }
 
 /* mediaquerys */
 
-@media only screen and (max-width: 1580px) {
-    #navInputs{
+@media only screen and (max-width: 1500px) {
+    header {
+        min-height: 27vh;
         display: flex;
         flex-direction: column;
-        margin: 3rem;
+        gap: 2rem;
     }
 }
-@media only screen and (max-width: 1380px) {
+
+@media only screen and (max-width: 1200px) {
+    .mainHome {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    .mainTitleContainer {
+        width: 50rem !important;
+    }
+}
+
+@media only screen and (max-width: 800px) {
     header {
-        min-height: 15vh;
+        min-height: 50vh !important;
     }
-    #navbarContainer {
-        padding: 0.7rem;
-        margin: 0.3rem;
+
+    #navbar {
+        flex-direction: column !important;
+        gap: 0 !important;
     }
+
     #headerLogo {
-        width: 20rem;
-        height: 80%;
+        width: 29rem;
+        height: 7rem;
+    }
+
+    .mainTitleContainer {
+        width: 40rem !important;
     }
 }
-@media only screen and (max-width: 1225px) {
-    #headerLogo {
-        width: 15rem;
-        height: 60%;
+
+@media only screen and (max-width: 650px) {
+    #textBottomMain2 {
+        display: none !important;
+    }
+
+    .mainHome {
+        margin: none !important;
+        width: 80%;
+    }
+
+    .mainTitleContainer {
+        width: 30rem !important;
     }
 }
-@media only screen and (max-width: 1150px) {
-    header {
-        min-height: 35vh;
-        flex-direction: column;
+
+@media only screen and (max-width: 500px) {
+    #textBottomMain {
+        display: none !important;
     }
-}
-@media only screen and (max-width: 710px) {
+
     footer {
         flex-direction: column;
     }
-    #navbar {
-        gap: 1rem !important;
+
+    #headerLogo {
+        width: 18rem;
+        height: 5rem;
     }
-}
-@media only screen and (max-width: 520px) {
-    #navbar {
-        flex-direction: column;
+
+    .mainHome {
+        margin: none !important;
+        width: 80%;
     }
-    header {
-        min-height: 50vh;
+
+    .mainTitleContainer {
+        width: 20rem !important;
+    }
+
+    #accountCard {
+        width: 20rem;
+    }
+
+    #accountDetailsTable {
+        font-size: 0.8rem;
     }
 }
