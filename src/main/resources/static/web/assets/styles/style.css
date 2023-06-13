@@ -148,9 +148,11 @@ td {
     width: 20rem;
     height: 2rem;
     border: #606C5D 1px solid;
+    font-family: 'Orbitron', sans-serif;
 }
 
 #captionAccountDetails {
+    font-family: 'Orbitron', sans-serif;
     caption-side: top;
     background-color: white;
     color: #606C5D !important;
@@ -167,6 +169,7 @@ td {
 }
 
 .goBackBtn {
+    font-family: 'Orbitron', sans-serif;
     font-size: 1.2rem !important;
     background-color: rgb(226, 224, 72) !important;
     color: #606C5D !important;
@@ -176,6 +179,26 @@ td {
 .goBackBtn:hover {
     color: White !important;
     background-color: blue !important;
+}
+
+/* about us edit */
+
+#aboutUsTxt {
+    padding: 1rem !important;
+}
+
+#aboutUsTitle {
+    padding: 0.5rem !important;
+}
+
+#aboutUsTxt, #aboutUsTitle {
+    border-radius: 0.5rem;
+    font-size: x-large;
+    text-shadow: 3px 0px 7px rgba(81,67,21,0.8);
+    color: #fcfffb;
+    font-family: 'Caveat', cursive;
+    background: rgb(208, 207, 96);
+    background: linear-gradient(0deg, rgba(208, 206, 96, 0.76) 0%, rgba(207, 187, 108, 0.822) 100%);
 }
 
 /* mediaquerys */
