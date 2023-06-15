@@ -4,7 +4,8 @@ createApp({
     data() {
         return {
             clientName: '',
-            accounts: []
+            accounts: [],
+            loans: []
         }
     },
     created() {
@@ -16,7 +17,9 @@ createApp({
                 .then(res => {
                     this.client = res.data
                     this.clientName = this.client.firstName + ' ' + this.client.lastName
-                    this.accounts = this.client.accounts
+                    this.accounts = this.client.accounts.sort((a,b) => a.id - b.id)
+                    this.loans = this.client.loans.sort((a,b) => a.id - b.id)
+                    console.log(this.loans)
                 }).catch(err => console.error(err))
         },
     }

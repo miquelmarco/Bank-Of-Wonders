@@ -1,9 +1,6 @@
 package com.mindhub.homebanking.models;
-
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -20,18 +17,15 @@ public class Account {
     private String number;
     private LocalDate creationDate;
     private Double balance;
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "owner_id")
     private Client owner;
-
     @OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
-    private List<Transaction> transactions = new ArrayList<>();
+    private Set<Transaction> transactions = new HashSet<>();
 
     //Constructores
     public Account() {
     }
-
     public Account(String number, LocalDate creationDate, Double balance) {
         this.number = number;
         this.creationDate = creationDate;
@@ -42,31 +36,24 @@ public class Account {
     public String getNumber() {
         return number;
     }
-
     public void setNumber(String number) {
         this.number = number;
     }
-
     public LocalDate getCreationDate() {
         return creationDate;
     }
-
     public void setCreationDate(LocalDate creationDate) {
         this.creationDate = creationDate;
     }
-
     public Double getBalance() {
         return balance;
     }
-
     public void setBalance(Double balance) {
         this.balance = balance;
     }
-
     public long getId() {
         return id;
     }
-
     @JsonIgnore
     public Client getOwner() {
         return owner;
@@ -76,11 +63,11 @@ public class Account {
         this.owner = owner;
     }
 
-    public List<Transaction> getTransactions() {
+    public Set<Transaction> getTransactions() {
         return transactions;
     }
 
-    public void setTransactions(List<Transaction> transactions) {
+    public void setTransactions(Set<Transaction> transactions) {
         this.transactions = transactions;
     }
 

@@ -1,9 +1,12 @@
 package com.mindhub.homebanking.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.nio.file.attribute.AclEntryType;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Entity
 public class Client {
@@ -16,7 +19,9 @@ public class Client {
     private String email;
 
     @OneToMany(mappedBy = "owner", fetch = FetchType.EAGER)
-    private List<Account> accounts = new ArrayList<>();
+    private Set<Account> accounts = new HashSet<>();
+    @OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
+    private Set<ClientLoan> clientLoans = new HashSet<>();
 
     // métodos constructores
     public Client() {
@@ -65,17 +70,38 @@ public class Client {
     }
 
 
-    public List<Account> getAccounts() {
+    public Set<Account> getAccounts() {
         return accounts;
     }
 
-    public void setAccounts(List<Account> accounts) {
+    public void setAccounts(Set<Account> accounts) {
         this.accounts = accounts;
     }
+
+    // get loan
+    @JsonIgnore
+    public Set<Loan> getLoans() {
+        return clientLoans.stream().map(clientLoan -> clientLoan.getLoan()).collect(Collectors.toSet());
+    }
+
+    public Set<ClientLoan> getClientLoans() {
+        return clientLoans;
+    }
+
+    public void setClientLoans(Set<ClientLoan> clientLoans) {
+        this.clientLoans = clientLoans;
+    }
+
+    //add methods
 
     public void addAccount(Account account) {
         account.setOwner(this);
         accounts.add(account);
+    }
+
+    public void addClientLoan(ClientLoan clientLoan) {
+        clientLoan.setClient(this);
+        clientLoans.add(clientLoan);
     }
 
     // métodos impresores

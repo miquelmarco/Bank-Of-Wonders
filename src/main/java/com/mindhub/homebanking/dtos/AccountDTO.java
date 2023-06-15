@@ -23,7 +23,7 @@ public class AccountDTO {
         this.number = account.getNumber();
         this.creationDate = account.getCreationDate();
         this.balance = account.getBalance();
-        this.transactions = account.getTransactions().stream().map(transaction -> new TransactionDTO(transaction)).collect(Collectors.toList());
+        this.transactions = account.getTransactions().stream().distinct().map(transaction -> new TransactionDTO(transaction)).collect(Collectors.toList());
     }
     public String getNumber() {
         return number;

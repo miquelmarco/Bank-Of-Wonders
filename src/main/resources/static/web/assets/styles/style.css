@@ -52,6 +52,7 @@ footer {
     font-family: 'Orbitron', sans-serif;
     font-weight: 1000;
     color: #606C5D;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
 }
 
 #navbar a:hover {
@@ -63,6 +64,7 @@ footer {
 #navInputs {
     font-family: 'Orbitron', sans-serif;
     width: 20rem;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
 }
 
 #user,
@@ -88,7 +90,7 @@ footer {
     background: rgb(208, 207, 96);
     background: linear-gradient(0deg, rgba(208, 207, 96, 0.5578606442577031) 0%, rgba(207, 187, 108, 0.577468487394958) 100%);
     border-radius: 0.3rem;
-    /* box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset; */
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 .titleContainerHome {
@@ -98,32 +100,43 @@ footer {
 
 .mainHomeTxt {
     color: #606C5D !important;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 /* accounts edit */
 
-.accountTxt {
+.mainAccounts {
     color: #606C5D !important;
+    font-family: 'Orbitron', sans-serif;
 }
 
-#accountCard {
-    width: 28rem;
-    height: 14rem;
-    border-radius: 0.3rem;
-    background-color: white;
+.spanInformation {
+    color: #eb0808;
 }
 
-#cardBtn {
-    background: rgb(208, 207, 96);
-    background: linear-gradient(0deg, rgba(208, 207, 96, 0.5578606442577031) 0%, rgba(207, 187, 108, 0.577468487394958) 100%);
-    text-decoration: none;
-    color: #606C5D;
-    border-radius: 1rem;
+#mainInfo {
+    background: rgb(209, 209, 192);
+    background: linear-gradient(0deg, rgba(209, 209, 192, 0.767) 0%, rgba(222, 218, 204, 0.678) 100%);
 }
 
-#cardBtn:hover {
-    background-color: blue;
+.infoTitle {
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    color: #3a4438;
+}
+
+#accountsH1 {
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    background: rgb(209, 209, 192);
+    background: linear-gradient(0deg, rgba(209, 209, 192, 0.5102415966386555) 0%, rgba(222, 218, 204, 0.5242471988795518) 100%);
+}
+
+#accountsTitleDesc {
     color: white;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+}
+
+.card {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px !important;
 }
 
 /* footer edit */
@@ -178,7 +191,7 @@ td {
 
 .goBackBtn:hover {
     color: White !important;
-    background-color: blue !important;
+    background-color: rgba(255, 145, 0, 0.89) !important;
 }
 
 /* about us edit */
@@ -191,10 +204,12 @@ td {
     padding: 0.5rem !important;
 }
 
-#aboutUsTxt, #aboutUsTitle {
+#aboutUsTxt,
+#aboutUsTitle {
     border-radius: 0.5rem;
     font-size: x-large;
-    text-shadow: 3px 0px 7px rgba(81,67,21,0.8);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    text-shadow: 3px 0px 7px rgba(81, 67, 21, 0.8);
     color: #fcfffb;
     font-family: 'Caveat', cursive;
     background: rgb(208, 207, 96);
@@ -241,6 +256,10 @@ td {
 
     .mainTitleContainer {
         width: 40rem !important;
+    }
+    
+    #mainInfo {
+        flex-direction: column;
     }
 }
 

@@ -39,21 +39,39 @@
             </nav>
         </div>
     </header>
-    <main id="app" class="d-flex align-items-center justify-content-center flex-column">
-        <div id="titleContainer" class="mainTitleContainer d-flex flex-column w-25 justify-content-center align-items-center m-5">
-            <h1 id="mainTitle" class="text-center m-1 text-white">MY ACCOUNTS</h1>
-            <p class="text-center m-1">Hello {{clientName}}, in this page you can see your accounts information</p>
-        </div>
-        <div class="d-flex flex-wrap justify-content-center flex-column">
-            <div id="accountCard" v-for="account of accounts"
-                class=" m-3 d-flex flex-column justify-content-center text-white gap-4 text-center">
-                <h2 class="accountTxt">Account: {{account.number}}</h2>
-                <p class="accountTxt">Balance: $ {{account.balance}}</p>
-                <p class="accountTxt">Account opening date: {{account.creationDate}}</p>
-                <div class="justify-content-center">
-                    <a class="p-2" id="cardBtn" v-bind:href="`./account.html?id=${account.id}`">See Details</a>
+    <main id="app" class="mainAccounts d-flex flex-column align-items-center">
+
+        <section id="accountsH1" class="m-5 text-center p-2 rounded">
+            <h1 class="m-3">MY PERSONAL INFORMATION</h1>
+            <p id="accountsTitleDesc">Hello <span class="spanInformation">{{clientName}}</span>, in this page you can see your accounts and loans information</p>
+        </section>
+
+        <div id="mainInfo" class="w-100 d-flex justify-content-around flex-wrap">
+
+            <section class="m-3">
+                <h2 class="infoTitle m-2 text-center">Accounts Information</h2>
+                <div v-if="accounts.length != 0" v-for="account of accounts" class="bg-white m-3 p-2 card">
+                    <p><span class="spanInformation">Account Number: </span>{{account.number}}</p>
+                    <p><span class="spanInformation">Balance: </span> $ {{account.balance.toLocaleString()}}</p>
+                    <p><span class="spanInformation">Account opening date: </span>{{account.creationDate}}</p>
+                    <div class="d-flex justify-content-end m-2">
+                        <a class="text-decoration-none fw-bold text-info" v-bind:href="`./account.html?id=${account.id}`">SEE DETAILS</a>
+                    </div>
                 </div>
-            </div>
+                <p v-else>You don't have accounts!</p>
+            </section>
+
+
+            <section class="m-3">
+                <h2 class="infoTitle m-2 text-center">Loans Information</h2>
+                <div v-if="loans.length != 0" v-for="loan of loans" class="bg-white m-3 p-2 card">
+                    <p><span class="spanInformation">Loan: </span>{{loan.name}}</p>
+                    <p><span class="spanInformation">Amount: </span> $ {{loan.amount.toLocaleString()}}</p>
+                    <p><span class="spanInformation">Payments: </span>{{loan.payments}}</p>
+                </div>
+                <p v-else>"You don't have loans!"</p>
+            </section>
+
         </div>
     </main>
     <footer class="d-flex justify-content-between align-items-center">
@@ -63,7 +81,7 @@
             <p class="footerP text-white">Code of Conduct and Good Practices for Banks and Financial Institutions</p>
             <p class="footerP text-white">©DevByMarcoMiquel</p>
         </div>
-            <img id="footerLogo" class="m-3" src="../assets/images/wonderFaviconNobg.png" alt="logo">
+        <img id="footerLogo" class="m-3" src="../assets/images/wonderFaviconNobg.png" alt="logo">
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
