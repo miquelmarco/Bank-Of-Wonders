@@ -1,5 +1,4 @@
 package com.mindhub.homebanking;
-
 import com.mindhub.homebanking.models.*;
 import com.mindhub.homebanking.repositories.*;
 import org.springframework.boot.CommandLineRunner;
@@ -9,13 +8,11 @@ import org.springframework.context.annotation.Bean;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Arrays;
-
 @SpringBootApplication
 public class HomebankingApplication {
     public static void main(String[] args) {
         SpringApplication.run(HomebankingApplication.class, args);
     }
-
     @Bean
     public CommandLineRunner initData (ClientRepository clientRepository, AccountRepository accountRepository, TransactionRepository transactionRepository, LoanRepository loanRepository, ClientLoanRepository clientLoanRepository){
         return args -> {
@@ -106,7 +103,6 @@ public class HomebankingApplication {
             clientLoanRepository.save(clientLoan2);
             clientLoanRepository.save(clientLoan3);
             clientLoanRepository.save(clientLoan4);
-
         };
     }
 };

@@ -3,11 +3,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
-
 @Entity
 public class Account {
     @Id
@@ -22,7 +19,6 @@ public class Account {
     private Client owner;
     @OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
     private Set<Transaction> transactions = new HashSet<>();
-
     //Constructores
     public Account() {
     }
@@ -31,7 +27,6 @@ public class Account {
         this.creationDate = creationDate;
         this.balance = balance;
     }
-
     //Accesores
     public String getNumber() {
         return number;
@@ -58,24 +53,19 @@ public class Account {
     public Client getOwner() {
         return owner;
     }
-
     public void setOwner(Client owner) {
         this.owner = owner;
     }
-
     public Set<Transaction> getTransactions() {
         return transactions;
     }
-
     public void setTransactions(Set<Transaction> transactions) {
         this.transactions = transactions;
     }
-
     public void addTransaction(Transaction transaction) {
         transaction.setAccount(this);
         transactions.add(transaction);
     }
-
     //impresores
     @Override
     public String toString() {
