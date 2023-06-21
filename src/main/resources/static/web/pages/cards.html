@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Orbitron&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/styles/style.css">
+    <link rel="shortcut icon" href="../assets/images/wonderFaviconNobg.png" type="image/x-icon">
+    <title>Cards</title>
+</head>
+
+<body>
+    <header class="d-flex justify-content-around align-items-center">
+        <img id="headerLogo" class="p-3" src="../assets/images/wonderLogoNobg2.png" alt="bank logo">
+        <div id="navInputs" class="d-flex flex-column gap-3">
+            <div class="d-flex justify-content-end">
+                <label class="labelLogin" for="user">User </label>
+                <input type="text" id="user">
+            </div>
+            <div class="d-flex justify-content-end">
+                <label class="labelLogin" for="password">Password </label>
+                <input type="password" name="password" id="password">
+            </div>
+        </div>
+        <div id="navbarContainer">
+            <nav id="navbar" class="d-flex gap-5 justify-content-around">
+                <a href="../index.html">HOME</a>
+                <a href="#">MY PROFILE</a>
+                <a href="./accounts.html">ACOUNTS</a>
+                <a href="#">CARDS</a>
+                <a href="#">CONTACT US</a>
+                <a href="./aboutUs.html">ABOUT US</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="app" class="mainAccounts d-flex flex-column align-items-center justify-content-around">
+
+        <div id="mainInfo" class="w-100 d-flex justify-content-around flex-wrap">
+
+            <section class="m-3">
+                <h2 class="infoTitle m-2 text-center">Your Credit Cards</h2>
+                <div id="creditCardModel" v-if="creditCards.length != 0" v-for="card of creditCards" v-bind:class="changeCardColor(card)">
+                    <div class="d-flex justify-content-end">
+                        <img id="cardLogo" src="../assets/images/wonderFaviconNobg.png" alt="logo">
+                    </div>
+                    <div>
+                        <p class="cardTxt m-2 mx-3">{{card.number}}</p>
+                        <p class="cardTxt mx-4">{{card.cardHolder.toUpperCase()}}</p>
+                        <div class="d-flex justify-content-end">
+                            <div>
+                                <p class="cardTxt goodThru">Good</p>
+                                <p class="cardTxt goodThru">Thru</p>
+                            </div>
+                            <p class="cardTxt mx-2">{{card.thruDate.slice(5,10)}}</p>
+                        </div>
+                        <p class="d-none">{{card.color}}</p>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <img id="chip" class="mx-3 my-2" src="../assets/images/chip.png" alt="chip">
+                        <p class="mx-3 my-2">CVV {{card.cvv}}</p>
+                        <img id="mastercardLogo" class="mx-3 my-2" src="../assets/images/masterlogo.png" alt="mastercardLogo">
+                        <img id="holoLogo" class="mx-3 my-2" src="../assets/images/holoLogo.png" alt="holoLogo">
+                    </div>
+                </div>
+                <p v-else class="text-center">You don't have credit cards!</p>
+            </section>
+
+            <section class="m-3">
+                <h2 class="infoTitle m-2 text-center">Your Debit Cards</h2>
+                <div id="creditCardModel" v-if="debitCards.length != 0" v-for="card of debitCards" v-bind:class="changeCardColor(card)">
+                    <div class="d-flex justify-content-end">
+                        <img id="cardLogo" src="../assets/images/wonderFaviconNobg.png" alt="logo">
+                    </div>
+                    <div>
+                        <p class="m-2 mx-3">{{card.number}}</p>
+                        <p class="mx-4">{{card.cardHolder.toUpperCase()}}</p>
+                        <div class="d-flex justify-content-end">
+                            <div>
+                                <p class="goodThru">Good</p>
+                                <p class="goodThru">Thru</p>
+                            </div>
+                            <p class="mx-2">{{card.thruDate.slice(5,10)}}</p>
+                        </div>
+                        <p class="d-none">{{card.color}}</p>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <img id="chip" class="mx-3 my-2" src="../assets/images/chip.png" alt="chip">
+                        <p class="mx-3 my-2">CVV {{card.cvv}}</p>
+                        <img id="mastercardLogo" class="mx-3 my-2" src="../assets/images/masterlogo.png" alt="mastercardLogo">
+                        <img id="holoLogo" class="mx-3 my-2" src="../assets/images/holoLogo.png" alt="holoLogo">
+                    </div>
+                </div>
+                <p v-else class="text-center">You don't have debit cards!</p>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="d-flex justify-content-between align-items-center">
+        <div class="d-flex flex-column m-3">
+            <p class="footerP text-white">Follow us for daily updates</p>
+            <p class="footerP text-white">Privacy and Security Policies</p>
+            <p class="footerP text-white">Code of Conduct and Good Practices for Banks and Financial Institutions</p>
+            <p class="footerP text-white">©DevByMarcoMiquel</p>
+        </div>
+        <img id="footerLogo" class="m-3" src="../assets/images/wonderFaviconNobg.png" alt="logo">
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../assets/scripts/cards.js"></script>
+</body>
+
+</html>

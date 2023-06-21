@@ -49,7 +49,7 @@ public class HomebankingApplication {
             ClientLoan clientLoan2 = new ClientLoan(50000, 12);
             ClientLoan clientLoan3 = new ClientLoan(100000, 24);
             ClientLoan clientLoan4 = new ClientLoan(200000, 36);
-            Card card1 = new Card(client1.getFirstName() + " " + client1.getLastName(), cardType.CREDIT, cardColor.GOLD, "1234-5678-9101-1121", (short) 894, LocalDate.now(), LocalDate.now().plusYears(5));
+            Card card1 = new Card(client1.getFirstName() + " " + client1.getLastName(), cardType.DEBIT, cardColor.GOLD, "1234-5678-9101-1121", (short) 894, LocalDate.now(), LocalDate.now().plusYears(5));
             Card card2 = new Card(client1.getFirstName() + " " + client1.getLastName(), cardType.CREDIT, cardColor.TITANIUM, "9874-5256-3652-5412", (short) 256, LocalDate.now(), LocalDate.now().plusYears(5));
             Card card3 = new Card(client2.getFirstName() + " " + client2.getLastName(), cardType.DEBIT, cardColor.SILVER, "5542-3636-5441-5545", (short) 441, LocalDate.now(), LocalDate.now().plusYears(5));
             client1.addClientLoan(clientLoan1);

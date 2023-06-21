@@ -5,6 +5,7 @@
     /* border: solid red 1px; */
     /* font-family: 'Caveat', cursive;
     font-family: 'Orbitron', sans-serif; */
+    /* font-family: 'Bruno Ace SC', cursive; */
 }
 
 body {
@@ -52,7 +53,7 @@ footer {
     font-family: 'Orbitron', sans-serif;
     font-weight: 1000;
     color: #606C5D;
-    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
 }
 
 #navbar a:hover {
@@ -64,7 +65,7 @@ footer {
 #navInputs {
     font-family: 'Orbitron', sans-serif;
     width: 20rem;
-    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
 }
 
 #user,
@@ -120,19 +121,22 @@ footer {
 }
 
 .infoTitle {
-    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
     color: #3a4438;
 }
 
 #accountsH1 {
-    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
     background: rgb(209, 209, 192);
     background: linear-gradient(0deg, rgba(209, 209, 192, 0.5102415966386555) 0%, rgba(222, 218, 204, 0.5242471988795518) 100%);
 }
 
 #accountsTitleDesc {
     color: white;
-    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+    background-color: rgba(12, 12, 12, 0.349);
+    border-radius: 0.5rem;
+    padding: 0.3rem !important;
 }
 
 .card {
@@ -216,6 +220,65 @@ td {
     background: linear-gradient(0deg, rgba(208, 206, 96, 0.76) 0%, rgba(207, 187, 108, 0.822) 100%);
 }
 
+/* cards edit */
+
+#creditCardModel {
+    color: rgb(80, 79, 76);
+    font-family: 'Bruno Ace SC', cursive;
+    font-size: 1rem !important;
+    /* text-shadow: 1.5px 1px 1px rgb(0, 0, 0); */
+    text-shadow: 2px 0 #fff, -2px 0 #0f0f0f, 0 2px #2e2b2b, 0 -2px #fff, 1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
+    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
+    background-image: url(../images/silverBg.jpg);
+    background-size: cover;
+    width: 370px;
+    height: 220px;
+    border: 2px;
+    border-style: outset !important;
+    border-radius: 1rem;
+    margin: 2rem !important;
+}
+
+#chip,
+#mastercardLogo,
+#cardLogo {
+    width: 4rem;
+    height: 3rem;
+}
+
+#cardLogo {
+    background-color: #02020294;
+    border-radius: 1rem;
+    margin: 5px !important;
+}
+
+#holoLogo {
+    border-radius: 1rem;
+    border: 0.5px;
+    border-style: outset;
+    width: 4.5rem;
+    height: 3rem;
+}
+
+.goodThru {
+    font-size: x-small;
+}
+
+.silverBg {
+    background-image: url(../images/silverBg.jpg) !important;
+    background-size: cover;
+}
+
+.goldBg {
+    background-image: url(../images/goldBg.jpg) !important;
+    background-size: cover;
+}
+
+.titaniumBg {
+    background-image: url(../images/platinumBg.jpg) !important;
+    background-size: cover;
+}
+
 /* mediaquerys */
 
 @media only screen and (max-width: 1500px) {
@@ -257,7 +320,7 @@ td {
     .mainTitleContainer {
         width: 40rem !important;
     }
-    
+
     #mainInfo {
         flex-direction: column;
     }

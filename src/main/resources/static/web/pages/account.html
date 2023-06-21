@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Orbitron&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/styles/style.css">
     <link rel="shortcut icon" href="../assets/images/wonderFaviconNobg.png" type="image/x-icon">
-    <title>Account Details</title>
+    <title>Transactions</title>
 </head>
 
 <body>
@@ -34,6 +34,7 @@
                 <a href="../index.html">HOME</a>
                 <a href="#">MY PROFILE</a>
                 <a href="./accounts.html">ACOUNTS</a>
+                <a href="./cards.html">CARDS</a>
                 <a href="#">CONTACT US</a>
                 <a href="./aboutUs.html">ABOUT US</a>
             </nav>
@@ -42,13 +43,13 @@
 
     <main id="app" class="d-flex align-items-center flex-column">
         <div id="titleContainer" class="d-flex flex-column justify-content-center align-items-center m-5">
-            <h1 id="mainTitle" class="text-center m-1 text-white">ACCOUNT DETAILS</h1>
-            <p class="text-center m-1 text-white">Here you can see dettails of your account</p>
+            <h1 id="mainTitle" class="text-center m-1 text-white">ACCOUNT TRANSACTIONS</h1>
+            <p id="accountsTitleDesc" class="text-center m-1 text-white">Here you can see details of your account</p>
         </div>
         <div>
             <div>
                 <table id="accountDetailsTable" class="text-center bg-white">
-                    <caption id="captionAccountDetails" class="text-white text-center">Transactions</caption>
+                    <caption id="captionAccountDetails" class="text-white text-center">Recent Transactions</caption>
                     <thead>
                         <tr>
                             <th>Type</th>
@@ -57,6 +58,8 @@
                             <th>Date and Time</th>
                             <th>ID</th>
                         </tr>
+                    </thead>
+                    <tbody>
                         <tr v-for="transaction of orderedTransactions"
                             v-bind:class="changeClassByTransaction(transaction)">
                             <td>{{transaction.type}}</td>
@@ -65,12 +68,12 @@
                             <td>{{transaction.date.slice(0, 19)}}</td>
                             <td>{{transaction.id}}</td>
                         </tr>
-                    </thead>
+                    </tbody>
                 </table>
             </div>
         </div>
 
-        <a class="p-2 m-5 text-light fw-bold goBackBtn" id="cardBtn"  href="./accounts.html">Go Back</a>
+        <a class="p-2 m-5 text-light fw-bold goBackBtn" id="cardBtn" href="./accounts.html">Go Back</a>
     </main>
 
     <footer class="d-flex justify-content-between align-items-center">
@@ -80,7 +83,7 @@
             <p class="footerP text-white">Code of Conduct and Good Practices for Banks and Financial Institutions</p>
             <p class="footerP text-white">©DevByMarcoMiquel</p>
         </div>
-            <img id="footerLogo" class="m-3" src="../assets/images/wonderFaviconNobg.png" alt="logo">
+        <img id="footerLogo" class="m-3" src="../assets/images/wonderFaviconNobg.png" alt="logo">
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
