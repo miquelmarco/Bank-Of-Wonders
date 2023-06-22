@@ -22,16 +22,6 @@
 <body>
     <header class="d-flex justify-content-around align-items-center">
         <img id="headerLogo" class="p-3" src="../assets/images/wonderLogoNobg2.png" alt="bank logo">
-        <div id="navInputs" class="d-flex flex-column gap-3">
-            <div class="d-flex justify-content-end">
-                <label class="labelLogin" for="user">User </label>
-                <input type="text" id="user">
-            </div>
-            <div class="d-flex justify-content-end">
-                <label class="labelLogin" for="password">Password </label>
-                <input type="password" name="password" id="password">
-            </div>
-        </div>
         <div id="navbarContainer">
             <nav id="navbar" class="d-flex gap-5 justify-content-around">
                 <a href="../index.html">HOME</a>
@@ -51,8 +41,9 @@
             <section class="m-3">
                 <h2 class="infoTitle m-2 text-center">Your Credit Cards</h2>
                 <div id="creditCardModel" v-if="creditCards.length != 0" v-for="card of creditCards" v-bind:class="changeCardColor(card)">
-                    <div class="d-flex justify-content-end">
-                        <img id="cardLogo" src="../assets/images/wonderFaviconNobg.png" alt="logo">
+                    <div class="d-flex justify-content-between">
+                        <img class="contactless" src="../assets/images/contactless.png" alt="contactless">
+                        <img class="cardLogo" src="../assets/images/wonderFaviconNobg.png" alt="logo">
                     </div>
                     <div>
                         <p class="cardTxt m-2 mx-3">{{card.number}}</p>
@@ -67,10 +58,10 @@
                         <p class="d-none">{{card.color}}</p>
                     </div>
                     <div class="d-flex justify-content-between">
-                        <img id="chip" class="mx-3 my-2" src="../assets/images/chip.png" alt="chip">
+                        <img class="chip mx-3 my-2" src="../assets/images/chip.png" alt="chip">
                         <p class="mx-3 my-2">CVV {{card.cvv}}</p>
-                        <img id="mastercardLogo" class="mx-3 my-2" src="../assets/images/masterlogo.png" alt="mastercardLogo">
-                        <img id="holoLogo" class="mx-3 my-2" src="../assets/images/holoLogo.png" alt="holoLogo">
+                        <img class="mastercardLogo mx-3 my-2" src="../assets/images/masterlogo.png" alt="mastercardLogo">
+                        <img class="holoLogo mx-3 my-2" src="../assets/images/holoLogo.png" alt="holoLogo">
                     </div>
                 </div>
                 <p v-else class="text-center">You don't have credit cards!</p>
@@ -78,9 +69,10 @@
 
             <section class="m-3">
                 <h2 class="infoTitle m-2 text-center">Your Debit Cards</h2>
-                <div id="creditCardModel" v-if="debitCards.length != 0" v-for="card of debitCards" v-bind:class="changeCardColor(card)">
-                    <div class="d-flex justify-content-end">
-                        <img id="cardLogo" src="../assets/images/wonderFaviconNobg.png" alt="logo">
+                <div id="debitCardModel" v-if="debitCards.length != 0" v-for="card of debitCards" v-bind:class="changeCardColor(card)">
+                    <div class="d-flex justify-content-between">
+                        <img class="contactless" src="../assets/images/contactless.png" alt="contactless">
+                        <img class="cardLogo" src="../assets/images/wonderFaviconNobg.png" alt="logo">
                     </div>
                     <div>
                         <p class="m-2 mx-3">{{card.number}}</p>
@@ -95,10 +87,10 @@
                         <p class="d-none">{{card.color}}</p>
                     </div>
                     <div class="d-flex justify-content-between">
-                        <img id="chip" class="mx-3 my-2" src="../assets/images/chip.png" alt="chip">
+                        <img class="chip mx-3 my-2" src="../assets/images/chip.png" alt="chip">
                         <p class="mx-3 my-2">CVV {{card.cvv}}</p>
-                        <img id="mastercardLogo" class="mx-3 my-2" src="../assets/images/masterlogo.png" alt="mastercardLogo">
-                        <img id="holoLogo" class="mx-3 my-2" src="../assets/images/holoLogo.png" alt="holoLogo">
+                        <img class="mastercardLogo mx-3 my-2" src="../assets/images/masterlogo.png" alt="mastercardLogo">
+                        <img class="holoLogo mx-3 my-2" src="../assets/images/holoLogo.png" alt="holoLogo">
                     </div>
                 </div>
                 <p v-else class="text-center">You don't have debit cards!</p>

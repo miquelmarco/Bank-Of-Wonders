@@ -13,6 +13,7 @@ public class Client {
     private String firstName;
     private String lastName;
     private String email;
+    private String password;
     @OneToMany(mappedBy = "owner", fetch = FetchType.EAGER)
     private Set<Account> accounts = new HashSet<>();
     @OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
@@ -26,10 +27,11 @@ public class Client {
         firstName = first;
         lastName = last;
     }
-    public Client(String first, String last, String mail) {
+    public Client(String first, String last, String mail, String password) {
         firstName = first;
         lastName = last;
         email = mail;
+        password = password;
     }
     // métodos accesores
     public String getFirstName() {
@@ -50,6 +52,12 @@ public class Client {
     public void setEmail(String email) {
         this.email = email;
     }
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
     public long getId() {
         return id;
     }
@@ -59,7 +67,6 @@ public class Client {
     public void setAccounts(Set<Account> accounts) {
         this.accounts = accounts;
     }
-    // get loan
     @JsonIgnore
     public Set<Loan> getLoans() {
         return clientLoans.stream().map(clientLoan -> clientLoan.getLoan()).collect(Collectors.toSet());

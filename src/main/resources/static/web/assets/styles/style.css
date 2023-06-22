@@ -222,12 +222,13 @@ td {
 
 /* cards edit */
 
-#creditCardModel {
-    color: rgb(80, 79, 76);
+#creditCardModel,
+#debitCardModel {
+    color: white;
     font-family: 'Bruno Ace SC', cursive;
     font-size: 1rem !important;
-    /* text-shadow: 1.5px 1px 1px rgb(0, 0, 0); */
-    text-shadow: 2px 0 #fff, -2px 0 #0f0f0f, 0 2px #2e2b2b, 0 -2px #fff, 1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
+    font-weight: 800;
+    text-shadow: 2px 4px 3px rgb(0, 0, 0);
     box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
     background-image: url(../images/silverBg.jpg);
     background-size: cover;
@@ -239,20 +240,37 @@ td {
     margin: 2rem !important;
 }
 
-#chip,
-#mastercardLogo,
-#cardLogo {
+#creditCardModel:hover,
+#debitCardModel:hover {
+    transform: scale(1.2);
+    transition: 0.5s;
+}
+
+.chip,
+.mastercardLogo,
+.cardLogo,
+.contactless {
     width: 4rem;
     height: 3rem;
 }
 
-#cardLogo {
+.chip {
+    width: 7rem;
+}
+
+.cardLogo {
     background-color: #02020294;
     border-radius: 1rem;
     margin: 5px !important;
 }
 
-#holoLogo {
+.contactless {
+    margin: 5px !important;
+    width: 3rem;
+    height: 3rem;
+} 
+
+.holoLogo {
     border-radius: 1rem;
     border: 0.5px;
     border-style: outset;
@@ -280,6 +298,10 @@ td {
 }
 
 /* mediaquerys */
+
+@media only screen and (max-width: 1580px) {
+    
+}
 
 @media only screen and (max-width: 1500px) {
     header {
