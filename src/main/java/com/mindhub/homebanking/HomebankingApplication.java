@@ -2,10 +2,12 @@ package com.mindhub.homebanking;
 
 import com.mindhub.homebanking.models.*;
 import com.mindhub.homebanking.repositories.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -13,6 +15,8 @@ import java.util.Arrays;
 
 @SpringBootApplication
 public class HomebankingApplication {
+    @Autowired
+    private PasswordEncoder passwordEncoder;
     public static void main(String[] args) {
         SpringApplication.run(HomebankingApplication.class, args);
     }
@@ -20,8 +24,9 @@ public class HomebankingApplication {
     @Bean
     public CommandLineRunner initData(ClientRepository clientRepository, AccountRepository accountRepository, TransactionRepository transactionRepository, LoanRepository loanRepository, ClientLoanRepository clientLoanRepository, CardRepository cardRepository) {
         return args -> {
-            Client client1 = new Client("Melba", "Morel", "melba@mindhub.com", "123456");
-            Client client2 = new Client("Fede", "Paez", "fedepaez@outlook.com", "123456");
+            Client admin = new Client("admin", "admin", "admin@homebanking.com", passwordEncoder.encode("123456"));
+            Client client1 = new Client("Melba", "Morel", "melba@mindhub.com", passwordEncoder.encode("123456"));
+            Client client2 = new Client("Fede", "Paez", "fedepaez@outlook.com", passwordEncoder.encode("123456"));
             Account account1 = new Account("VIN001", LocalDate.now(), 5000.34);
             Account account2 = new Account("VIN002", LocalDate.now().plusDays(1), 7500.76);
             Account account3 = new Account("VIN003", LocalDate.now().plusDays(2), 3000000.42);
@@ -85,6 +90,7 @@ public class HomebankingApplication {
             client2.addCard(card3);
             clientRepository.save(client1);
             clientRepository.save(client2);
+            clientRepository.save(admin);
             accountRepository.save(account1);
             accountRepository.save(account2);
             accountRepository.save(account3);

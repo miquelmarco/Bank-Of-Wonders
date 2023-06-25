@@ -12,34 +12,54 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Orbitron&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/styles/style.css">
-    <link rel="shortcut icon" href="../assets/images/wonderFaviconNobg.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/images/faviconnuevo.png" type="image/x-icon">
     <title>My Accounts</title>
 </head>
 
-<body>
-    <header class="d-flex justify-content-around align-items-center">
+<body id="bodyAccounts">
+    <!-- <header class="d-flex justify-content-around align-items-center">
         <img id="headerLogo" class="p-3" src="../assets/images/wonderLogoNobg2.png" alt="bank logo">
-        <div id="navInputs" class="d-flex flex-column gap-3">
-            <div class="d-flex justify-content-end">
-                <label class="labelLogin" for="user">User </label>
-                <input type="text" id="user">
-            </div>
-            <div class="d-flex justify-content-end">
-                <label class="labelLogin" for="password">Password </label>
-                <input type="password" name="password" id="password">
-            </div>
-        </div>
         <div id="navbarContainer">
             <nav id="navbar" class="d-flex gap-5 justify-content-around">
-                <a href="../index.html">HOME</a>
                 <a href="#">MY PROFILE</a>
                 <a href="#">ACOUNTS</a>
                 <a href="./cards.html">CARDS</a>
                 <a href="#">CONTACT US</a>
                 <a href="./aboutUs.html">ABOUT US</a>
+                <a href="http://localhost:8080/logout">Log Out</a>
             </nav>
         </div>
+    </header> -->
+    <header class="d-flex justify-content-around align-items-center">
+        <img id="headerLogo" src="../assets/images/logonuevo.png" alt="banklogo">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light gap-3">
+            <a class="navbar-brand" href="#">MENU →</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav gap-5">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="./myProfile.html">MY PROFILE</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">ACCOUNTS</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="./cards.html">CARDS</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="./aboutUs.html">ABOUT US</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#"><span class="spanAbout">LOG OUT</span></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     </header>
+
     <main id="app" class="mainAccounts d-flex flex-column align-items-center">
 
         <section id="accountsH1" class="m-5 text-center p-2 rounded">
@@ -84,7 +104,11 @@
             <p class="footerP text-white">Code of Conduct and Good Practices for Banks and Financial Institutions</p>
             <p class="footerP text-white">©DevByMarcoMiquel</p>
         </div>
-        <img id="footerLogo" class="m-3" src="../assets/images/wonderFaviconNobg.png" alt="logo">
+        <div id="footerAnchorContainer">
+            <a class="footerAnchor" href="mailto:customerservice@bankofwonders.com">SEND US A MAIL!</a>
+            <a class="footerAnchor" href="tel:+123 45678945">GIVE US A CALL!</a>
+            <img id="footerLogo" class="m-3" src="../assets/images/faviconnuevo.png" alt="logo">
+        </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"

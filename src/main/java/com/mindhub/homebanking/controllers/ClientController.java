@@ -19,4 +19,8 @@ public class ClientController {
     public ClientDTO getOneClient(@PathVariable Long id) {
         return new ClientDTO(clientRepository.findById(id).orElse(null));
     }
+//    @RequestMapping("/clients/{current}")
+//    public ClientDTO getOneClient(@PathVariable String current) {
+//        return new ClientDTO(clientRepository.findByEmail(current));
+//    }
 }

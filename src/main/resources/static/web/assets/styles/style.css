@@ -3,20 +3,42 @@
     margin: 0 !important;
     box-sizing: border-box !important;
     /* border: solid red 1px; */
+    /* clip-path: circle(100% at top left); */
     /* font-family: 'Caveat', cursive;
     font-family: 'Orbitron', sans-serif; */
     /* font-family: 'Bruno Ace SC', cursive; */
 }
 
-body {
+#bodyIndex {
     background-image: url(../images/bruce-mars-S8ffHr_dxHo-unsplash.jpg);
+    background-size: cover;
+}
+
+#bodyAccounts {
+    background-image: url(../images/bancoFondo.jpg);
+    background-size: cover;
+}
+
+#bodyCards {
+    background-image: url(../images/bodyCards.jpg);
+    background-size: cover;
+}
+
+#bodyAccount {
+    background-image: url(../images/bodyAccount.jpg);
+    background-size: cover;
+}
+
+#bodyAboutUs {
+    background-image: url(../images/about2.jpg);
     background-size: cover;
 }
 
 header {
     height: 10vh;
-    background: rgb(208, 207, 96);
-    background: linear-gradient(0deg, rgba(208, 207, 96, 0.5578606442577031) 0%, rgba(207, 187, 108, 0.577468487394958) 100%);
+    background: rgba(4, 79, 30, 0.808);
+    background: linear-gradient(0deg, rgba(4, 79, 30, 0.884) 0%, rgba(18, 142, 28, 0.877) 100%);
+    box-shadow: rgb(10, 10, 10) 30px 30px 30px -10px;
 }
 
 main {
@@ -25,57 +47,75 @@ main {
 
 footer {
     height: 10vh;
-    background: rgb(208, 207, 96);
-    background: linear-gradient(0deg, rgba(208, 207, 96, 0.5578606442577031) 0%, rgba(207, 187, 108, 0.577468487394958) 100%);
+    background: rgba(4, 79, 30, 0.808);
+    background: linear-gradient(0deg, rgba(4, 79, 30, 0.884) 0%, rgba(18, 142, 28, 0.877) 100%);
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(3, 3, 3) 0px 0px 0px 1px inset;
+}
+
+.notDisplay {
+    display: none;
 }
 
 /* header edit */
 
 #headerLogo {
-    width: 29rem;
-    height: 100%;
+    width: 11rem;
+    height: 5rem;
+    background: rgb(4,79,30);
+    background: linear-gradient(0deg, rgba(4,79,30,0.958420868347339) 0%, rgba(18,142,28,1) 100%);
+    border-radius: 1.5rem;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
-#navbar {
+.navbar {
     padding: 1rem !important;
+    background: rgb(4,79,30);
+    background: linear-gradient(0deg, rgba(4,79,30,0.958420868347339) 0%, rgba(18,142,28,1) 100%);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    border-radius: 1rem;
 }
 
-#navbarContainer {
-    background: rgb(208, 207, 96);
-    background: linear-gradient(0deg, rgba(208, 207, 96, 0.5578606442577031) 0%, rgba(207, 187, 108, 0.577468487394958) 100%);
-    padding: 1.3rem;
-    border-radius: 0.3rem;
-    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+.nav-link, .navbar-brand{
+    color: white !important;
+    font-weight: 400;
+    font-family: 'Orbitron', sans-serif;
 }
 
-#navbar a {
+.nav-link:hover {
+    color: rgb(212, 209, 26) !important;
+    transform: scale(1.15);
+    font-weight: 900;
+    transition: 0.5s;
+}
+
+/* footer edit */
+
+.footerP {
+    margin: 0rem !important;
+    font-size: x-small;
+    color: white !important;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 200;
+}
+
+#footerLogo {
+    width: 4.5rem;
+    height: 3rem;
+}
+
+#footerAnchorContainer {
+    width: 30%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.footerAnchor {
     text-decoration: none;
+    color: white;
     font-family: 'Orbitron', sans-serif;
-    font-weight: 1000;
-    color: #606C5D;
-    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
-}
-
-#navbar a:hover {
-    color: 606C5Drgb(0, 0, 0);
-    transform: scale(1.2);
-    transition: color 0.5s ease;
-}
-
-#navInputs {
-    font-family: 'Orbitron', sans-serif;
-    width: 20rem;
-    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
-}
-
-#user,
-#password {
-    width: 60%;
-}
-
-.labelLogin {
-    color: #606C5D !important;
-    font-weight: 600;
+    font-weight: 500;
+    font-size: 1.2rem;
 }
 
 /* main edit */
@@ -89,7 +129,7 @@ footer {
     font-family: 'Orbitron', sans-serif;
     font-weight: 800;
     background: rgb(208, 207, 96);
-    background: linear-gradient(0deg, rgba(208, 207, 96, 0.5578606442577031) 0%, rgba(207, 187, 108, 0.577468487394958) 100%);
+    background: linear-gradient(0deg, rgba(208, 206, 96, 0.329) 0%, rgba(207, 187, 108, 0.397) 100%);
     border-radius: 0.3rem;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
@@ -102,6 +142,55 @@ footer {
 .mainHomeTxt {
     color: #606C5D !important;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+#indexFormsContainer {
+    min-height: 35rem;
+    min-width: 45rem;
+}
+
+.inputLabelIndex {
+    width: 20rem;
+    height: 2rem;
+    border-radius: 1rem;
+    margin: 0.5rem !important;
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.363);
+}
+
+#sendLogin, #sendRegister {
+    color: black;
+    font-weight: 900;
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.363);
+    background: rgb(208, 207, 96);
+    background: linear-gradient(0deg, rgba(208, 206, 96, 0.76) 0%, rgba(207, 187, 108, 0.822) 100%);
+}
+
+.formIndividualContainers {
+    background: rgb(4,79,30);
+    background: linear-gradient(0deg, rgba(7, 70, 29, 0.849) 0%, rgba(6, 143, 17, 0.829) 100%);
+    padding: 2rem !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    color: white!important;
+    font-weight: 900;
+    font-style: italic;
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.363);
+    border-radius: 1rem;
+    box-shadow: rgb(10, 10, 10) 30px 30px 30px -10px;
+    border: rgb(255, 246, 123) 8px inset;
+}
+
+#indexText {
+    font-family: 'Orbitron', sans-serif;
+    color: #32aa14 !important;
+    font-size: 2.5rem;
+    width: 42rem;
+    text-align: end;
+    margin-top: 18rem !important;
+    text-shadow: 2px 4px 3px rgb(0, 0, 0);
 }
 
 /* accounts edit */
@@ -143,22 +232,13 @@ footer {
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px !important;
 }
 
-/* footer edit */
-
-.footerP {
-    margin: 0rem !important;
-    font-size: x-small;
-    color: #606C5D !important;
-    font-family: 'Orbitron', sans-serif;
-    font-weight: 700;
-}
-
-#footerLogo {
-    width: 4.5rem;
-    height: 3rem;
-}
-
 /* table details edit */
+
+#accountH1 {
+    background: rgb(4,79,30);
+    background: linear-gradient(0deg, rgba(7, 70, 29, 0.849) 0%, rgba(6, 143, 17, 0.829) 100%);
+    color: white;
+}
 
 th,
 td {
@@ -200,24 +280,124 @@ td {
 
 /* about us edit */
 
-#aboutUsTxt {
-    padding: 1rem !important;
+.h1About {
+    font-family: 'Orbitron', sans-serif;
+    color: #32aa14 !important;
+    font-size: 3.5rem;
+    text-align: left;
+    text-shadow: 2px 4px 3px rgb(0, 0, 0);
+    margin-left: 5rem !important;
+    width: 50rem;
 }
 
-#aboutUsTitle {
-    padding: 0.5rem !important;
+#aboutContainer1 {
+    min-height: 100vh;
 }
 
-#aboutUsTxt,
-#aboutUsTitle {
-    border-radius: 0.5rem;
-    font-size: x-large;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-    text-shadow: 3px 0px 7px rgba(81, 67, 21, 0.8);
-    color: #fcfffb;
-    font-family: 'Caveat', cursive;
-    background: rgb(208, 207, 96);
-    background: linear-gradient(0deg, rgba(208, 206, 96, 0.76) 0%, rgba(207, 187, 108, 0.822) 100%);
+#aboutContainer2 {
+    min-height: 100vh;
+}
+
+#aboutContainer3 {
+    min-height: 100vh;
+}
+
+#topcontainerAbout {
+    clip-path: circle(50% at right);
+    width: 60rem;
+    height: 40rem;
+    background-image: url(../images/about1.jpg);
+    background-size: cover;
+    border: solid green 3px;
+    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
+}
+
+.h2AboutTop {
+    margin: 1rem !important;
+    height: 8rem;
+    width: 25rem;
+    font-family: 'Orbitron', sans-serif;
+    color: #32aa14 !important;
+    font-size: 2.5rem;
+    text-align: left;
+    text-shadow: 2px 4px 3px rgb(0, 0, 0);
+}
+
+.h2About2Top {
+    width: 20rem;
+    height: 8rem;
+    text-align: right;
+    display: flex;
+    align-self: self-end;
+    
+}
+
+
+#topcontainerAbout:hover {
+    clip-path: circle(80%);
+    border-top-left-radius: 10rem;
+    border-bottom-left-radius: 10rem;
+    border: 10px rgba(26, 185, 11, 0.603);
+    border-style: outset;
+    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
+    transition: 1s;
+}
+
+#h1AboutUs {
+    font-family: 'Orbitron', sans-serif;
+    color: #32aa14 !important;
+    font-size: 2.5rem;
+    margin: 10rem !important;
+    width: 42rem;
+    text-shadow: 2px 4px 3px rgb(0, 0, 0);
+}
+
+#botcontainerAbout {
+    clip-path: circle(50% at left);
+    background-image: url(../images/about3.jpg);
+    background-size: cover;
+    border: solid green 3px;
+    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
+}
+
+.h2AboutBot {
+    margin: 1rem !important;
+    height: 18rem;
+    width: 60rem;
+    font-family: 'Orbitron', sans-serif;
+    color: #32aa14 !important;
+    font-size: 2.5rem;
+    text-shadow: 2px 4px 3px rgb(0, 0, 0);
+}
+
+.h2About2Bot {
+    width: 25rem;
+    display: flex;
+    text-align: right;
+    float: right;
+}
+
+#botcontainerAbout:hover {
+    clip-path: circle(80%);
+    transition: 1s;
+    border-top-right-radius: 10rem;
+    border-bottom-right-radius: 10rem;
+    border: 10px rgba(26, 185, 11, 0.603);
+    border-style: outset;
+    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
+}
+
+#contactContainer {
+    width: 50rem;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    color: #32aa14 !important;
+    font-size: 2rem;
+    text-shadow: 2px 4px 3px rgb(0, 0, 0);
+}
+
+.spanAbout {
+    color: red;
 }
 
 /* cards edit */
@@ -244,6 +424,11 @@ td {
 #debitCardModel:hover {
     transform: scale(1.2);
     transition: 0.5s;
+}
+
+#debitCardModel:hover {
+    transform: scale(5);
+    transition: 10s
 }
 
 .chip,
@@ -299,7 +484,7 @@ td {
 
 /* mediaquerys */
 
-@media only screen and (max-width: 1580px) {
+/* @media only screen and (max-width: 1580px) {
     
 }
 
@@ -393,4 +578,4 @@ td {
     #accountDetailsTable {
         font-size: 0.8rem;
     }
-}
+} */

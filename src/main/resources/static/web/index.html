@@ -12,64 +12,70 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Orbitron&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/styles/style.css">
-    <link rel="shortcut icon" href="./assets/images/wonderFaviconNobg.png" type="image/x-icon">
+    <link rel="shortcut icon" href="./assets/images/faviconnuevo.png" type="image/x-icon">
     <title>Home</title>
 </head>
 
-<body>
+<body id="bodyIndex">
     <header class="d-flex justify-content-around align-items-center">
-        <img id="headerLogo" class="p-3" src="./assets/images/wonderLogoNobg2.png" alt="bank logo">
-        <div id="navInputs" class="d-flex flex-column gap-3">
-            <div class="d-flex justify-content-end">
-                <label class="labelLogin" for="user">User</label>
-                <input type="text" id="user">
-            </div>
-            <div class="d-flex justify-content-end">
-                <label class="labelLogin" for="password">Password</label>
-                <input type="password" name="password" id="password">
-            </div>
-        </div>
-        <nav id="navbar" class="d-flex gap-5 justify-content-around">
-            <a href="./pages/accounts.html">LOGIN</a>
-        </nav>
-        <div id="navbarContainer">
-        </div>
+        <img id="headerLogo" src="./assets/images/logonuevo.png" alt="bank logo">
+        <!-- <div class="d-flex gap-3">
+            <input type="button" value="Log In" id="login" v-model="loginView">
+            <p>Or</p>
+            <input type="button" value="Register" id="register" v-model="registerView">
+        </div> -->
     </header>
-    <main id="app" class="mainHome d-flex mx-5">
-        <div id="titleContainer"
-            class="titleContainerHome d-flex flex-column justify-content-center align-items-center m-5">
-            <h1 id="mainTitle" class="text-center m-1 text-white">Welcome to Bank of Wonders!</h1>
-            <p class="mainHomeTxt text-center m-1 text-white">
-                Discover Wonderful Things with Bank of Wonders! We are thrilled to welcome you to our esteemed banking
-                institution. At Bank of Wonders, our mission is to provide you with extraordinary financial services
-                that will help you unlock a world of possibilities.
-
-                <span id="textBottomMain">Whether you're looking to open a checking account, establish a savings plan, secure a mortgage, obtain a
-                personal loan, or explore investment opportunities, we have a wide array of tailored solutions to meet
-                your specific needs and aspirations. We believe that everyone deserves the chance to achieve their
-                dreams, and we are here to support you every step of the way.</span>
-
-                <span id="textBottomMain2">With Bank of Wonders, convenience, security, and satisfaction are our top priorities. Our
-                state-of-the-art online and mobile banking platforms allow you to effortlessly manage your accounts,
-                conduct transactions, and monitor your finances from the comfort of your own home or on the go. Rest
-                assured, your financial well-being is safeguarded by our robust security measures, ensuring your peace
-                of mind.</span></p>
+    <main id="app" class="d-flex justify-content-around align-items-center">
+        <div id="indexFormsContainer" class="d-flex justify-content-around m-5">
+            <section class="formIndividualContainers">
+                <h2>LOG IN</h2>
+                <form class="d-flex flex-column">
+                    <label class="inputLabelIndex" for="loginEmail">Email</label>
+                    <input v-model="email" class="inputLabelIndex" type="email" id="loginEmail">
+                    <label class="inputLabelIndex" for="loginPassword">Password</label>
+                    <input v-model="password" class="inputLabelIndex" type="password" id="loginPassword">
+                    <input @click.prevent="sessionLogIn()" class="inputLabelIndex" type="submit" name="sendLogin" id="sendLogin" value="SIGN IN">
+                </form>
+            </section>
+            <h2 class="m-5 or">OR</h2>
+            <section class="formIndividualContainers">
+                <h2>REGISTER</h2>
+                <form class="d-flex flex-column">
+                    <label class="inputLabelIndex" for="registerFirstName">First Name</label>
+                    <input class="inputLabelIndex" type="text" id="registerFirstName">
+                    <label class="inputLabelIndex" for="registerLastName">Last Name</label>
+                    <input class="inputLabelIndex" type="text" id="registerLastName">
+                    <label class="inputLabelIndex" for="registerEmail">Email</label>
+                    <input class="inputLabelIndex" type="text" id="registerEmail">
+                    <label class="inputLabelIndex" for="registerPassword">Password</label>
+                    <input class="inputLabelIndex" type="password" name="resgiterPassword" id="registerPassword">
+                    <input class="inputLabelIndex" type="submit" name="sendRegister" id="sendRegister" value="REGISTER">
+                </form>
+            </section>
+        </div>
+        <div>
+            <p id="indexText">Welcome to Bank of Wonders, please log in or register!</p>
         </div>
     </main>
     <footer class="d-flex justify-content-between align-items-center">
-        <div class="d-flex flex-column m-3">
+        <div id="footerTxt" class="d-flex flex-column m-3">
             <p class="footerP text-white">Follow us for daily updates</p>
             <p class="footerP text-white">Privacy and Security Policies</p>
             <p class="footerP text-white">Code of Conduct and Good Practices for Banks and Financial Institutions</p>
             <p class="footerP text-white">©DevByMarcoMiquel</p>
         </div>
-        <img id="footerLogo" class="m-3" src="./assets/images/wonderFaviconNobg.png" alt="logo">
+        <div id="footerAnchorContainer">
+            <a class="footerAnchor" href="mailto:customerservice@bankofwonders.com">SEND US A MAIL!</a>
+            <a class="footerAnchor" href="tel:+123 45678945">GIVE US A CALL!</a>
+            <img id="footerLogo" class="m-3" src="./assets/images/faviconnuevo.png" alt="logo">
+        </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./assets/scripts/index.js"></script>
 </body>
 
 </html>

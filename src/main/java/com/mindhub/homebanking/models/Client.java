@@ -27,11 +27,11 @@ public class Client {
         firstName = first;
         lastName = last;
     }
-    public Client(String first, String last, String mail, String password) {
+    public Client(String first, String last, String mail, String pass) {
         firstName = first;
         lastName = last;
         email = mail;
-        password = password;
+        password = pass;
     }
     // métodos accesores
     public String getFirstName() {
