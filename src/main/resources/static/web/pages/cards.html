@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,116 +17,117 @@
     <link rel="shortcut icon" href="../assets/images/faviconnuevo.png" type="image/x-icon">
     <title>Cards</title>
 </head>
-
 <body id="bodyCards">
-    <header class="d-flex justify-content-around align-items-center">
-        <img id="headerLogo" src="../assets/images/logonuevo.png" alt="banklogo">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light gap-3">
-            <a class="navbar-brand" href="#">MENU →</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav gap-5">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="./myProfile.html">MY PROFILE</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="./accounts.html">ACCOUNTS</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">CARDS</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="./aboutUs.html">ABOUT US</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#"><span class="spanAbout">LOG OUT</span></a>
-                    </li>
-                </ul>
+    <div id="app">
+        <header class="d-flex justify-content-around align-items-center">
+            <img id="headerLogo" src="../assets/images/logonuevo.png" alt="banklogo">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                    <a class="navbar-brand mx-3" href="#">Menu-> </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav gap-5">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="./myProfile.html">MY PROFILE</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./accounts.html">ACCOUNTS</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">CARDS</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./aboutUs.html">ABOUT US</a>
+                            </li>
+                            <input @click.prevent="sessionLogOut()" class="btn btn-danger" type="submit" name="sendLogout"
+                            id="sendLogout" value="LOG OUT">
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main class="mainAccounts d-flex flex-column align-items-center justify-content-around">
+            <div id="mainInfo" class="w-100 d-flex justify-content-around flex-wrap">
+                <section class="m-3">
+                    <h2 class="infoTitle m-2 text-center">Your Credit Cards</h2>
+                    <div id="creditCardModel" v-if="creditCards.length != 0" v-for="card of creditCards"
+                        v-bind:class="changeCardColor(card)">
+                        <div class="d-flex justify-content-between">
+                            <img class="contactless" src="../assets/images/contactless.png" alt="contactless">
+                            <img class="cardLogo" src="../assets/images/wonderFaviconNobg.png" alt="logo">
+                        </div>
+                        <div>
+                            <p class="cardTxt m-2 mx-3">{{card.number}}</p>
+                            <p class="cardTxt mx-4">{{card.cardHolder.toUpperCase()}}</p>
+                            <div class="d-flex justify-content-end">
+                                <div>
+                                    <p class="cardTxt goodThru">Good</p>
+                                    <p class="cardTxt goodThru">Thru</p>
+                                </div>
+                                <p class="cardTxt mx-2">{{card.thruDate.slice(5,10)}}</p>
+                            </div>
+                            <p class="d-none">{{card.color}}</p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <img class="chip mx-3 my-2" src="../assets/images/chip.png" alt="chip">
+                            <p class="mx-3 my-2">CVV {{card.cvv}}</p>
+                            <img class="mastercardLogo mx-3 my-2" src="../assets/images/masterlogo.png"
+                                alt="mastercardLogo">
+                            <img class="holoLogo mx-3 my-2" src="../assets/images/holoLogo.png" alt="holoLogo">
+                        </div>
+                    </div>
+                    <p v-else class="text-center">You don't have credit cards!</p>
+                </section>
+                <section class="m-3">
+                    <h2 class="infoTitle m-2 text-center">Your Debit Cards</h2>
+                    <div id="debitCardModel" v-if="debitCards.length != 0" v-for="card of debitCards"
+                        v-bind:class="changeCardColor(card)">
+                        <div class="d-flex justify-content-between">
+                            <img class="contactless" src="../assets/images/contactless.png" alt="contactless">
+                            <img class="cardLogo" src="../assets/images/wonderFaviconNobg.png" alt="logo">
+                        </div>
+                        <div>
+                            <p class="m-2 mx-3">{{card.number}}</p>
+                            <p class="mx-4">{{card.cardHolder.toUpperCase()}}</p>
+                            <div class="d-flex justify-content-end">
+                                <div>
+                                    <p class="goodThru">Good</p>
+                                    <p class="goodThru">Thru</p>
+                                </div>
+                                <p class="mx-2">{{card.thruDate.slice(5,10)}}</p>
+                            </div>
+                            <p class="d-none">{{card.color}}</p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <img class="chip mx-3 my-2" src="../assets/images/chip.png" alt="chip">
+                            <p class="mx-3 my-2">CVV {{card.cvv}}</p>
+                            <img class="mastercardLogo mx-3 my-2" src="../assets/images/masterlogo.png"
+                                alt="mastercardLogo">
+                            <img class="holoLogo mx-3 my-2" src="../assets/images/holoLogo.png" alt="holoLogo">
+                        </div>
+                    </div>
+                    <p v-else class="text-center">You don't have debit cards!</p>
+                </section>
             </div>
-        </nav>
-    </header>
-
-    <main id="app" class="mainAccounts d-flex flex-column align-items-center justify-content-around">
-
-        <div id="mainInfo" class="w-100 d-flex justify-content-around flex-wrap">
-
-            <section class="m-3">
-                <h2 class="infoTitle m-2 text-center">Your Credit Cards</h2>
-                <div id="creditCardModel" v-if="creditCards.length != 0" v-for="card of creditCards" v-bind:class="changeCardColor(card)">
-                    <div class="d-flex justify-content-between">
-                        <img class="contactless" src="../assets/images/contactless.png" alt="contactless">
-                        <img class="cardLogo" src="../assets/images/wonderFaviconNobg.png" alt="logo">
-                    </div>
-                    <div>
-                        <p class="cardTxt m-2 mx-3">{{card.number}}</p>
-                        <p class="cardTxt mx-4">{{card.cardHolder.toUpperCase()}}</p>
-                        <div class="d-flex justify-content-end">
-                            <div>
-                                <p class="cardTxt goodThru">Good</p>
-                                <p class="cardTxt goodThru">Thru</p>
-                            </div>
-                            <p class="cardTxt mx-2">{{card.thruDate.slice(5,10)}}</p>
-                        </div>
-                        <p class="d-none">{{card.color}}</p>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <img class="chip mx-3 my-2" src="../assets/images/chip.png" alt="chip">
-                        <p class="mx-3 my-2">CVV {{card.cvv}}</p>
-                        <img class="mastercardLogo mx-3 my-2" src="../assets/images/masterlogo.png" alt="mastercardLogo">
-                        <img class="holoLogo mx-3 my-2" src="../assets/images/holoLogo.png" alt="holoLogo">
-                    </div>
-                </div>
-                <p v-else class="text-center">You don't have credit cards!</p>
-            </section>
-
-            <section class="m-3">
-                <h2 class="infoTitle m-2 text-center">Your Debit Cards</h2>
-                <div id="debitCardModel" v-if="debitCards.length != 0" v-for="card of debitCards" v-bind:class="changeCardColor(card)">
-                    <div class="d-flex justify-content-between">
-                        <img class="contactless" src="../assets/images/contactless.png" alt="contactless">
-                        <img class="cardLogo" src="../assets/images/wonderFaviconNobg.png" alt="logo">
-                    </div>
-                    <div>
-                        <p class="m-2 mx-3">{{card.number}}</p>
-                        <p class="mx-4">{{card.cardHolder.toUpperCase()}}</p>
-                        <div class="d-flex justify-content-end">
-                            <div>
-                                <p class="goodThru">Good</p>
-                                <p class="goodThru">Thru</p>
-                            </div>
-                            <p class="mx-2">{{card.thruDate.slice(5,10)}}</p>
-                        </div>
-                        <p class="d-none">{{card.color}}</p>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <img class="chip mx-3 my-2" src="../assets/images/chip.png" alt="chip">
-                        <p class="mx-3 my-2">CVV {{card.cvv}}</p>
-                        <img class="mastercardLogo mx-3 my-2" src="../assets/images/masterlogo.png" alt="mastercardLogo">
-                        <img class="holoLogo mx-3 my-2" src="../assets/images/holoLogo.png" alt="holoLogo">
-                    </div>
-                </div>
-                <p v-else class="text-center">You don't have debit cards!</p>
-            </section>
-
-        </div>
-    </main>
-
-    <footer class="d-flex justify-content-between align-items-center">
-        <div id="footerTxt" class="d-flex flex-column m-3">
-            <p class="footerP text-white">Follow us for daily updates</p>
-            <p class="footerP text-white">Privacy and Security Policies</p>
-            <p class="footerP text-white">Code of Conduct and Good Practices for Banks and Financial Institutions</p>
-            <p class="footerP text-white">©DevByMarcoMiquel</p>
-        </div>
-        <div id="footerAnchorContainer">
-            <a class="footerAnchor" href="mailto:customerservice@bankofwonders.com">SEND US A MAIL!</a>
-            <a class="footerAnchor" href="tel:+123 45678945">GIVE US A CALL!</a>
-            <img id="footerLogo" class="m-3" src="../assets/images/faviconnuevo.png" alt="logo">
-        </div>
-    </footer>
+        </main>
+        <footer class="d-flex justify-content-between align-items-center">
+            <div id="footerTxt" class="d-flex flex-column m-3">
+                <p class="footerP text-white">Follow us for daily updates</p>
+                <p class="footerP text-white">Privacy and Security Policies</p>
+                <p class="footerP text-white">Code of Conduct and Good Practices for Banks and Financial Institutions
+                </p>
+                <p class="footerP text-white">©DevByMarcoMiquel</p>
+            </div>
+            <div id="footerAnchorContainer">
+                <a class="footerAnchor" href="mailto:customerservice@bankofwonders.com">SEND US A MAIL!</a>
+                <a class="footerAnchor" href="tel:+123 45678945">GIVE US A CALL!</a>
+                <img id="footerLogo" class="m-3" src="../assets/images/faviconnuevo.png" alt="logo">
+            </div>
+        </footer>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>
@@ -135,5 +135,4 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="../assets/scripts/cards.js"></script>
 </body>
-
 </html>

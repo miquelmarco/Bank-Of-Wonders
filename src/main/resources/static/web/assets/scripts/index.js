@@ -1,26 +1,44 @@
-let {createApp} = Vue
-
+let { createApp } = Vue
 createApp({
-    data(){
+    data() {
         return {
-            email:'',
-            password:'',
+            email: '',
+            password: '',
+            registerFirstName: '',
+            registerLastName: '',
+            registerEmail: '',
+            registerPassword: ''
         }
     },
-    created(){
-
-    },
-    methods:{
+    created() { },
+    methods: {
         sessionLogIn() {
-            axios.post("/api/login", `email=${this.email}&password=${this.password}`,
-            {headers:{'content-type':'application/x-www-form-urlencoded'}})
-            .then(res => {
-                console.log("signed in")
-                window.location.href = "/web/pages/accounts.html"
-            }).catch(err => {console.err(err),
-            alert("Email or password incorrect!")})
+            if(this.email && this.password) {
+                axios.post("/api/login", `email=${this.email}&password=${this.password}`,
+                { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
+                .then(res => {
+                    alert("welcome!")
+                    window.location.href = "/web/pages/accounts.html"
+                }).catch(err => { console.error(err) })
+            } else {
+                ('All fields are necessary!')
+            }
+        },
+        register() {
+            if (this.registerFirstName && this.registerLastName && this.registerEmail && this.registerPassword) {
+                axios.post("/api/clients", `firstName=${this.registerFirstName}&lastName=${this.registerLastName}&email=${this.registerEmail}&password=${this.registerPassword}`,
+                    { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
+                    .then(res => {
+                        axios.post("/api/login", `email=${this.registerEmail}&password=${this.registerPassword}`,
+                { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
+                .then(res => {
+                    alert("welcome!")
+                    window.location.href = "/web/pages/accounts.html"
+                }).catch(err => { console.error(err) })
+                    }).catch(err => { console.error(err) })
+            } else {
+                alert('All fields are necessary!')
+            }
         }
     }
 }).mount("#app")
-
-// axios.post('/api/login',"email=melba@mindhub.com&password=melba",{headers:{'content-type':'application/x-www-form-urlencoded'}}).then(response => console.log('signed in!!!'))

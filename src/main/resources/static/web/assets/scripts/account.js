@@ -28,6 +28,13 @@ createApp({
             } else {
                 return 'standarTable';
             }
+        },
+        sessionLogOut() {
+            axios.post("/api/logout")
+            .then(res => {
+                window.location.href = "/web/index.html"
+                console.log("signedOUT")
+            }).catch(err => {console.log(err)})
         }
     },
     computed: {
@@ -35,6 +42,10 @@ createApp({
             let transInDescenOrder = [...this.transactions]
             transInDescenOrder.sort((a, b) => b.id - a.id)
             return transInDescenOrder
+        },
+        closeAlert() {
+            var alert = document.querySelector('.customAlert');
+            alert.style.display = 'none';
         }
     }
 }).mount("#app")

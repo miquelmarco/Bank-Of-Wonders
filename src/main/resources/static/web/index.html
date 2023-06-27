@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,15 +14,9 @@
     <link rel="shortcut icon" href="./assets/images/faviconnuevo.png" type="image/x-icon">
     <title>Home</title>
 </head>
-
 <body id="bodyIndex">
     <header class="d-flex justify-content-around align-items-center">
         <img id="headerLogo" src="./assets/images/logonuevo.png" alt="bank logo">
-        <!-- <div class="d-flex gap-3">
-            <input type="button" value="Log In" id="login" v-model="loginView">
-            <p>Or</p>
-            <input type="button" value="Register" id="register" v-model="registerView">
-        </div> -->
     </header>
     <main id="app" class="d-flex justify-content-around align-items-center">
         <div id="indexFormsContainer" class="d-flex justify-content-around m-5">
@@ -34,7 +27,8 @@
                     <input v-model="email" class="inputLabelIndex" type="email" id="loginEmail">
                     <label class="inputLabelIndex" for="loginPassword">Password</label>
                     <input v-model="password" class="inputLabelIndex" type="password" id="loginPassword">
-                    <input @click.prevent="sessionLogIn()" class="inputLabelIndex" type="submit" name="sendLogin" id="sendLogin" value="SIGN IN">
+                    <input @click.prevent="sessionLogIn()" class="inputLabelIndex" type="submit" name="sendLogin"
+                        id="sendLogin" value="SIGN IN">
                 </form>
             </section>
             <h2 class="m-5 or">OR</h2>
@@ -42,19 +36,19 @@
                 <h2>REGISTER</h2>
                 <form class="d-flex flex-column">
                     <label class="inputLabelIndex" for="registerFirstName">First Name</label>
-                    <input class="inputLabelIndex" type="text" id="registerFirstName">
+                    <input v-model="registerFirstName" class="inputLabelIndex" type="text" id="registerFirstName">
                     <label class="inputLabelIndex" for="registerLastName">Last Name</label>
-                    <input class="inputLabelIndex" type="text" id="registerLastName">
+                    <input v-model="registerLastName" class="inputLabelIndex" type="text" id="registerLastName">
                     <label class="inputLabelIndex" for="registerEmail">Email</label>
-                    <input class="inputLabelIndex" type="text" id="registerEmail">
+                    <input v-model="registerEmail" class="inputLabelIndex" type="text" id="registerEmail">
                     <label class="inputLabelIndex" for="registerPassword">Password</label>
-                    <input class="inputLabelIndex" type="password" name="resgiterPassword" id="registerPassword">
-                    <input class="inputLabelIndex" type="submit" name="sendRegister" id="sendRegister" value="REGISTER">
+                    <input v-model="registerPassword" class="inputLabelIndex" type="password" name="resgiterPassword" id="registerPassword">
+                    <input @click.prevent="register()" class="inputLabelIndex" type="submit" name="sendRegister" id="sendRegister" value="REGISTER">
                 </form>
             </section>
         </div>
         <div>
-            <p id="indexText">Welcome to Bank of Wonders, please log in or register!</p>
+            <p id="indexText">Welcome to <span class="spanAbout">Bank of Wonders</span>, please log in or register!</p>
         </div>
     </main>
     <footer class="d-flex justify-content-between align-items-center">
@@ -77,5 +71,4 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./assets/scripts/index.js"></script>
 </body>
-
 </html>

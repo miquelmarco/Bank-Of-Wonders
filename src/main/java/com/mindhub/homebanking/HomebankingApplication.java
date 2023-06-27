@@ -26,7 +26,7 @@ public class HomebankingApplication {
         return args -> {
             Client admin = new Client("admin", "admin", "admin@homebanking.com", passwordEncoder.encode("123456"));
             Client client1 = new Client("Melba", "Morel", "melba@mindhub.com", passwordEncoder.encode("123456"));
-            Client client2 = new Client("Fede", "Paez", "fedepaez@outlook.com", passwordEncoder.encode("123456"));
+            Client client2 = new Client("Martín", "TE AMO", "martin@outlook.com", passwordEncoder.encode("123456"));
             Account account1 = new Account("VIN001", LocalDate.now(), 5000.34);
             Account account2 = new Account("VIN002", LocalDate.now().plusDays(1), 7500.76);
             Account account3 = new Account("VIN003", LocalDate.now().plusDays(2), 3000000.42);
