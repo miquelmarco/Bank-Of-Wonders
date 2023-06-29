@@ -10,6 +10,8 @@ public class ClientDTO {
     private List<AccountDTO> accounts;
     private List<ClientLoanDTO> loans;
     private List<CardDTO> cards;
+    public ClientDTO() {
+    }
     public ClientDTO(Client client){
         this.id = client.getId();
         this.firstName = client.getFirstName();

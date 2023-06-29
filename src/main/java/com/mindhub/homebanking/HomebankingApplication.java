@@ -24,9 +24,10 @@ public class HomebankingApplication {
     @Bean
     public CommandLineRunner initData(ClientRepository clientRepository, AccountRepository accountRepository, TransactionRepository transactionRepository, LoanRepository loanRepository, ClientLoanRepository clientLoanRepository, CardRepository cardRepository) {
         return args -> {
-            Client admin = new Client("admin", "admin", "admin@homebanking.com", passwordEncoder.encode("123456"));
-            Client client1 = new Client("Melba", "Morel", "melba@mindhub.com", passwordEncoder.encode("123456"));
-            Client client2 = new Client("Martín", "TE AMO", "martin@outlook.com", passwordEncoder.encode("123456"));
+            Client admin = new Client("admin", "admin", "admin@homebanking.com", passwordEncoder.encode("123"));
+            Client client1 = new Client("Melba", "Morel", "melba@mindhub.com", passwordEncoder.encode("123"));
+            Client client2 = new Client("Fede", "Paez", "fedepaez@outlook.com", passwordEncoder.encode("123"));
+            Client client3 = new Client("Martín", "TE AMO", "martin@outlook.com", passwordEncoder.encode("123"));
             Account account1 = new Account("VIN001", LocalDate.now(), 5000.34);
             Account account2 = new Account("VIN002", LocalDate.now().plusDays(1), 7500.76);
             Account account3 = new Account("VIN003", LocalDate.now().plusDays(2), 3000000.42);
@@ -54,9 +55,16 @@ public class HomebankingApplication {
             ClientLoan clientLoan2 = new ClientLoan(50000, 12);
             ClientLoan clientLoan3 = new ClientLoan(100000, 24);
             ClientLoan clientLoan4 = new ClientLoan(200000, 36);
-            Card card1 = new Card(client1.getFirstName() + " " + client1.getLastName(), cardType.DEBIT, cardColor.GOLD, "1234-5678-9101-1121", (short) 894, LocalDate.now(), LocalDate.now().plusYears(5));
-            Card card2 = new Card(client1.getFirstName() + " " + client1.getLastName(), cardType.CREDIT, cardColor.TITANIUM, "9874-5256-3652-5412", (short) 256, LocalDate.now(), LocalDate.now().plusYears(5));
-            Card card3 = new Card(client2.getFirstName() + " " + client2.getLastName(), cardType.DEBIT, cardColor.SILVER, "5542-3636-5441-5545", (short) 441, LocalDate.now(), LocalDate.now().plusYears(5));
+            Card card1 = new Card(client1.getFirstName() + " " + client1.getLastName(), CardType.DEBIT, CardColor.GOLD, "1234-5678-9101-1121", (short) 894, LocalDate.now(), LocalDate.now().plusYears(5));
+            Card card2 = new Card(client1.getFirstName() + " " + client1.getLastName(), CardType.CREDIT, CardColor.TITANIUM, "9874-5256-3652-5412", (short) 256, LocalDate.now(), LocalDate.now().plusYears(5));
+            Card card3 = new Card(client2.getFirstName() + " " + client2.getLastName(), CardType.DEBIT, CardColor.SILVER, "5542-3636-5441-5545", (short) 441, LocalDate.now(), LocalDate.now().plusYears(5));
+            Card card4 = new Card((client3.getFirstName() + " " + client3.getLastName()), CardType.CREDIT, CardColor.GOLD, "5512-9856-8745-3652", (short) 885, LocalDate.now(), LocalDate.now().plusYears(5));
+            Card card5 = new Card((client3.getFirstName() + " " + client3.getLastName()), CardType.DEBIT, CardColor.TITANIUM, "4526-7554-5744-6557", (short) 324, LocalDate.now(), LocalDate.now().plusYears(5));
+            // prueba de creación de card con constructor sin number y cvv
+            Card card6 = new Card("Card de prueba",  CardType.CREDIT, CardColor.TITANIUM, LocalDate.now(), LocalDate.now().plusYears(5));
+            cardRepository.save(card6);
+            // Se crea la card en la base de datos y tiene como null el number y como 0 el cvv si uso este constructor.
+            // me sirve para setear las propiedades después
             client1.addClientLoan(clientLoan1);
             loan1.addClientLoan(clientLoan1);
             client1.addClientLoan(clientLoan2);
@@ -88,8 +96,11 @@ public class HomebankingApplication {
             client1.addCard(card1);
             client1.addCard(card2);
             client2.addCard(card3);
+            client3.addCard(card4);
+            client3.addCard(card5);
             clientRepository.save(client1);
             clientRepository.save(client2);
+            clientRepository.save(client3);
             clientRepository.save(admin);
             accountRepository.save(account1);
             accountRepository.save(account2);
@@ -121,6 +132,8 @@ public class HomebankingApplication {
             cardRepository.save(card1);
             cardRepository.save(card2);
             cardRepository.save(card3);
+            cardRepository.save(card4);
+            cardRepository.save(card5);
         };
     }
 };

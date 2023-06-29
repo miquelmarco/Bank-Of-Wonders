@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,13 +11,10 @@
     <link rel="shortcut icon" href="./assets/images/wonderFaviconNobg.png" type="image/x-icon">
     <title>Formulario de Prueba</title>
 </head>
-
 <body>
     <main id="app" class="d-flex gap-5 justify-content-center align-items-center">
         <div id="mainContainer" class="d-flex flex-column align-items-center">
-
             <h1>CLIENT MANAGER</h1>
-
             <div id="mainForm" class="d-flex justify-content-center align-items-center m-3">
                 <form action="" method="" class="d-flex flex-column align-items-center text-center m-2">
                     <label for="firstName">First Name:</label>
@@ -27,11 +23,9 @@
                     <input v-model="newClient.lastName" type="text" id="lastName" name="lastName" placeholder="Enter last name">
                     <label for="email">Email:</label>
                     <input v-model="newClient.email" type="email" id="email" name="email" placeholder="Enter the email">
-
                     <input @click="addClient()" class="buttonAdd bg-success text-center" type="button" value="add client">
                 </form>
             </div>
-
             <div id="mainTable" class="text-center m-3">
                 <table>
                     <caption class="text-center" >CLIENT LIST</caption>
@@ -54,7 +48,6 @@
                 </table>
             </div>
         </div>
-
         <pre id="jsonContainer">
             {{clients}}
         </pre>
@@ -66,5 +59,4 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./assets/scripts/manager.js"></script>
 </body>
-
 </html>

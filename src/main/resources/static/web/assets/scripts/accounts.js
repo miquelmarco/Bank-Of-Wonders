@@ -1,5 +1,4 @@
 let { createApp } = Vue;
-
 createApp({
     data() {
         return {
@@ -29,6 +28,12 @@ createApp({
                     window.location.href = "/web/index.html"
                     console.log("signedOUT")
                 }).catch(err => { console.log(err) })
+        },
+        createAccount() {
+            axios.post("/api/clients/current/accounts")
+            .then(res => {
+                window.location.href = "/web/pages/accounts.html"
+            }).catch(err => {console.log(err)})
         }
     }
 }).mount("#app")

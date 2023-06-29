@@ -9,6 +9,8 @@ public class TransactionDTO {
     private TransactionType type;
     private LocalDateTime date;
     //constructor
+    public TransactionDTO() {
+    }
     public TransactionDTO(Transaction transaction) {
         this.id = transaction.getId();
         this.amount = transaction.getAmount();

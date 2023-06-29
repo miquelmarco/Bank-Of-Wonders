@@ -1,18 +1,20 @@
 package com.mindhub.homebanking.dtos;
 import com.mindhub.homebanking.models.Card;
-import com.mindhub.homebanking.models.cardColor;
-import com.mindhub.homebanking.models.cardType;
+import com.mindhub.homebanking.models.CardColor;
+import com.mindhub.homebanking.models.CardType;
 import java.time.LocalDate;
 public class CardDTO {
     private long id;
     private String cardHolder;
-    private cardType type;
-    private cardColor color;
+    private CardType type;
+    private CardColor color;
     private String number;
     private short cvv;
     private LocalDate fromDate;
     private LocalDate thruDate;
     //contructor DTO
+    public CardDTO() {
+    }
     public CardDTO(Card card) {
         this.id = card.getId();
         this.cardHolder = card.getCardOwner().getFirstName() + " " + card.getCardOwner().getLastName();
@@ -30,10 +32,10 @@ public class CardDTO {
     public String getCardHolder() {
         return cardHolder;
     }
-    public cardType getType() {
+    public CardType getType() {
         return type;
     }
-    public cardColor getColor() {
+    public CardColor getColor() {
         return color;
     }
     public String getNumber() {

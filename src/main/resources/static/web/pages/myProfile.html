@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,7 +14,6 @@
     <link rel="shortcut icon" href="../assets/images/faviconnuevo.png" type="image/x-icon">
     <title>My Accounts</title>
 </head>
-
 <body id="bodyMyProfile">
     <div id="app">
         <header class="d-flex justify-content-around align-items-center">
@@ -60,7 +58,6 @@
                         <li>Identifier: {{account.id}}</li>
                     </ul>
                 </div>
-
                 <div>
                     <h3><span class="spanAbout m-3">Loans</span></h3>
                     <ul type="none" v-for="loan of loans" class="profileContainer d-flex m-3 gap-3">
@@ -70,7 +67,6 @@
                         <li>Identifier: {{loan.id}}</li>
                     </ul>
                 </div>
-
                 <div>
                     <h3><span class="spanAbout m-3">Cards</span></h3>
                     <ul type="none" v-for="card of cards" class="profileContainer d-flex m-3 gap-3">
@@ -106,5 +102,4 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="../assets/scripts/myProfile.js"></script>
 </body>
-
 </html>

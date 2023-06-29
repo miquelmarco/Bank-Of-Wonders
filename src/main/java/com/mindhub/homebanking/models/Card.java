@@ -1,10 +1,8 @@
 package com.mindhub.homebanking.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 import java.time.LocalDate;
-
 @Entity
 public class Card {
     @Id
@@ -12,8 +10,8 @@ public class Card {
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
     private String cardHolder;
-    private cardType type;
-    private cardColor color;
+    private CardType type;
+    private CardColor color;
     private String number;
     private short cvv;
     private LocalDate fromDate;
@@ -24,7 +22,14 @@ public class Card {
     //contructor
     public Card() {
     }
-    public Card(String cardHolder, cardType type, cardColor color, String number, short cvv, LocalDate fromDate, LocalDate thruDate) {
+    public Card(String cardHolder, CardType type, CardColor color, LocalDate fromDate, LocalDate thruDate) {
+        this.cardHolder = cardHolder;
+        this.type = type;
+        this.color = color;
+        this.fromDate = fromDate;
+        this.thruDate = thruDate;
+    }
+    public Card(String cardHolder, CardType type, CardColor color, String number, short cvv, LocalDate fromDate, LocalDate thruDate) {
         this.cardHolder = cardHolder;
         this.type = type;
         this.color = color;
@@ -43,16 +48,16 @@ public class Card {
     public void setCardHolder(String cardHolder) {
         this.cardHolder = cardHolder;
     }
-    public cardType getType() {
+    public CardType getType() {
         return type;
     }
-    public void setType(cardType type) {
+    public void setType(CardType type) {
         this.type = type;
     }
-    public cardColor getColor() {
+    public CardColor getColor() {
         return color;
     }
-    public void setColor(cardColor color) {
+    public void setColor(CardColor color) {
         this.color = color;
     }
     public String getNumber() {
@@ -85,9 +90,7 @@ public class Card {
     public void setCardOwner(Client cardOwner) {
         this.cardOwner = cardOwner;
     }
-
     @JsonIgnore
-
     //impresores
     @Override
     public String toString() {

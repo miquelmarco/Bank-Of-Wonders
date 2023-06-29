@@ -1,5 +1,4 @@
 let { createApp } = Vue;
-
 createApp({
     data() {
         return {

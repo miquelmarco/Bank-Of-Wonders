@@ -356,7 +356,6 @@ td {
 
 }
 
-
 #topcontainerAbout:hover {
     clip-path: circle(80%);
     border-top-left-radius: 10rem;
@@ -446,7 +445,7 @@ iframe {
     font-family: 'Bruno Ace SC', cursive;
     font-size: 1rem !important;
     font-weight: 800;
-    text-shadow: 2px 4px 3px rgb(0, 0, 0);
+    text-shadow: 1.5px 1.5px 1.5px rgb(0, 0, 0);
     box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
     background-image: url(../images/silverBg.jpg);
     background-size: cover;
@@ -531,17 +530,23 @@ iframe {
     box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
 }
 
-/* mediaquerys */
+/* create cards edit */
+
+.bodyCreateCards {
+    min-height: 80vh;
+}
+
+/* custom alert */
 
 /* navbar */
 
-@media only screen and (max-width: 990px) {
+/* @media only screen and (max-width: 990px) {
     
-}
+} */
 
 /* all page and profile query edit */
 
-@media only screen and (max-width: 650px) {
+/* @media only screen and (max-width: 650px) {
     footer {
         min-height: 20vh !important;
         display: flex !important;
@@ -568,4 +573,4 @@ iframe {
     .profileContainer {
         flex-wrap: wrap;
     }
-}
+} */

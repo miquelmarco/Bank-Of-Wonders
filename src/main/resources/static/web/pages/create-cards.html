@@ -12,9 +12,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Orbitron&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/styles/style.css">
     <link rel="shortcut icon" href="../assets/images/faviconnuevo.png" type="image/x-icon">
-    <title>My Accounts</title>
+    <title>About Us</title>
 </head>
-<body id="bodyAccounts">
+<body id="bodyCreateCards">
     <div id="app">
         <header class="d-flex justify-content-around align-items-center">
             <img id="headerLogo" src="../assets/images/logonuevo.png" alt="banklogo">
@@ -31,13 +31,13 @@
                                 <a class="nav-link active" aria-current="page" href="./myProfile.html">MY PROFILE</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">ACCOUNTS</a>
+                                <a class="nav-link" href="./accounts.html">ACCOUNTS</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="./cards.html">CARDS</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./aboutUs.html">ABOUT US</a>
+                                <a class="nav-link" href="#">ABOUT US</a>
                             </li>
                             <input @click.prevent="sessionLogOut()" class="btn btn-danger" type="submit"
                                 name="sendLogout" id="sendLogout" value="LOG OUT">
@@ -46,41 +46,19 @@
                 </div>
             </nav>
         </header>
-        <main class="mainAccounts d-flex flex-column align-items-center">
-            <section id="accountsH1" class="m-5 text-center p-2 rounded">
-                <h1 class="m-3">MY PERSONAL INFORMATION</h1>
-                <p id="accountsTitleDesc">Hello <span class="spanInformation">{{clientName}}</span>, in this page you
-                    can
-                    see your accounts and loans information</p>
-            </section>
-            <div id="mainInfo" class="w-100 d-flex justify-content-around flex-wrap">
-                <section class="m-3">
-                    <h2 class="infoTitle m-2 text-center">Accounts Information</h2>
-                    <div v-if="accounts.length != 0" v-for="account of accounts" class="bg-white m-3 p-2 card">
-                        <p><span class="spanInformation">Account Number: </span>{{account.number}}</p>
-                        <p><span class="spanInformation">Balance: </span> $ {{account.balance.toLocaleString()}}</p>
-                        <p><span class="spanInformation">Account opening date: </span>{{account.creationDate}}</p>
-                        <div class="d-flex justify-content-end m-2">
-                            <a class="text-decoration-none fw-bold text-info"
-                                v-bind:href="`./account.html?id=${account.id}`">SEE DETAILS</a>
-                        </div>
-                    </div>
-                    <p v-else>You don't have accounts!</p>
-                    <div>
-                        <input @click.prevent="createAccount()" class="btn btn-success" type="submit" name="createAccount"
-                            id="createAccount" value="Create New Account">
-                    </div>
-                </section>
-                <section class="m-3">
-                    <h2 class="infoTitle m-2 text-center">Loans Information</h2>
-                    <div v-if="loans.length != 0" v-for="loan of loans" class="bg-white m-3 p-2 card">
-                        <p><span class="spanInformation">Loan: </span>{{loan.name}}</p>
-                        <p><span class="spanInformation">Amount: </span> $ {{loan.amount.toLocaleString()}}</p>
-                        <p><span class="spanInformation">Payments: </span>{{loan.payments}}</p>
-                    </div>
-                    <p v-else>"You don't have loans!"</p>
-                </section>
-            </div>
+        <main class="d-flex justify-content-center align-items-center">
+            <select name="typeCards" id="typeCards" v-model="cardType">
+                <option value="#">Select Type</option>
+                <option value="DEBIT">Debit</option>
+                <option value="CREDIT">Credit</option>
+            </select>
+            <select name="colorCards" id="colorCards" v-model="cardColor">
+                <option value="#">Select Color</option>
+                <option value="SILVER">Silver</option>
+                <option value="GOLD">Gold</option>
+                <option value="TITANIUM">Titanium</option>
+            </select>
+            <input @click.prevent="createCard()" class="btn btn-danger" type="submit" name="createDCCard" id="createDCCards" value="Create Card">
         </main>
         <footer class="d-flex justify-content-between align-items-center">
             <div id="footerTxt" class="d-flex flex-column m-3">
@@ -102,6 +80,6 @@
         crossorigin="anonymous"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="../assets/scripts/accounts.js"></script>
+    <script src="../assets/scripts/create-cards.js"></script>
 </body>
 </html>

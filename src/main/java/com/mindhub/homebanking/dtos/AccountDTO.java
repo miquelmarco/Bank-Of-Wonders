@@ -9,6 +9,8 @@ public class AccountDTO {
     private LocalDate creationDate;
     private Double balance;
     private List<TransactionDTO> transactions;
+    public AccountDTO() {
+    }
     public AccountDTO(Account account){
         this.id = account.getId();
         this.number = account.getNumber();
