@@ -9,6 +9,8 @@
     /* font-family: 'Bruno Ace SC', cursive; */
 }
 
+/* body edits */
+
 #bodyIndex {
     background-image: url(../images/bruce-mars-S8ffHr_dxHo-unsplash.jpg);
     background-size: cover;
@@ -450,7 +452,7 @@ iframe {
     background-image: url(../images/silverBg.jpg);
     background-size: cover;
     width: 370px;
-    height: 220px;
+    height: 230px;
     border: 2px;
     border-style: outset !important;
     border-radius: 1rem;
@@ -519,6 +521,22 @@ iframe {
     background-size: cover;
 }
 
+.createCardBtn {
+    color: white;
+    font-weight: 500;
+    background-color: green;
+    padding: 0.5rem !important;
+    border-radius: 1rem !important;
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
+}
+
+.createCardBtn:hover {
+    color: rgb(212, 209, 26) !important;
+    transform: scale(1.15);
+    transition: 0.5s;
+}
+
 /* my profile edit */
 
 #profileContainer {
@@ -530,10 +548,54 @@ iframe {
     box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
 }
 
-/* create cards edit */
+/* create cards part 2 edit */
 
 .bodyCreateCards {
     min-height: 80vh;
+}
+
+#createCardsMainContainer {
+    width: 45rem;
+    height: 20rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    background: rgb(4, 79, 30);
+    background: linear-gradient(0deg, rgba(7, 70, 29, 0.849) 0%, rgba(6, 143, 17, 0.829) 100%);
+    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
+}
+
+.selectContainer {
+    text-align: center;
+    margin: 1rem !important;
+    font-family: 'Orbitron', sans-serif;
+    color: white;
+    font-size: 2rem;
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+}
+
+.selectBox {
+    text-align: center;
+    width: 15rem;
+    height: 3rem;
+}
+
+#createDCCards2 {
+    width: 10rem;
+    height: 3rem;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    background-color: #70be5a;
+    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
+}
+
+#createDCCards2:hover {
+    transition: 0.5s;
+    background-color: yellow;
+    color: rgb(196, 14, 14);
+    font-weight: bolder;
 }
 
 /* custom alert */

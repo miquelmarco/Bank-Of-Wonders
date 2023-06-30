@@ -98,7 +98,7 @@ public class CardController {
     private ResponseEntity<Object> createCard(@RequestParam CardType cardType, @RequestParam CardColor cardColor, Authentication authentication) {
         Client client = clientRepository.findByEmail(authentication.getName());
         if (client.getCards().stream().filter(card -> card.getType() == cardType && card.getColor() == cardColor).count() >= 1) {
-            return new ResponseEntity<>("Muchas tarjetas bro aka espectativas fallidas lol", HttpStatus.EXPECTATION_FAILED);
+            return new ResponseEntity<>("you already have this card!", HttpStatus.FORBIDDEN);
         } else {
             Card newCard = new Card(client.getFirstName() + " " + client.getLastName(), cardType, cardColor, LocalDate.now(), LocalDate.now().plusYears(5));
             cardRepository.save(newCard);

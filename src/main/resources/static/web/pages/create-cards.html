@@ -46,19 +46,28 @@
                 </div>
             </nav>
         </header>
-        <main class="d-flex justify-content-center align-items-center">
-            <select name="typeCards" id="typeCards" v-model="cardType">
-                <option value="#">Select Type</option>
-                <option value="DEBIT">Debit</option>
-                <option value="CREDIT">Credit</option>
-            </select>
-            <select name="colorCards" id="colorCards" v-model="cardColor">
-                <option value="#">Select Color</option>
-                <option value="SILVER">Silver</option>
-                <option value="GOLD">Gold</option>
-                <option value="TITANIUM">Titanium</option>
-            </select>
-            <input @click.prevent="createCard()" class="btn btn-danger" type="submit" name="createDCCard" id="createDCCards" value="Create Card">
+        <main class="d-flex flex-column gap-5 justify-content-center align-items-center">
+            <div id="createCardsMainContainer" class="gap-4">
+                <div class="selectContainer">
+                    <label class="mx-5" for="typeCards">Select card color</label>
+                    <select class="selectBox" name="typeCards" id="typeCards" v-model="cardType">
+                        <option class="selectBox" value="#" disabled selected>Select Type</option>
+                        <option class="selectBox" value="DEBIT">DEBIT</option>
+                        <option class="selectBox" value="CREDIT">CREDIT</option>
+                    </select>
+                </div>
+                <div class="selectContainer">
+                    <label class="mx-5" for="colorCards">Select card type</label>
+                    <select class="selectBox" name="colorCards"  id="colorCards" v-model="cardColor">
+                        <option class="selectBox" value="#" disabled selected>Select Type</option>
+                        <option class="selectBox" value="SILVER">SILVER</option>
+                        <option class="selectBox" value="GOLD">GOLD</option>
+                        <option class="selectBox" value="TITANIUM">TITANIUM</option>
+                    </select>
+                </div>
+                <input @click.prevent="createCard()" class="btn btn-danger" type="submit" name="createDCCard"
+                id="createDCCards2" value="Create Card">
+            </div>
         </main>
         <footer class="d-flex justify-content-between align-items-center">
             <div id="footerTxt" class="d-flex flex-column m-3">
@@ -80,6 +89,7 @@
         crossorigin="anonymous"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../assets/scripts/create-cards.js"></script>
 </body>
 </html>

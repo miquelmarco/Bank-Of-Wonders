@@ -10,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
-
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -47,8 +46,3 @@ public class AccountController {
         }
     }
 }
-
-//    @RequestMapping("/clients/current")
-//    public ClientDTO getCurrent (Authentication authentication) {
-//        return new ClientDTO(clientRepository.findByEmail(authentication.getName()));
-//    }

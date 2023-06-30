@@ -35,11 +35,16 @@ public class ClientController {
     public ResponseEntity<Object> register(
             @RequestParam String firstName, @RequestParam String lastName, @RequestParam String email, @RequestParam String password
     ){
-        if (firstName.isBlank() || lastName.isBlank() || email.isBlank() || password.isBlank()){
-            return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
-        }
-        if (clientRepository.findByEmail(email) != null) {
-            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        if (firstName.isBlank()){
+            return new ResponseEntity<>("the first name is missing", HttpStatus.FORBIDDEN);
+        } else if (lastName.isBlank()) {
+            return new ResponseEntity<>("the last name is missing", HttpStatus.FORBIDDEN);
+        } else if (email.isBlank()) {
+            return new ResponseEntity<>("the email is missing", HttpStatus.FORBIDDEN);
+        } else if (password.isBlank()) {
+            return new ResponseEntity<>("the password is missing", HttpStatus.FORBIDDEN);
+        } else if (clientRepository.findByEmail(email) != null) {
+            return new ResponseEntity<>("email already exist", HttpStatus.FORBIDDEN);
         }
         String encodedPass = passwordEncoder.encode(password);
         Client clientRegister = new Client(firstName, lastName, email, encodedPass);
@@ -49,21 +54,14 @@ public class ClientController {
         accountRepository.save(account);
         account.setNumber(Utilities.numberAccountGenerator(account));
         accountRepository.save(account);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return new ResponseEntity<>("registration completed successfully!", HttpStatus.CREATED);
     }
     @GetMapping("/clients/current")
     public ClientDTO getCurrent (Authentication authentication) {
         return new ClientDTO(clientRepository.findByEmail(authentication.getName()));
     }
 }
-
-//      NOTAS:
-//          -- En el método generador de números random
-//          El símbolo "%" indica el comienzo de la especificación de formato.
-//          "0" indica que el relleno debe ser realizado con ceros.
-//          "8" indica que el ancho total del campo debe ser de 8 caracteres, incluyendo ceros a la izquierda si es necesario.
-//          "d" indica que el argumento proporcionado es un número entero decimal.
-
 //          -- Números de Status
 //          403 - forbidden
+//          401 - unauthorized
 //          201 - created
