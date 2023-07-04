@@ -2,7 +2,7 @@ package com.mindhub.homebanking.utils;
 import com.mindhub.homebanking.models.Account;
 public class Utilities {
     public static String numberAccountGenerator (Account account) {
-        return "VIN" + String.format("%08d", 99999-account.getId());
+        return "VIN - " + String.format("%08d", 99999-account.getId());
     }
     // revisar el error de este método (pendiente) (debería funcionar lol?)
 //    public static short cvvGenerator () {

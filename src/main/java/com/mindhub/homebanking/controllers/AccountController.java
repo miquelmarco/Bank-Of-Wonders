@@ -26,10 +26,31 @@ public class AccountController {
                 .map(account -> new AccountDTO(account))
                 .collect(Collectors.toList());
     }
+//    @GetMapping("/accounts/{id}")
+//    public AccountDTO getOneAccount(@PathVariable Long id) {
+//        return accountRepository.findById(id).map(account -> new AccountDTO(account)).orElse(null);
+//    }
     @GetMapping("/accounts/{id}")
-    public AccountDTO getOneAccount(@PathVariable Long id) {
-        return accountRepository.findById(id).map(account -> new AccountDTO(account)).orElse(null);
+    public ResponseEntity<?> getOneAccount(@PathVariable Long id, Authentication authentication) {
+        Client client = clientRepository.findByEmail(authentication.getName());
+        Account account = accountRepository.findById(id).orElse(null);
+        if (account == null){
+            return new ResponseEntity<>("account not found", HttpStatus.NOT_FOUND);
+        }
+        if (!client.getAccounts().contains(account)) {
+            return new ResponseEntity<>("is not your account", HttpStatus.FORBIDDEN);
+        }
+        return new ResponseEntity<>(new AccountDTO(account), HttpStatus.OK);
     }
+//    @GetMapping("/accounts/{id}")
+//    public ResponseEntity<Object> getOneAccount(@PathVariable Long id, Authentication authentication) {
+//        Client client = clientRepository.findByEmail(authentication.getName());
+//        try {
+//            return new ResponseEntity<>(accountRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException(id, "Account not found")),HttpStatus.OK);
+//        } catch (ObjectNotFoundException exception) {
+//            return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
+//        }
+//    }
     @PostMapping("/clients/current/accounts")
     public ResponseEntity<Object> createAccount(Authentication authentication) {
         Client client = clientRepository.findByEmail(authentication.getName());

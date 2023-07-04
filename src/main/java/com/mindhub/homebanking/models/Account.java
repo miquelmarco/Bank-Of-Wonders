@@ -10,7 +10,7 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
-    private long id;
+    private Long id;
     private String number;
     private LocalDate creationDate;
     private Double balance;
@@ -46,7 +46,7 @@ public class Account {
     public void setBalance(Double balance) {
         this.balance = balance;
     }
-    public long getId() {
+    public Long getId() {
         return id;
     }
     @JsonIgnore

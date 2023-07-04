@@ -20,7 +20,7 @@ createApp({
                         console.log(res)
                         if (res.status == 200) {
                             Swal.fire({
-                                position: 'top-center',
+                                position: 'center',
                                 icon: 'success',
                                 title: 'Welcome!',
                                 showConfirmButton: false,
@@ -52,7 +52,7 @@ createApp({
                         .then(res => {
                             if (res.status == 200) {
                                 Swal.fire({
-                                    position: 'top-center',
+                                    position: 'center',
                                     icon: 'success',
                                     title: 'Welcome!',
                                     showConfirmButton: false,

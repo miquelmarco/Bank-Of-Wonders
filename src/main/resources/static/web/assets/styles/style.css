@@ -41,6 +41,16 @@
     background-size: cover;
 }
 
+#bodyCreateCards {
+    background-image: url(../images/fondoooooooo.jpg);
+    background-size: cover;
+}
+
+#bodyTransfers {
+    background-image: url(../images/fondoTransfers.jpg);
+    background-size: cover;
+}
+
 header {
     height: 10vh;
     background: rgba(4, 79, 30, 0.808);
@@ -596,6 +606,51 @@ iframe {
     background-color: yellow;
     color: rgb(196, 14, 14);
     font-weight: bolder;
+}
+
+/* transfer edit */
+
+textarea {
+    width: 28rem;
+    height: 10rem;
+    resize: none;
+}
+
+#transferContainer,
+#transferContainer2 {
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    color: white;
+    min-height: 30rem !important;
+    width: 30rem;
+    border-radius: 1rem;
+    background: rgb(4, 79, 30);
+    background: linear-gradient(0deg, rgba(7, 70, 29, 0.849) 0%, rgba(6, 143, 17, 0.829) 100%);
+    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
+}
+
+.transferBtn {
+    width: 10rem;
+    height: 3rem;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    background-color: #70be5a;
+    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
+}
+
+#labeltransfersContainer {
+    width: 15rem;
+    height: 3rem;
+    border-radius: 0.5rem;
+    color: white;
+    font-weight: 700;
+    text-align: center;
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+    font-family: 'Orbitron', sans-serif;
+    background-color: #70be5a;
+    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
+    position: absolute;
+    top: 100px;
 }
 
 /* custom alert */

@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 public class AccountDTO {
-    private long id;
+    private Long id;
     private String number;
     private LocalDate creationDate;
     private Double balance;
@@ -30,7 +30,7 @@ public class AccountDTO {
     public List<TransactionDTO> getTransactions() {
         return transactions;
     }
-    public long getId() {
+    public Long getId() {
         return id;
     }
 }

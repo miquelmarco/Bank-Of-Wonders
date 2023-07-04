@@ -15,6 +15,7 @@ createApp({
         loadData() {
             axios.get(`http://localhost:8080/api/clients/current`)
                 .then(res => {
+                    console.log(res)
                     this.client = res.data
                     this.clientName = this.client.firstName + ' ' + this.client.lastName
                     this.accounts = this.client.accounts.sort((a, b) => a.id - b.id)

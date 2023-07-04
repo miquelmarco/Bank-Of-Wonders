@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,7 +15,8 @@
     <link rel="shortcut icon" href="../assets/images/faviconnuevo.png" type="image/x-icon">
     <title>About Us</title>
 </head>
-<body id="bodyCreateCards">
+
+<body id="bodyTransfers">
     <div id="app">
         <header class="d-flex justify-content-around align-items-center">
             <img id="headerLogo" src="../assets/images/logonuevo.png" alt="banklogo">
@@ -37,10 +39,10 @@
                                 <a class="nav-link" href="./cards.html">CARDS</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./transfers.html">TRANSFERS</a>
+                                <a class="nav-link" href="#">TRANSFERS</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">ABOUT US</a>
+                                <a class="nav-link" href="./aboutUs.html">ABOUT US</a>
                             </li>
                             <input @click.prevent="sessionLogOut()" class="btn btn-danger" type="submit"
                                 name="sendLogout" id="sendLogout" value="LOG OUT">
@@ -49,27 +51,55 @@
                 </div>
             </nav>
         </header>
-        <main class="d-flex flex-column gap-5 justify-content-center align-items-center">
-            <div id="createCardsMainContainer" class="gap-4">
-                <div class="selectContainer">
-                    <label class="mx-5" for="typeCards">Select card type</label>
-                    <select class="selectBox" name="typeCards" id="typeCards" v-model="cardType">
-                        <option class="selectBox" value="#" disabled selected>Select Type</option>
-                        <option class="selectBox" value="DEBIT">DEBIT</option>
-                        <option class="selectBox" value="CREDIT">CREDIT</option>
+        <main class="d-flex flex-column justify-content-center align-items-center">
+            <div id="labeltransfersContainer" class="d-flex flex-column m-3">
+                <label id="labeltransfers" for="selectedOption">Select Destination</label>
+                <select v-model="selectedOption" name="selectedOption" id="selectedOption">
+                    <option value="#" selected disabled>Select Destination</option>
+                    <option value="own">Own Accounts</option>
+                    <option value="third">Third Party Accounts</option>
+                </select>
+            </div>
+
+            <div v-if="selectedOption == 'own'" id="transferContainer" class="d-flex flex-column justify-content-center align-items-center gap-3">
+                <h2>To Your Own Accounts!</h2>
+                <form class="d-flex flex-column gap-2 justify-content-center align-items-center">
+                    <label for="originAccountNumber">Select origin account:</label>
+                    <select v-model="originAccountNumber" name="originAccountNumber" id="originAccountNumber">
+                        <option value="#" disabled selected>Select an account</option>
+                        <option v-for="account in accounts" :value="account.number" :key="account.number">
+                            {{account.number}}</option>
                     </select>
-                </div>
-                <div class="selectContainer">
-                    <label class="mx-5" for="colorCards">Select card color</label>
-                    <select class="selectBox" name="colorCards"  id="colorCards" v-model="cardColor">
-                        <option class="selectBox" value="#" disabled selected>Select Color</option>
-                        <option class="selectBox" value="SILVER">SILVER</option>
-                        <option class="selectBox" value="GOLD">GOLD</option>
-                        <option class="selectBox" value="TITANIUM">TITANIUM</option>
+                    <label for="originAccountNumber">Select destination account:</label>
+                    <select v-model="destinyAccountNumber" name="destinyAccountNumber" id="destinyAccountNumber">
+                        <option value="#" disabled selected>Select an account</option>
+                        <option v-for="account in accounts" :value="account.number" :key="account.number">
+                            {{account.number}}</option>
                     </select>
-                </div>
-                <input @click.prevent="createCard()" class="btn btn-danger" type="submit" name="createDCCard"
-                id="createDCCards2" value="Create Card">
+                    <label for="amount">Enter the amount to transfer</label>
+                    <input v-model="amount" type="number" id="amount" step="0.01" min="0.01">
+                    <label for="description">Description</label>
+                    <textarea v-model="description" name="description" id="description" cols="40" rows="3"></textarea>
+                    <button class="transferBtn" @click.prevent="makeTransaction()">Confirm Transaction</button>
+                </form>
+            </div>
+            <div v-if="selectedOption == 'third'" id="transferContainer2" class="d-flex flex-column justify-content-center align-items-center gap-3">
+                <h2>To Third Party Accounts</h2>
+                <form class="d-flex flex-column gap-2 justify-content-center align-items-center">
+                    <label for="originAccountNumber">Select origin account:</label>
+                    <select v-model="originAccountNumber" name="originAccountNumber" id="originAccountNumber">
+                        <option value="#" disabled selected>Select an account</option>
+                        <option v-for="account in accounts" :value="account.number" :key="account.number">
+                            {{account.number}}</option>
+                    </select>
+                    <label for="destinyAccountNumber">Enter destination account</label>
+                    <input v-model="destinyAccountNumber" type="text" id="destinyAccountNumber">
+                    <label for="amount">Enter the amount to transfer</label>
+                    <input v-model="amount" type="number" id="amount" step="0.01" min="0.01">
+                    <label for="description">Description</label>
+                    <textarea v-model="description" name="description" id="description" cols="40" rows="3"></textarea>
+                    <button class="transferBtn" @click.prevent="makeTransaction()">Confirm Transaction</button>
+                </form>
             </div>
         </main>
         <footer class="d-flex justify-content-between align-items-center">
@@ -93,6 +123,7 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="../assets/scripts/create-cards.js"></script>
+    <script src="../assets/scripts/transfer.js"></script>
 </body>
+
 </html>
