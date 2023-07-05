@@ -58,7 +58,7 @@ public class CardController {
 //        return new ResponseEntity<>("Card generated ok", HttpStatus.OK);
 //    }
 
-    //INTENTO 2
+//INTENTO 2
 
 //@PostMapping("/clients/current/cards")
 //private ResponseEntity<Object> createCard (@RequestParam CardType cardType, @RequestParam CardColor cardColor, Authentication authentication) {
@@ -104,6 +104,7 @@ public class CardController {
             cardRepository.save(newCard);
             newCard.setCvv(Utilities.cvvGenerator());
             Set<String> getAllCardNumbers = cardRepository.findAll().stream().map(card -> card.getNumber()).collect(Collectors.toSet());
+//            String getCardToLook = cardRepository.findByNumber(authentication.getName()).getNumber();
             String generatedNumber = Utilities.cardNumberGenerator();
             while (getAllCardNumbers.contains(generatedNumber)) {
                 generatedNumber = Utilities.cardNumberGenerator();

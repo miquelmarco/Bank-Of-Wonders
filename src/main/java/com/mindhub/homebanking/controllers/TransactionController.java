@@ -28,13 +28,14 @@ public class TransactionController {
     public ResponseEntity<Object> transactionMaker (@RequestParam Double amount, @RequestParam String originAccountNumber,
                                                     @RequestParam String destinyAccountNumber, @RequestParam String description,
                                                     Authentication authentication) {
-        Account originAccount = accountRepository.findByNumber(originAccountNumber);
-        Account destinyAccount = accountRepository.findByNumber(destinyAccountNumber);
-        if (amount.isNaN() || amount == 0.0) {
+        if (amount.isNaN()) {
             return new ResponseEntity<>("Missing transaction amount", HttpStatus.FORBIDDEN);
         }
-        if (amount < 1.0) {
+        if (amount < 0.0) {
             return new ResponseEntity<>("Insufficient funds", HttpStatus.FORBIDDEN);
+        }
+        if (amount == null) {
+            return new ResponseEntity<>("Missing amount", HttpStatus.FORBIDDEN);
         }
         if (originAccountNumber.isBlank()) {
             return new ResponseEntity<>("Missing origin account", HttpStatus.FORBIDDEN);
@@ -45,6 +46,11 @@ public class TransactionController {
         if (destinyAccountNumber.equals(originAccountNumber)) {
             return new ResponseEntity<>("Destination account must be different", HttpStatus.FORBIDDEN);
         }
+        if (description.isBlank()) {
+            return new ResponseEntity<>("Missing description", HttpStatus.FORBIDDEN);
+        }
+        Account originAccount = accountRepository.findByNumber(originAccountNumber);
+        Account destinyAccount = accountRepository.findByNumber(destinyAccountNumber);
 //        if (originAccount == null || destinyAccount == null) {
 //            return new ResponseEntity<>("Account do not exist!", HttpStatus.FORBIDDEN);
 //        }
