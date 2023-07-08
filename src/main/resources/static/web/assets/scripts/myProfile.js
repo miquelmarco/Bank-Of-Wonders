@@ -38,7 +38,7 @@ createApp({
                         }, 1800)
                     }
                     // window.location.href = "/web/index.html"
-                    console.log(sres)
+                    console.log(res)
                 }).catch(err => { console.log(err) })
         }
     }

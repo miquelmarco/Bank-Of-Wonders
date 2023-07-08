@@ -14,23 +14,43 @@ createApp({
     methods: {
         sessionLogIn() {
             if (this.email && this.password) {
-                axios.post("/api/login", `email=${this.email}&password=${this.password}`,
-                    { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
-                    .then(res => {
-                        console.log(res)
-                        if (res.status == 200) {
-                            Swal.fire({
-                                position: 'center',
-                                icon: 'success',
-                                title: 'Welcome!',
-                                showConfirmButton: false,
-                                timer: 1500
-                            })
-                            setTimeout(() => {
-                                window.location.href = "/web/pages/accounts.html";
-                            }, 1800)
-                        }
-                    }).catch(err => { console.error(err) })
+                if (this.email == "admin@homebanking.com") {
+                    axios.post("/api/login", `email=${this.email}&password=${this.password}`,
+                        { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
+                        .then(res => {
+                            console.log(res)
+                            if (res.status == 200) {
+                                Swal.fire({
+                                    position: 'center',
+                                    icon: 'success',
+                                    title: 'Welcome!',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                                setTimeout(() => {
+                                    window.location.href = "/web/manager.html";
+                                }, 1800)
+                            }
+                        }).catch(err => { console.error(err) })
+                } else {
+                    axios.post("/api/login", `email=${this.email}&password=${this.password}`,
+                        { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
+                        .then(res => {
+                            console.log(res)
+                            if (res.status == 200) {
+                                Swal.fire({
+                                    position: 'center',
+                                    icon: 'success',
+                                    title: 'Welcome!',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                                setTimeout(() => {
+                                    window.location.href = "/web/pages/accounts.html";
+                                }, 1800)
+                            }
+                        }).catch(err => { console.error(err) })
+                }
             } else {
                 Swal.fire({
                     title: 'All fields are necessary!',

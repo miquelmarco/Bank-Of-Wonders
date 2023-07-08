@@ -1,10 +1,10 @@
 package com.mindhub.homebanking.controllers;
+import com.mindhub.homebanking.Services.AccountService;
+import com.mindhub.homebanking.Services.ClientService;
+import com.mindhub.homebanking.Services.TransactionService;
 import com.mindhub.homebanking.models.Account;
 import com.mindhub.homebanking.models.Transaction;
 import com.mindhub.homebanking.models.TransactionType;
-import com.mindhub.homebanking.repositories.AccountRepository;
-import com.mindhub.homebanking.repositories.ClientRepository;
-import com.mindhub.homebanking.repositories.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,23 +18,17 @@ import java.time.LocalDateTime;
 @RequestMapping("/api") @RestController
 public class TransactionController {
     @Autowired
-    private ClientRepository clientRepository;
+    private ClientService clientService;
     @Autowired
-    private AccountRepository accountRepository;
+    private AccountService accountService;
     @Autowired
-    private TransactionRepository transactionRepository;
+    private TransactionService transactionService;
     @Transactional
     @PostMapping("/transactions")
     public ResponseEntity<Object> transactionMaker (@RequestParam Double amount, @RequestParam String originAccountNumber,
                                                     @RequestParam String destinyAccountNumber, @RequestParam String description,
                                                     Authentication authentication) {
-        if (amount.isNaN()) {
-            return new ResponseEntity<>("Missing transaction amount", HttpStatus.FORBIDDEN);
-        }
-        if (amount < 0.0) {
-            return new ResponseEntity<>("Insufficient funds", HttpStatus.FORBIDDEN);
-        }
-        if (amount == null) {
+        if (amount <= 0.0) {
             return new ResponseEntity<>("Missing amount", HttpStatus.FORBIDDEN);
         }
         if (originAccountNumber.isBlank()) {
@@ -49,8 +43,8 @@ public class TransactionController {
         if (description.isBlank()) {
             return new ResponseEntity<>("Missing description", HttpStatus.FORBIDDEN);
         }
-        Account originAccount = accountRepository.findByNumber(originAccountNumber);
-        Account destinyAccount = accountRepository.findByNumber(destinyAccountNumber);
+        Account originAccount = accountService.findByNumber(originAccountNumber);
+        Account destinyAccount = accountService.findByNumber(destinyAccountNumber);
 //        if (originAccount == null || destinyAccount == null) {
 //            return new ResponseEntity<>("Account do not exist!", HttpStatus.FORBIDDEN);
 //        }
@@ -61,7 +55,7 @@ public class TransactionController {
         if (destinyAccount == null) {
             return new ResponseEntity<>("Destination account do not exist", HttpStatus.FORBIDDEN);
         }
-        if (clientRepository.findByEmail(authentication.getName()).getAccounts().stream().noneMatch(account -> account.getNumber().equals(originAccountNumber))) {
+        if (clientService.findByEmail(authentication.getName()).getAccounts().stream().noneMatch(account -> account.getNumber().equals(originAccountNumber))) {
             return new ResponseEntity<>("Not your account!", HttpStatus.FORBIDDEN);
         }
         if (originAccount.getBalance() < amount) {
@@ -73,10 +67,10 @@ public class TransactionController {
         destinyAccount.addTransaction(credit);
         originAccount.setBalance(originAccount.getBalance() - amount);
         destinyAccount.setBalance(destinyAccount.getBalance() + amount);
-        transactionRepository.save(debit);
-        transactionRepository.save(credit);
-        accountRepository.save(originAccount);
-        accountRepository.save(destinyAccount);
+        transactionService.save(debit);
+        transactionService.save(credit);
+        accountService.save(originAccount);
+        accountService.save(destinyAccount);
         return new ResponseEntity<>("Transaction ok", HttpStatus.OK);
     }
 }

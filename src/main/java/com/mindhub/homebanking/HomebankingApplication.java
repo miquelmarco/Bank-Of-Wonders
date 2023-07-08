@@ -1,6 +1,6 @@
 package com.mindhub.homebanking;
+import com.mindhub.homebanking.Services.*;
 import com.mindhub.homebanking.models.*;
-import com.mindhub.homebanking.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -10,6 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.List;
 @SpringBootApplication
 public class HomebankingApplication {
     @Autowired
@@ -18,12 +19,12 @@ public class HomebankingApplication {
         SpringApplication.run(HomebankingApplication.class, args);
     }
     @Bean
-    public CommandLineRunner initData(ClientRepository clientRepository, AccountRepository accountRepository, TransactionRepository transactionRepository, LoanRepository loanRepository, ClientLoanRepository clientLoanRepository, CardRepository cardRepository) {
+    public CommandLineRunner initData(ClientService clientService, AccountService accountService, TransactionService transactionService, LoanService loanService, ClientLoanService clientLoanService, CardService cardService) {
         return args -> {
             Client admin = new Client("admin", "admin", "admin@homebanking.com", passwordEncoder.encode("123"));
             Client client1 = new Client("Melba", "Morel", "melba@mindhub.com", passwordEncoder.encode("123"));
             Client client2 = new Client("Fede", "Paez", "fedepaez@outlook.com", passwordEncoder.encode("123"));
-            Client client3 = new Client("Martín", "TE AMO", "martin@outlook.com", passwordEncoder.encode("123"));
+            Client client3 = new Client("Batman", "El gato", "batmanElGato@outlook.com", passwordEncoder.encode("123"));
             Account account1 = new Account("VIN001", LocalDate.now(), 5000.34);
             Account account2 = new Account("VIN002", LocalDate.now().plusDays(1), 7500.76);
             Account account3 = new Account("VIN003", LocalDate.now().plusDays(2), 3000000.42);
@@ -56,11 +57,6 @@ public class HomebankingApplication {
             Card card3 = new Card(client2.getFirstName() + " " + client2.getLastName(), CardType.DEBIT, CardColor.SILVER, "5542-3636-5441-5545", (short) 441, LocalDate.now(), LocalDate.now().plusYears(5));
             Card card4 = new Card((client3.getFirstName() + " " + client3.getLastName()), CardType.CREDIT, CardColor.GOLD, "5512-9856-8745-3652", (short) 885, LocalDate.now(), LocalDate.now().plusYears(5));
             Card card5 = new Card((client3.getFirstName() + " " + client3.getLastName()), CardType.DEBIT, CardColor.TITANIUM, "4526-7554-5744-6557", (short) 324, LocalDate.now(), LocalDate.now().plusYears(5));
-            // prueba de creación de card con constructor sin number y cvv
-            Card card6 = new Card("Card de prueba",  CardType.CREDIT, CardColor.TITANIUM, LocalDate.now(), LocalDate.now().plusYears(5));
-            cardRepository.save(card6);
-            // Se crea la card en la base de datos y tiene como null el number y como 0 el cvv si uso este constructor.
-            // me sirve para setear las propiedades después
             client1.addClientLoan(clientLoan1);
             loan1.addClientLoan(clientLoan1);
             client1.addClientLoan(clientLoan2);
@@ -69,67 +65,37 @@ public class HomebankingApplication {
             loan2.addClientLoan(clientLoan3);
             client2.addClientLoan(clientLoan4);
             loan3.addClientLoan(clientLoan4);
-            client1.addAccount(account1);
-            client1.addAccount(account2);
-            client2.addAccount(account3);
-            client2.addAccount(account4);
-            account1.addTransaction(trans1);
-            account1.addTransaction(trans2);
-            account1.addTransaction(trans3);
-            account1.addTransaction(trans4);
-            account2.addTransaction(trans5);
-            account2.addTransaction(trans6);
-            account2.addTransaction(trans7);
-            account2.addTransaction(trans8);
-            account3.addTransaction(trans9);
-            account3.addTransaction(trans10);
-            account3.addTransaction(trans11);
-            account3.addTransaction(trans12);
-            account4.addTransaction(trans13);
-            account4.addTransaction(trans14);
-            account4.addTransaction(trans15);
-            account4.addTransaction(trans16);
-            client1.addCard(card1);
-            client1.addCard(card2);
-            client2.addCard(card3);
-            client3.addCard(card4);
-            client3.addCard(card5);
-            clientRepository.save(client1);
-            clientRepository.save(client2);
-            clientRepository.save(client3);
-            clientRepository.save(admin);
-            accountRepository.save(account1);
-            accountRepository.save(account2);
-            accountRepository.save(account3);
-            accountRepository.save(account4);
-            transactionRepository.save(trans1);
-            transactionRepository.save(trans2);
-            transactionRepository.save(trans3);
-            transactionRepository.save(trans4);
-            transactionRepository.save(trans5);
-            transactionRepository.save(trans6);
-            transactionRepository.save(trans7);
-            transactionRepository.save(trans8);
-            transactionRepository.save(trans9);
-            transactionRepository.save(trans10);
-            transactionRepository.save(trans11);
-            transactionRepository.save(trans12);
-            transactionRepository.save(trans13);
-            transactionRepository.save(trans14);
-            transactionRepository.save(trans15);
-            transactionRepository.save(trans16);
-            loanRepository.save(loan1);
-            loanRepository.save(loan2);
-            loanRepository.save(loan3);
-            clientLoanRepository.save(clientLoan1);
-            clientLoanRepository.save(clientLoan2);
-            clientLoanRepository.save(clientLoan3);
-            clientLoanRepository.save(clientLoan4);
-            cardRepository.save(card1);
-            cardRepository.save(card2);
-            cardRepository.save(card3);
-            cardRepository.save(card4);
-            cardRepository.save(card5);
+            List<Account> addAccountClient1 = Arrays.asList(account1, account2);
+            List<Account> addAccountClient2 = Arrays.asList(account3, account4);
+            client1.addAccounts(addAccountClient1);
+            client2.addAccounts(addAccountClient2);
+            List<Transaction> addTransactionClient1 = Arrays.asList(trans1, trans2, trans3, trans4);
+            account1.addTransactions(addTransactionClient1);
+            List<Transaction> addTransactionClient2 = Arrays.asList(trans5, trans6, trans7, trans8);
+            account2.addTransactions(addTransactionClient2);
+            List<Transaction> addTransactionClient3 = Arrays.asList(trans9, trans10, trans11, trans12);
+            account3.addTransactions(addTransactionClient3);
+            List<Transaction> addTransactionClient4 = Arrays.asList(trans13, trans14, trans15, trans16);
+            account4.addTransactions(addTransactionClient4);
+            List<Card> addCardClient1 = Arrays.asList(card1, card2);
+            client1.addCards(addCardClient1);
+            List<Card> addCardClient2 = Arrays.asList(card3);
+            client2.addCards(addCardClient2);
+            List<Card> addCardClient3 = Arrays.asList(card4, card5);
+            client3.addCards(addCardClient3);
+            List<Client> clients = Arrays.asList(client1, client2, client3, admin);
+            clientService.saveAll(clients);
+            List<Account> accounts = Arrays.asList(account1, account2, account3, account4);
+            accountService.saveAll(accounts);
+            List<Transaction> transactions = Arrays.asList(trans1, trans2, trans3, trans4, trans5, trans6, trans7, trans8,
+                    trans9, trans10, trans11, trans12, trans13, trans14, trans15, trans16);
+            transactionService.saveAll(transactions);
+            List<Loan> loans = Arrays.asList(loan1, loan2, loan3);
+            loanService.saveAll(loans);
+            List<ClientLoan> clientLoans = Arrays.asList(clientLoan1, clientLoan2, clientLoan3, clientLoan4);
+            clientLoanService.saveAll(clientLoans);
+            List<Card> cards = Arrays.asList(card1, card2, card3, card4, card5);
+            cardService.saveAll(cards);
         };
     }
-};
+}

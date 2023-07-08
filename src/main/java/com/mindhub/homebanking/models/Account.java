@@ -4,6 +4,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 @Entity
 public class Account {
@@ -65,6 +66,11 @@ public class Account {
     public void addTransaction(Transaction transaction) {
         transaction.setAccount(this);
         transactions.add(transaction);
+    }
+    public void addTransactions(List<Transaction> transactions) {
+        for (Transaction transaction : transactions) {
+            this.addTransaction(transaction);
+        }
     }
     //impresores
     @Override

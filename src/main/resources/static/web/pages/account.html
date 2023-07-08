@@ -12,43 +12,46 @@
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Orbitron&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/styles/style.css">
     <link rel="shortcut icon" href="../assets/images/faviconnuevo.png" type="image/x-icon">
-    <title>Transactions</title>
+    <title>Account Details</title>
 </head>
 <body id="bodyAccount">
     <div id="app">
-    <header class="d-flex justify-content-around align-items-center">
-        <img id="headerLogo" src="../assets/images/logonuevo.png" alt="banklogo">
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-                <a class="navbar-brand mx-3" href="#">Menu-> </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav gap-5">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="./myProfile.html">MY PROFILE</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./accounts.html">ACCOUNTS</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./cards.html">CARDS</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./transfers.html">TRANSFERS</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./aboutUs.html">ABOUT US</a>
-                        </li>
-                        <input @click.prevent="sessionLogOut()" class="btn btn-danger" type="submit" name="sendLogout"
-                        id="sendLogout" value="LOG OUT">
-                    </ul>
+        <header class="d-flex justify-content-around align-items-center">
+            <img id="headerLogo" src="../assets/images/logonuevo.png" alt="banklogo">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                    <a class="navbar-brand mx-3" href="#">Menu-> </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav gap-3">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="./myProfile.html">MY PROFILE |</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./accounts.html">ACCOUNTS |</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./cards.html">CARDS |</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./transfers.html">TRANSFERS |</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./loan-application.html">LOAN APPLICATION |</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./aboutUs.html">ABOUT US |</a>
+                            </li>
+                            <input @click.prevent="sessionLogOut()" class="btn btn-danger" type="submit"
+                                name="sendLogout" id="sendLogout" value="LOG OUT">
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
-    </header>
+            </nav>
+        </header>
     <main class="d-flex align-items-center flex-column">
         <section id="accountH1" class="m-5 text-center rounded">
             <h1 class="m-3">Account Details</h1>

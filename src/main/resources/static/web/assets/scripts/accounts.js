@@ -23,6 +23,10 @@ createApp({
                     console.log(this.client)
                 }).catch(err => console.log(err))
         },
+        paymentsCalculator(amount, payments) {
+            let division = amount / payments
+            return division.toFixed(2)
+        },
         sessionLogOut() {
             axios.post("/api/logout")
                 .then(res => {
@@ -37,15 +41,14 @@ createApp({
                             window.location.href = "/web/index.html";
                         }, 1800)
                     }
-                    // window.location.href = "/web/index.html"
                     console.log(sres)
                 }).catch(err => { console.log(err) })
         },
         createAccount() {
             axios.post("/api/clients/current/accounts")
-            .then(res => {
-                window.location.href = "/web/pages/accounts.html"
-            }).catch(err => {console.log(err)})
+                .then(res => {
+                    window.location.href = "/web/pages/accounts.html"
+                }).catch(err => { console.log(err) })
         }
     }
 }).mount("#app")

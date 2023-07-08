@@ -88,6 +88,11 @@ public class Client {
         account.setOwner(this);
         accounts.add(account);
     }
+    public void addAccounts(List<Account> accounts) {
+        for (Account account : accounts) {
+            this.addAccount(account);
+        }
+    }
     public void addClientLoan(ClientLoan clientLoan) {
         clientLoan.setClient(this);
         clientLoans.add(clientLoan);
@@ -95,6 +100,11 @@ public class Client {
     public void addCard(Card card) {
         card.setCardOwner(this);
         cards.add(card);
+    }
+    public void addCards(List<Card> cards) {
+        for (Card card : cards) {
+            this.addCard(card);
+        }
     }
     // métodos impresores
     @Override

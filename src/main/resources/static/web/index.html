@@ -24,9 +24,9 @@
                 <h2>LOG IN</h2>
                 <form class="d-flex flex-column">
                     <label class="inputLabelIndex" for="loginEmail">Email</label>
-                    <input v-model="email" class="inputLabelIndex" type="email" id="loginEmail">
+                    <input v-model="email" class="inputLabelIndex px-4" type="email" id="loginEmail">
                     <label class="inputLabelIndex" for="loginPassword">Password</label>
-                    <input v-model="password" class="inputLabelIndex" type="password" id="loginPassword">
+                    <input v-model="password" class="inputLabelIndex px-4" type="password" id="loginPassword">
                     <input @click.prevent="sessionLogIn()" class="inputLabelIndex" type="submit" name="sendLogin"
                         id="sendLogin" value="SIGN IN">
                 </form>
@@ -36,13 +36,13 @@
                 <h2>REGISTER</h2>
                 <form class="d-flex flex-column">
                     <label class="inputLabelIndex" for="registerFirstName">First Name</label>
-                    <input v-model="registerFirstName" class="inputLabelIndex" type="text" id="registerFirstName">
+                    <input v-model="registerFirstName" class="inputLabelIndex px-4" type="text" id="registerFirstName">
                     <label class="inputLabelIndex" for="registerLastName">Last Name</label>
-                    <input v-model="registerLastName" class="inputLabelIndex" type="text" id="registerLastName">
+                    <input v-model="registerLastName" class="inputLabelIndex px-4" type="text" id="registerLastName">
                     <label class="inputLabelIndex" for="registerEmail">Email</label>
-                    <input v-model="registerEmail" class="inputLabelIndex" type="text" id="registerEmail">
+                    <input v-model="registerEmail" class="inputLabelIndex px-4" type="text" id="registerEmail">
                     <label class="inputLabelIndex" for="registerPassword">Password</label>
-                    <input v-model="registerPassword" class="inputLabelIndex" type="password" name="resgiterPassword" id="registerPassword">
+                    <input v-model="registerPassword" class="inputLabelIndex px-4" type="password" name="resgiterPassword" id="registerPassword">
                     <input @click.prevent="register()" class="inputLabelIndex" type="submit" name="sendRegister" id="sendRegister" value="REGISTER">
                 </form>
             </section>

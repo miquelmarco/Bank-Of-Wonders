@@ -17,7 +17,7 @@
 }
 
 #bodyAccounts {
-    background-image: url(../images/bancoFondo.jpg);
+    background-image: url(../images/fondoBGBGB.jpg);
     background-size: cover;
 }
 
@@ -51,8 +51,13 @@
     background-size: cover;
 }
 
+#bodyLoanApplication {
+    background-image: url(../images/loanBg.jpg);
+    background-size: cover;
+}
+
 header {
-    height: 10vh;
+    min-height: 10vh;
     background: rgba(4, 79, 30, 0.808);
     background: linear-gradient(0deg, rgba(4, 79, 30, 0.884) 0%, rgba(18, 142, 28, 0.877) 100%);
     box-shadow: rgb(10, 10, 10) 30px 30px 30px -10px;
@@ -63,7 +68,7 @@ main {
 }
 
 footer {
-    height: 10vh;
+    min-height: 10vh;
     background: rgba(4, 79, 30, 0.808);
     background: linear-gradient(0deg, rgba(4, 79, 30, 0.884) 0%, rgba(18, 142, 28, 0.877) 100%);
     box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(3, 3, 3) 0px 0px 0px 1px inset;
@@ -85,7 +90,6 @@ footer {
 }
 
 .navbar {
-    z-index: 1;
     padding: 1rem !important;
     background: rgb(4, 79, 30);
     background: linear-gradient(0deg, rgba(4, 79, 30, 0.958420868347339) 0%, rgba(18, 142, 28, 1) 100%);
@@ -651,6 +655,61 @@ textarea {
     box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
     position: absolute;
     top: 100px;
+}
+
+/* loan application edit */
+
+.loanAppContainer {
+    min-height: 80vh;
+    min-width: 80vw;
+}
+
+.loanSelectorContainer {
+    width: 40rem;
+    height: 30rem;
+    background-color: #24741198;
+    border-radius: 1rem;
+    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
+}
+
+.loanTypeSelector {
+    width: 30rem;
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    color: white;
+    border-radius: 1rem;
+    background: rgb(4, 79, 30);
+    background: linear-gradient(0deg, rgba(7, 70, 29, 0.849) 0%, rgba(6, 143, 17, 0.829) 100%);
+    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
+}
+
+.loanDetailsSelector {
+    width: 35rem;
+    height: 20rem;
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    color: white;
+    border-radius: 1rem;
+    background: rgb(4, 79, 30);
+    background: linear-gradient(0deg, rgba(7, 70, 29, 0.849) 0%, rgba(6, 143, 17, 0.829) 100%);
+    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
+}
+
+.loanSelectorPDetails {
+    width: 30rem;
+    height: 5rem;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 800;
+    text-align: center;
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+    color: #caeece;
+    /* border-radius: 1rem;
+    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591; */
+}
+
+.loanSpanP {
+    color: rgb(148, 8, 8);
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
 }
 
 /* custom alert */

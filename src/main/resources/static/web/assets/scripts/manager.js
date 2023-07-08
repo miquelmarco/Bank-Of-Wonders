@@ -33,6 +33,23 @@ createApp({
                     this.eraseFields()
                 }).catch(err => console.log(err))
         },
+        sessionLogOut() {
+            axios.post("/api/logout")
+                .then(res => {
+                    if (res.status == 200) {
+                        Swal.fire({
+                            position: 'top-center',
+                            title: 'Bye bye!',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        setTimeout(() => {
+                            window.location.href = "/web/index.html";
+                        }, 1800)
+                    }
+                    console.log(res)
+                }).catch(err => { console.log(err) })
+        },
         eraseFields(){
             this.newClient.firstName = '',
             this.newClient.lastName = '',

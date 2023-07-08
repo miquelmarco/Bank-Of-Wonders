@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Orbitron&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/styles/style.css">
     <link rel="shortcut icon" href="../assets/images/faviconnuevo.png" type="image/x-icon">
-    <title>My Accounts</title>
+    <title>Accounts</title>
 </head>
 <body id="bodyAccounts">
     <div id="app">
@@ -26,21 +26,24 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav gap-5">
+                        <ul class="navbar-nav gap-3">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="./myProfile.html">MY PROFILE</a>
+                                <a class="nav-link active" aria-current="page" href="./myProfile.html">MY PROFILE |</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">ACCOUNTS</a>
+                                <a class="nav-link" href="#">ACCOUNTS |</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./cards.html">CARDS</a>
+                                <a class="nav-link" href="./cards.html">CARDS |</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./transfers.html">TRANSFERS</a>
+                                <a class="nav-link" href="./transfers.html">TRANSFERS |</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./aboutUs.html">ABOUT US</a>
+                                <a class="nav-link" href="./loan-application.html">LOAN APPLICATION |</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./aboutUs.html">ABOUT US |</a>
                             </li>
                             <input @click.prevent="sessionLogOut()" class="btn btn-danger" type="submit"
                                 name="sendLogout" id="sendLogout" value="LOG OUT">
@@ -79,6 +82,7 @@
                     <div v-if="loans.length != 0" v-for="loan of loans" class="bg-white m-3 p-2 card">
                         <p><span class="spanInformation">Loan: </span>{{loan.name}}</p>
                         <p><span class="spanInformation">Amount: </span> $ {{loan.amount.toLocaleString()}}</p>
+                        <p><span class="spanInformation">Monthly: </span> $ {{paymentsCalculator(loan.amount, loan.payments).toLocaleString()}}</p>
                         <p><span class="spanInformation">Payments: </span>{{loan.payments}}</p>
                     </div>
                     <p v-else>"You don't have loans!"</p>

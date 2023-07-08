@@ -26,24 +26,27 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav gap-5">
+                        <ul class="navbar-nav gap-3">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="./myProfile.html">MY PROFILE</a>
+                                <a class="nav-link active" aria-current="page" href="./myProfile.html">MY PROFILE |</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./accounts.html">ACCOUNTS</a>
+                                <a class="nav-link" href="./accounts.html">ACCOUNTS |</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./cards.html">CARDS</a>
+                                <a class="nav-link" href="./cards.html">CARDS |</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./transfers.html">TRANSFERS</a>
+                                <a class="nav-link" href="./transfers.html">TRANSFERS |</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">ABOUT US</a>
+                                <a class="nav-link" href="./loan-application.html">LOAN APPLICATION |</a>
                             </li>
-                            <input @click.prevent="sessionLogOut()" class="btn btn-danger" type="submit" name="sendLogout"
-                            id="sendLogout" value="LOG OUT">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">ABOUT US |</a>
+                            </li>
+                            <input @click.prevent="sessionLogOut()" class="btn btn-danger" type="submit"
+                                name="sendLogout" id="sendLogout" value="LOG OUT">
                         </ul>
                     </div>
                 </div>
