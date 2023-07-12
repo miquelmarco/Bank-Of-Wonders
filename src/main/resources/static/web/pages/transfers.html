@@ -64,7 +64,7 @@
                 </select>
             </div>
             <div v-if="selectedOption == 'own'" id="transferContainer" class="d-flex flex-column justify-content-center align-items-center gap-3">
-                <h2>To Your Own Accounts!</h2>
+                <h2>To Your <span class="loanSpanP">Own</span> Accounts!</h2>
                 <form class="d-flex flex-column gap-2 justify-content-center align-items-center">
                     <label for="originAccountNumber">Select origin account:</label>
                     <select v-model="originAccountNumber" name="originAccountNumber" id="originAccountNumber">
@@ -86,7 +86,7 @@
                 </form>
             </div>
             <div v-if="selectedOption == 'third'" id="transferContainer2" class="d-flex flex-column justify-content-center align-items-center gap-3">
-                <h2>To Third Party Accounts</h2>
+                <h2>To <span class="loanSpanP">Third Party</span> Accounts</h2>
                 <form class="d-flex flex-column gap-2 justify-content-center align-items-center">
                     <label for="originAccountNumber">Select origin account:</label>
                     <select v-model="originAccountNumber" name="originAccountNumber" id="originAccountNumber">

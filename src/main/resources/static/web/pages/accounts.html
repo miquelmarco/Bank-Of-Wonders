@@ -60,12 +60,12 @@
                     see your accounts and loans information</p>
             </section>
             <div id="mainInfo" class="w-100 d-flex justify-content-around flex-wrap">
-                <section class="m-3 d-flex flex-column align-items-center">
+                <section class="m-1 d-flex flex-column align-items-center">
                     <h2 class="infoTitle m-2 text-center">Accounts Information</h2>
                     <div v-if="accounts.length != 0" v-for="account of accounts" class="bg-white m-3 p-2 card">
-                        <p><span class="spanInformation">Account Number: </span>{{account.number}}</p>
-                        <p><span class="spanInformation">Balance: </span> $ {{account.balance.toLocaleString()}}</p>
-                        <p><span class="spanInformation">Account opening date: </span>{{account.creationDate}}</p>
+                        <p class="pinfo"><span class="spanInformation">Account Number: </span>{{account.number}}</p>
+                        <p class="pinfo"><span class="spanInformation">Balance: </span> $ {{account.balance.toLocaleString()}}</p>
+                        <p class="pinfo"><span class="spanInformation">Account opening date: </span>{{account.creationDate}}</p>
                         <div class="d-flex justify-content-end m-2">
                             <a class="text-decoration-none fw-bold text-info"
                                 v-bind:href="`./account.html?id=${account.id}`">SEE DETAILS</a>
@@ -77,13 +77,13 @@
                             type="submit" name="createAccount" id="createAccount" value="Create New Account">
                     </div>
                 </section>
-                <section class="m-3">
+                <section class="m-1">
                     <h2 class="infoTitle m-2 text-center">Loans Information</h2>
                     <div v-if="loans.length != 0" v-for="loan of loans" class="bg-white m-3 p-2 card">
-                        <p><span class="spanInformation">Loan: </span>{{loan.name}}</p>
-                        <p><span class="spanInformation">Amount: </span> $ {{loan.amount.toLocaleString()}}</p>
-                        <p><span class="spanInformation">Monthly: </span> $ {{paymentsCalculator(loan.amount, loan.payments).toLocaleString()}}</p>
-                        <p><span class="spanInformation">Payments: </span>{{loan.payments}}</p>
+                        <p class="pinfo"><span class="spanInformation">Loan: </span>{{loan.name}}</p>
+                        <p class="pinfo"><span class="spanInformation">Amount: </span> $ {{loan.amount.toLocaleString()}}</p>
+                        <p class="pinfo"><span class="spanInformation">Monthly: </span> $ {{paymentsCalculator(loan.amount, loan.payments).toLocaleString()}}</p>
+                        <p class="pinfo"><span class="spanInformation">Payments: </span>{{loan.payments}}</p>
                     </div>
                     <p v-else>"You don't have loans!"</p>
                 </section>

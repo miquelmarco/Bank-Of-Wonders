@@ -28,6 +28,7 @@ createApp({
                 .then(res => {
                     this.loanTypeData = res.data
                     this.mortgageLoan = this.loanTypeData[0]
+                    console.log(this.mortgageLoan)
                     this.personalLoan = this.loanTypeData[1]
                     this.automotiveLoan = this.loanTypeData[2]
                     this.mortgagePayments = this.loanTypeData[0].payments
@@ -54,7 +55,6 @@ createApp({
                 })
             } else {
                 if (this.amou >= 10000 && this.loanType && this.paym && this.destAcc) {
-                    console.log(this.amou, this.loanType, this.paym, this.destAcc)
                     axios.post("/api/loans",
                         { loanTypeId: `${this.loanType}`, amount: `${this.amou}`, payments: `${this.paym}`, destinationAcc: `${this.destAcc}` })
                         .then(res => {

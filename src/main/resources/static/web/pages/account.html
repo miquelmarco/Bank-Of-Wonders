@@ -74,7 +74,7 @@
                         <tr v-for="transaction of orderedTransactions"
                             v-bind:class="changeClassByTransaction(transaction)">
                             <td>{{transaction.type}}</td>
-                            <td>{{transaction.amount}}</td>
+                            <td>$ {{transaction.amount.toLocaleString()}}</td>
                             <td>{{transaction.description}}</td>
                             <td>{{transaction.date.slice(0, 19)}}</td>
                             <td>{{transaction.id}}</td>

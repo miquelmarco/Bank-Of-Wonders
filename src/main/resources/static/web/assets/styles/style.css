@@ -1,13 +1,13 @@
-* {
+/* * {
     padding: 0 !important;
     margin: 0 !important;
     box-sizing: border-box !important;
-    /* border: solid red 1px; */
-    /* clip-path: circle(100% at top left); */
-    /* font-family: 'Caveat', cursive;
-    font-family: 'Orbitron', sans-serif; */
-    /* font-family: 'Bruno Ace SC', cursive; */
-}
+    border: solid red 1px;
+    clip-path: circle(100% at top left);
+    font-family: 'Caveat', cursive;
+    font-family: 'Orbitron', sans-serif;
+    font-family: 'Bruno Ace SC', cursive;
+} */
 
 /* body edits */
 
@@ -242,6 +242,10 @@ footer {
 
 .spanInformation {
     color: #eb0808;
+}
+
+.pinfo {
+    margin: 0.3rem;
 }
 
 #mainInfo {
@@ -479,10 +483,10 @@ iframe {
     transition: 0.5s;
 }
 
-#debitCardModel:hover {
+/* #debitCardModel:hover {
     transform: scale(5);
     transition: 10s
-}
+} */
 
 .chip,
 .mastercardLogo,
@@ -490,6 +494,14 @@ iframe {
 .contactless {
     width: 4rem;
     height: 3rem;
+}
+
+.cardTxt {
+    margin: 0rem !important;
+}
+
+.expDate {
+    margin-right: 1rem;
 }
 
 .chip {
@@ -653,8 +665,8 @@ textarea {
     font-family: 'Orbitron', sans-serif;
     background-color: #70be5a;
     box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
-    position: absolute;
-    top: 100px;
+    /* position: absolute;
+    top: 200px; */
 }
 
 /* loan application edit */

@@ -31,7 +31,15 @@ createApp({
                                     window.location.href = "/web/manager.html";
                                 }, 1800)
                             }
-                        }).catch(err => { console.error(err) })
+                        }).catch(err => {
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'error',
+                                title: 'Incorrect, try again!!',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                        })
                 } else {
                     axios.post("/api/login", `email=${this.email}&password=${this.password}`,
                         { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
@@ -49,7 +57,15 @@ createApp({
                                     window.location.href = "/web/pages/accounts.html";
                                 }, 1800)
                             }
-                        }).catch(err => { console.error(err) })
+                        }).catch(err => {
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'error',
+                                title: 'Incorrect, try again!!',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                        })
                 }
             } else {
                 Swal.fire({

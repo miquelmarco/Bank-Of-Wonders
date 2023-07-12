@@ -58,7 +58,7 @@
         <main class="mainAccounts d-flex flex-column align-items-center justify-content-around">
             <a href="./create-cards.html" v-if="creditCards.length < 3 || debitCards.length < 3" class="createCardBtn text-decoration-none">Create New Card</a>
             <div id="mainInfo" class="w-100 d-flex justify-content-around flex-wrap">
-                <section class="m-3">
+                <section class="m-1">
                     <h2 class="infoTitle m-2 text-center">Your Credit Cards</h2>
                     <div id="creditCardModel" v-if="creditCards.length != 0" v-for="card of creditCards"
                         v-bind:class="changeCardColor(card)">
@@ -67,14 +67,14 @@
                             <img class="cardLogo" src="../assets/images/wonderFaviconNobg.png" alt="logo">
                         </div>
                         <div>
-                            <p class="cardTxt m-2 mx-3">{{card.number}}</p>
-                            <p class="cardTxt mx-4">{{card.cardHolder.toUpperCase()}}</p>
+                            <p class="m-1 mx-3">{{card.number}}</p>
+                            <p class="mx-4 my-0">{{card.cardHolder.toUpperCase()}}</p>
                             <div class="d-flex justify-content-end">
                                 <div>
                                     <p class="cardTxt goodThru">Good</p>
                                     <p class="cardTxt goodThru">Thru</p>
                                 </div>
-                                <p class="cardTxt mx-2">{{card.thruDate.slice(5,10)}}</p>
+                                <p class="expDate">{{card.thruDate.slice(5,10)}}</p>
                             </div>
                             <p class="d-none">{{card.color}}</p>
                         </div>
@@ -88,7 +88,7 @@
                     </div>
                     <p v-else class="text-center">You don't have credit cards!</p>
                 </section>
-                <section class="m-3">
+                <section class="m-1">
                     <h2 class="infoTitle m-2 text-center">Your Debit Cards</h2>
                     <div id="debitCardModel" v-if="debitCards.length != 0" v-for="card of debitCards"
                         v-bind:class="changeCardColor(card)">
@@ -97,14 +97,14 @@
                             <img class="cardLogo" src="../assets/images/wonderFaviconNobg.png" alt="logo">
                         </div>
                         <div>
-                            <p class="m-2 mx-3">{{card.number}}</p>
-                            <p class="mx-4">{{card.cardHolder.toUpperCase()}}</p>
+                            <p class="m-1 mx-3">{{card.number}}</p>
+                            <p class="mx-4 my-0">{{card.cardHolder.toUpperCase()}}</p>
                             <div class="d-flex justify-content-end">
                                 <div>
-                                    <p class="goodThru">Good</p>
-                                    <p class="goodThru">Thru</p>
+                                    <p class="cardTxt goodThru">Good</p>
+                                    <p class="cardTxt goodThru">Thru</p>
                                 </div>
-                                <p class="mx-2">{{card.thruDate.slice(5,10)}}</p>
+                                <p class="expDate">{{card.thruDate.slice(5,10)}}</p>
                             </div>
                             <p class="d-none">{{card.color}}</p>
                         </div>

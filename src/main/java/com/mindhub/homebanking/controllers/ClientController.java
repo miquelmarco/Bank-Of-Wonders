@@ -60,7 +60,3 @@ public class ClientController {
         return new ClientDTO(clientService.findByEmail(authentication.getName()));
     }
 }
-//          -- Números de Status
-//          403 - forbidden
-//          401 - unauthorized
-//          201 - created
