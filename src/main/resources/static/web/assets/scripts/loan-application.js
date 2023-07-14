@@ -28,7 +28,6 @@ createApp({
                 .then(res => {
                     this.loanTypeData = res.data
                     this.mortgageLoan = this.loanTypeData[0]
-                    console.log(this.mortgageLoan)
                     this.personalLoan = this.loanTypeData[1]
                     this.automotiveLoan = this.loanTypeData[2]
                     this.mortgagePayments = this.loanTypeData[0].payments
@@ -39,7 +38,6 @@ createApp({
         getClientAccounts() {
             axios.get(`/api/clients/current`)
                 .then(res => {
-                    console.log(res)
                     this.client = res.data
                     this.clientName = this.client.firstName + ' ' + this.client.lastName
                     this.accounts = this.client.accounts.sort((a, b) => a.id - b.id)

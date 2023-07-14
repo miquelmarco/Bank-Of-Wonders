@@ -18,7 +18,6 @@ createApp({
                     axios.post("/api/login", `email=${this.email}&password=${this.password}`,
                         { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
                         .then(res => {
-                            console.log(res)
                             if (res.status == 200) {
                                 Swal.fire({
                                     position: 'center',
@@ -44,7 +43,6 @@ createApp({
                     axios.post("/api/login", `email=${this.email}&password=${this.password}`,
                         { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
                         .then(res => {
-                            console.log(res)
                             if (res.status == 200) {
                                 Swal.fire({
                                     position: 'center',

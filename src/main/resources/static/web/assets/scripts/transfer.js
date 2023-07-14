@@ -9,7 +9,7 @@ createApp({
             description: '',
             resMsg: '',
             errMsg: '',
-            selectedOption: '',
+            selectedOption: ''
         }
     },
     created() {
@@ -36,7 +36,6 @@ createApp({
                         confirmButtonText: 'Yes, confirm transfer!'
                     }).then((res) => {
                         if (res.isConfirmed) {
-                            console.log(this.amount)
                             axios.post("/api/transactions", `amount=${this.amount}&originAccountNumber=${this.originAccountNumber}&destinyAccountNumber=${this.destinyAccountNumber}&description=${this.description}`)
                                 .then(res => {
                                     this.resMsg = res.data
@@ -50,7 +49,6 @@ createApp({
                                         this.eraseFields()
                                     }
                                 }).catch(err => {
-                                    console.log(err)
                                     this.errMsg = err.response.data
                                     if (err.response.status == 403) {
                                         Swal.fire({
@@ -73,7 +71,6 @@ createApp({
                     })
                 }
             }
-
         },
         loadData() {
             console.log(this.originAccountNumber, this.destinyAccountNumber, this.amount)

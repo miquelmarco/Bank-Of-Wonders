@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,6 +18,7 @@
     <link rel="shortcut icon" href="../assets/images/faviconnuevo.png" type="image/x-icon">
     <title>Cards</title>
 </head>
+
 <body id="bodyCards">
     <div id="app">
         <header class="d-flex justify-content-around align-items-center">
@@ -56,12 +58,16 @@
             </nav>
         </header>
         <main class="mainAccounts d-flex flex-column align-items-center justify-content-around">
-            <a href="./create-cards.html" v-if="creditCards.length < 3 || debitCards.length < 3" class="createCardBtn text-decoration-none">Create New Card</a>
+            <div class="d-flex justify-content-around align-items-center">
+                <p class="m-3 my-5 createCardTopMsg">If one of your cards expires you can delete it and request a <span class="spanInformation">new one</span></p>
+                <a href="./create-cards.html" v-if="activeCreditCards.length < 3 || activeDebitCards.length < 3"
+                    class="createCardBtn text-decoration-none my-5">Card Application</a>
+            </div>
             <div id="mainInfo" class="w-100 d-flex justify-content-around flex-wrap">
                 <section class="m-1">
                     <h2 class="infoTitle m-2 text-center">Your Credit Cards</h2>
-                    <div id="creditCardModel" v-if="creditCards.length != 0" v-for="card of creditCards"
-                        v-bind:class="changeCardColor(card)">
+                    <div id="creditCardModel" v-if="activeCreditCards.length != 0" v-for="card of activeCreditCards"
+                        v-bind:class="changeCardColor(card)" v-bind:key="card.number">
                         <div class="d-flex justify-content-between">
                             <img class="contactless" src="../assets/images/contactless.png" alt="contactless">
                             <img class="cardLogo" src="../assets/images/wonderFaviconNobg.png" alt="logo">
@@ -85,13 +91,14 @@
                                 alt="mastercardLogo">
                             <img class="holoLogo mx-3 my-2" src="../assets/images/holoLogo.png" alt="holoLogo">
                         </div>
+                        <i class="bi bi-x-octagon-fill text-danger deleteCardIcon" @click="deleteCard(card.number)"></i>
                     </div>
                     <p v-else class="text-center">You don't have credit cards!</p>
                 </section>
                 <section class="m-1">
                     <h2 class="infoTitle m-2 text-center">Your Debit Cards</h2>
-                    <div id="debitCardModel" v-if="debitCards.length != 0" v-for="card of debitCards"
-                        v-bind:class="changeCardColor(card)">
+                    <div id="debitCardModel" v-if="activeDebitCards.length != 0" v-for="card of activeDebitCards"
+                        v-bind:class="changeCardColor(card)" v-bind:key="card.number">
                         <div class="d-flex justify-content-between">
                             <img class="contactless" src="../assets/images/contactless.png" alt="contactless">
                             <img class="cardLogo" src="../assets/images/wonderFaviconNobg.png" alt="logo">
@@ -104,7 +111,7 @@
                                     <p class="cardTxt goodThru">Good</p>
                                     <p class="cardTxt goodThru">Thru</p>
                                 </div>
-                                <p class="expDate">{{card.thruDate.slice(5,10)}}</p>
+                                <p class="expDate">{{card.thruDate.slice(5,7)}} {{card.thruDate.slice(8,10)}}</p>
                             </div>
                             <p class="d-none">{{card.color}}</p>
                         </div>
@@ -115,6 +122,8 @@
                                 alt="mastercardLogo">
                             <img class="holoLogo mx-3 my-2" src="../assets/images/holoLogo.png" alt="holoLogo">
                         </div>
+                        <i class="bi bi-x-octagon-fill bi-lg text-danger deleteCardIcon"
+                            @click="deleteCard(card.number)"></i>
                     </div>
                     <p v-else class="text-center">You don't have debit cards!</p>
                 </section>
@@ -143,4 +152,5 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../assets/scripts/cards.js"></script>
 </body>
+
 </html>

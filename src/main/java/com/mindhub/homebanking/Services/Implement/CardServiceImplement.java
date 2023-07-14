@@ -1,10 +1,12 @@
 package com.mindhub.homebanking.Services.Implement;
 import com.mindhub.homebanking.Services.CardService;
+import com.mindhub.homebanking.dtos.CardDTO;
 import com.mindhub.homebanking.models.Card;
 import com.mindhub.homebanking.repositories.CardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+
 @Service
 public class CardServiceImplement implements CardService {
     @Autowired
@@ -26,5 +28,9 @@ public class CardServiceImplement implements CardService {
     @Override
     public boolean existsByNumber(String string) {
         return cardRepository.existsByNumber(string);
+    }
+    @Override
+    public Card findByNumber(String string) {
+        return cardRepository.findByNumber(string);
     }
 }

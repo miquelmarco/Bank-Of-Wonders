@@ -8,6 +8,7 @@ public class TransactionDTO {
     private String description;
     private TransactionType type;
     private LocalDateTime date;
+    private Double actualAmount;
     //constructor
     public TransactionDTO() {
     }
@@ -17,6 +18,7 @@ public class TransactionDTO {
         this.description = transaction.getDescription();
         this.type = transaction.getType();
         this.date = transaction.getDate();
+        this.actualAmount = transaction.getActualAmount();
     }
     public long getId() {
         return id;
@@ -32,5 +34,8 @@ public class TransactionDTO {
     }
     public LocalDateTime getDate() {
         return date;
+    }
+    public Double getActualAmount() {
+        return actualAmount;
     }
 }

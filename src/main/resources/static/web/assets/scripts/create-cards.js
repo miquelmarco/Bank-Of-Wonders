@@ -18,11 +18,14 @@ createApp({
                     if (res.status == 200) {
                         Swal.fire({
                             position: 'center',
+                            icon: 'success',
                             title: `${this.cardCreatedMsg}`,
                             showConfirmButton: false,
                             timer: 1500
                         })
-                        window.location.href = "/web/pages/cards.html"
+                        setTimeout(() => {
+                            window.location.href = "/web/pages/cards.html"
+                        }, 1900)
                     }
                 }).catch(err => {
                     this.errMsg = err.response.data

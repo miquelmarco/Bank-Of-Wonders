@@ -15,17 +15,15 @@ createApp({
         loadData() {
             axios.get(`http://localhost:8080/api/clients/current`)
                 .then(res => {
-                    console.log(res)
                     this.client = res.data
                     this.clientName = this.client.firstName + ' ' + this.client.lastName
                     this.accounts = this.client.accounts.sort((a, b) => a.id - b.id)
                     this.loans = this.client.loans.sort((a, b) => a.id - b.id)
-                    console.log(this.client)
                 }).catch(err => console.log(err))
         },
         paymentsCalculator(amount, payments) {
             let division = amount / payments
-            return division.toFixed(2)
+            return division.toLocaleString()
         },
         sessionLogOut() {
             axios.post("/api/logout")
@@ -52,5 +50,3 @@ createApp({
         }
     }
 }).mount("#app")
-
-// axios.post('/api/logout').then(response => console.log('signed out!!!'))

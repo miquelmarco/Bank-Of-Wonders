@@ -60,7 +60,7 @@ public class LoanController {
         }
         double plusPercentage = (loanApplicationDTO.getAmount() * 20 / 100) + (loanApplicationDTO.getAmount());
         ClientLoan newLoan = new ClientLoan(plusPercentage, loanApplicationDTO.getPayments());
-        Transaction newTransaction = new Transaction(loanApplicationDTO.getAmount(), loanType.getName() + ": " + "loan approved", TransactionType.CREDIT, LocalDateTime.now());
+        Transaction newTransaction = new Transaction(loanApplicationDTO.getAmount(), loanType.getName() + ": " + "loan approved", TransactionType.CREDIT, LocalDateTime.now(), account.getBalance() + loanApplicationDTO.getAmount());
         account.setBalance(account.getBalance() + loanApplicationDTO.getAmount());
         account.addTransaction(newTransaction);
         client.addClientLoan(newLoan);

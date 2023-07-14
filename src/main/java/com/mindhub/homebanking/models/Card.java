@@ -16,20 +16,21 @@ public class Card {
     private short cvv;
     private LocalDate fromDate;
     private LocalDate thruDate;
+    private boolean active;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "owner_id")
     private Client cardOwner;
-    //contructor
     public Card() {
     }
-    public Card(String cardHolder, CardType type, CardColor color, LocalDate fromDate, LocalDate thruDate) {
+    public Card(String cardHolder, CardType type, CardColor color, LocalDate fromDate, LocalDate thruDate, boolean active) {
         this.cardHolder = cardHolder;
         this.type = type;
         this.color = color;
         this.fromDate = fromDate;
         this.thruDate = thruDate;
+        this.active = active;
     }
-    public Card(String cardHolder, CardType type, CardColor color, String number, short cvv, LocalDate fromDate, LocalDate thruDate) {
+    public Card(String cardHolder, CardType type, CardColor color, String number, short cvv, LocalDate fromDate, LocalDate thruDate, boolean active) {
         this.cardHolder = cardHolder;
         this.type = type;
         this.color = color;
@@ -37,8 +38,8 @@ public class Card {
         this.cvv = cvv;
         this.fromDate = fromDate;
         this.thruDate = thruDate;
+        this.active = active;
     }
-    //accesores
     public long getId() {
         return id;
     }
@@ -84,6 +85,12 @@ public class Card {
     public void setThruDate(LocalDate thruDate) {
         this.thruDate = thruDate;
     }
+    public boolean getActive() {
+        return active;
+    }
+    public void setActive(boolean active) {
+        this.active = active;
+    }
     public Client getCardOwner() {
         return cardOwner;
     }
@@ -91,7 +98,6 @@ public class Card {
         this.cardOwner = cardOwner;
     }
     @JsonIgnore
-    //impresores
     @Override
     public String toString() {
         return "Card{" +
@@ -103,7 +109,8 @@ public class Card {
                 ", cvv=" + cvv +
                 ", fromDate=" + fromDate +
                 ", thruDate=" + thruDate +
-                ", owner=" + cardOwner +
+                ", isActive=" + active +
+                ", cardOwner=" + cardOwner +
                 '}';
     }
 }

@@ -4,7 +4,7 @@ createApp({
         return {
             transactions: [],
             queryId: '',
-            transInDescenOrder:[]
+            transInDescenOrder: []
         }
     },
     created() {
@@ -33,7 +33,7 @@ createApp({
                 .then(res => {
                     if (res.status == 200) {
                         Swal.fire({
-                            position: 'top-center',
+                            position: 'center',
                             title: 'Bye bye!',
                             showConfirmButton: false,
                             timer: 1500
@@ -42,13 +42,11 @@ createApp({
                             window.location.href = "/web/index.html";
                         }, 1800)
                     }
-                    // window.location.href = "/web/index.html"
-                    console.log(res)
                 }).catch(err => { console.log(err) })
         }
     },
     computed: {
-        orderedTransactions () {
+        orderedTransactions() {
             let transInDescenOrder = [...this.transactions]
             transInDescenOrder.sort((a, b) => b.id - a.id)
             return transInDescenOrder

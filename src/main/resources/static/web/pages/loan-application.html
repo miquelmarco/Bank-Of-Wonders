@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,7 +14,6 @@
     <link rel="shortcut icon" href="../assets/images/faviconnuevo.png" type="image/x-icon">
     <title>Loan Application</title>
 </head>
-
 <body id="bodyLoanApplication">
     <div id="app">
         <header class="d-flex justify-content-around align-items-center">
@@ -67,7 +65,7 @@
                         </form>
                     </div>
                     <div class="loanDetailsSelector d-flex flex-column justify-content-around align-items-center"
-                        v-if="loanType == '25'">
+                        v-if="loanType == '1'">
                         <form class="d-flex flex-column gap-2">
                             <label class="mx-3" for="mortgageAmountSelect">Enter requested amount</label>
                             <input v-model="amou" type="number" name="mortgageAmountSelect" id="mortgageAmountSelect">
@@ -89,7 +87,7 @@
                         <button @click.prevent="loanRequest()" class="btn btn-success">Request Loan</button>
                     </div>
                     <div class="loanDetailsSelector d-flex flex-column justify-content-around align-items-center"
-                        v-if="loanType == '26'">
+                        v-if="loanType == '2'">
                         <form class="d-flex flex-column gap-2">
                             <label class="mx-3" for="personalAmountSelect">Enter requested amount</label>
                             <input v-model="amou" type="number" name="personalAmountSelect" id="personalAmountSelect">
@@ -111,7 +109,7 @@
                         <button @click.prevent="loanRequest()" class="btn btn-success">Request Loan</button>
                     </div>
                     <div class="loanDetailsSelector d-flex flex-column justify-content-around align-items-center"
-                        v-if="loanType == '27'">
+                        v-if="loanType == '3'">
                         <form class="d-flex flex-column gap-2">
                             <label class="mx-3" for="automotiveAmountSelect">Enter requested amount</label>
                             <input v-model="amou" type="number" name="automotiveAmountSelect"
@@ -133,20 +131,20 @@
                         </form>
                         <button @click.prevent="loanRequest()" class="btn btn-success">Request Loan</button>
                     </div>
-                    <p class="loanSelectorPDetails text-justify" v-if="loanType == '25'"><span
+                    <p class="loanSelectorPDetails text-justify" v-if="loanType == '1'"><span
                             class="loanSpanP">{{mortgageLoan.name}}</span> loan can be requested in
                         <span class="loanSpanP">{{mortgageLoan.payments.join(", ")}}</span>
                         payments and has a maximum amount of <span
                             class="loanSpanP">${{mortgageLoan.maxAmount.toLocaleString()}}</span>
                     </p>
-                    <p class="loanSelectorPDetails text-justify" v-if="loanType == '26'"><span
+                    <p class="loanSelectorPDetails text-justify" v-if="loanType == '2'"><span
                             class="loanSpanP">{{personalLoan.name}}</span> loan can be
                         requested in
                         <span class="loanSpanP">{{personalLoan.payments.join(", ")}}</span>
                         payments and has a maximum amount of <span
                             class="loanSpanP">${{personalLoan.maxAmount.toLocaleString()}}</span>
                     </p>
-                    <p class="loanSelectorPDetails text-justify" v-if="loanType == '27'"><span
+                    <p class="loanSelectorPDetails text-justify" v-if="loanType == '3'"><span
                             class="loanSpanP">{{automotiveLoan.name}}</span> loan can be
                         requested in
                         <span class="loanSpanP">{{automotiveLoan.payments.join(", ")}}</span>
@@ -182,5 +180,4 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../assets/scripts/loan-application.js"></script>
 </body>
-
 </html>

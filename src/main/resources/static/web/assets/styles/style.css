@@ -1,13 +1,13 @@
-/* * {
-    padding: 0 !important;
-    margin: 0 !important;
-    box-sizing: border-box !important;
-    border: solid red 1px;
-    clip-path: circle(100% at top left);
-    font-family: 'Caveat', cursive;
-    font-family: 'Orbitron', sans-serif;
-    font-family: 'Bruno Ace SC', cursive;
-} */
+/* * { */
+    /* padding: 0 !important; */
+    /* margin: 0 !important; */
+    /* box-sizing: border-box !important; */
+    /* border: solid red 1px; */
+    /* clip-path: circle(100% at top left); */
+    /* font-family: 'Caveat', cursive; */
+    /* font-family: 'Orbitron', sans-serif; */
+    /* font-family: 'Bruno Ace SC', cursive; */
+/* } */
 
 /* body edits */
 
@@ -22,7 +22,7 @@
 }
 
 #bodyCards {
-    background-image: url(../images/bodyCards.jpg);
+    background-image: url(../images/cardBg.jpg);
     background-size: cover;
 }
 
@@ -258,6 +258,13 @@ footer {
     color: #3a4438;
 }
 
+.accountsTitle {
+    font-family: 'Orbitron', sans-serif;
+    color: #32aa14 !important;
+    font-size: 2.5rem;
+    text-shadow: 2px 4px 3px rgb(0, 0, 0);
+}
+
 #accountsH1 {
     text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
     background: rgb(209, 209, 192);
@@ -274,6 +281,11 @@ footer {
 
 .card {
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px !important;
+}
+
+.accountsCards {
+    background-image: url("../images/accountDivBg.jpg");
+    background-size: cover;
 }
 
 /* table details edit */
@@ -310,11 +322,16 @@ td {
 }
 
 .goBackBtn {
+    width: 8rem;
+    height: 3rem;
+    text-align: center;
+    border-radius: 0.5rem;
     font-family: 'Orbitron', sans-serif;
     font-size: 1.2rem !important;
     background-color: rgb(226, 224, 72) !important;
     color: #606C5D !important;
     border-style: outset !important;
+    margin-top: 2rem;
 }
 
 .goBackBtn:hover {
@@ -327,11 +344,8 @@ td {
 .h1About {
     font-family: 'Orbitron', sans-serif;
     color: #32aa14 !important;
-    font-size: 3.5rem;
-    text-align: left;
-    text-shadow: 2px 4px 3px rgb(0, 0, 0);
-    margin-left: 5rem !important;
-    width: 50rem;
+    font-size: 2rem;
+    text-align: center;
 }
 
 #aboutContainer1 {
@@ -480,7 +494,17 @@ iframe {
 #creditCardModel:hover,
 #debitCardModel:hover {
     transform: scale(1.2);
-    transition: 0.5s;
+    transition: 0.3s;
+}
+
+.createCardTopMsg {
+    text-align: center;
+    margin: 1rem !important;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #32aa14 !important;
+    text-shadow: 2px 4px 3px rgb(0, 0, 0);
 }
 
 /* #debitCardModel:hover {
@@ -530,6 +554,7 @@ iframe {
 
 .goodThru {
     font-size: x-small;
+    margin-right: 0.5rem !important;
 }
 
 .silverBg {
@@ -563,15 +588,10 @@ iframe {
     transition: 0.5s;
 }
 
-/* my profile edit */
-
-#profileContainer {
-    min-height: 80vh;
-    font-family: 'Orbitron', sans-serif;
-    color: #2c6e1a;
-    font-size: 0.8rem;
-    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
-    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
+.deleteCardIcon:hover {
+    color: yellow !important;
+    transition: 0.5s;
+    cursor: pointer;
 }
 
 /* create cards part 2 edit */
@@ -624,6 +644,18 @@ iframe {
     font-weight: bolder;
 }
 
+.expiredCard {
+    background-color: rgb(209, 51, 51) !important;
+    background-image: url(../images/expiredBlue.png) !important;
+    background-size: contain;
+    opacity: 0.7;
+    filter: sepia(1);
+    /* filter: blur(3px); */
+    /* filter: grayscale(100%); */
+    /* filter: hue-rotate(90deg); */
+    /* filter: grayscale(1) brightness(0.8); */
+}
+
 /* transfer edit */
 
 textarea {
@@ -665,8 +697,6 @@ textarea {
     font-family: 'Orbitron', sans-serif;
     background-color: #70be5a;
     box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
-    /* position: absolute;
-    top: 200px; */
 }
 
 /* loan application edit */
@@ -715,13 +745,22 @@ textarea {
     text-align: center;
     text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
     color: #caeece;
-    /* border-radius: 1rem;
-    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591; */
 }
 
 .loanSpanP {
     color: rgb(148, 8, 8);
     text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* my profile edit */
+
+#profileContainer {
+    min-height: 80vh;
+    font-family: 'Orbitron', sans-serif;
+    color: #2c6e1a;
+    font-size: 0.8rem;
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
 }
 
 /* custom alert */

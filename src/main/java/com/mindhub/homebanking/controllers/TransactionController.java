@@ -61,8 +61,8 @@ public class TransactionController {
         if (originAccount.getBalance() < amount) {
             return new ResponseEntity<>("Insufficient funds", HttpStatus.FORBIDDEN);
         }
-        Transaction debit = new Transaction(Double.parseDouble("-" + amount), "To " + destinyAccountNumber + ": " + description, TransactionType.DEBIT, LocalDateTime.now());
-        Transaction credit = new Transaction(Double.parseDouble("+" + amount), "From " + originAccountNumber + ": " + description, TransactionType.CREDIT, LocalDateTime.now());
+        Transaction debit = new Transaction(Double.parseDouble("-" + amount), "To " + destinyAccountNumber + ": " + description, TransactionType.DEBIT, LocalDateTime.now(), originAccount.getBalance() - amount);
+        Transaction credit = new Transaction(Double.parseDouble("+" + amount), "From " + originAccountNumber + ": " + description, TransactionType.CREDIT, LocalDateTime.now(), destinyAccount.getBalance() + amount);
         originAccount.addTransaction(debit);
         destinyAccount.addTransaction(credit);
         originAccount.setBalance(originAccount.getBalance() - amount);
