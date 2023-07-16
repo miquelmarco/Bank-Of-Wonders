@@ -6,4 +6,5 @@ import java.util.List;
 public interface ClientLoanService {
     void save(ClientLoan clientLoan);
     void saveAll(List<ClientLoan> clientLoans);
+    ClientLoan findById(Long id);
 }

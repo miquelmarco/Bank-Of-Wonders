@@ -1,5 +1,6 @@
 package com.mindhub.homebanking.controllers;
 import com.mindhub.homebanking.Services.*;
+import com.mindhub.homebanking.dtos.ClientLoanDTO;
 import com.mindhub.homebanking.dtos.LoanApplicationDTO;
 import com.mindhub.homebanking.dtos.LoanDTO;
 import com.mindhub.homebanking.models.*;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
+
 @RestController
 @RequestMapping("/api")
 public class LoanController {
@@ -58,9 +61,9 @@ public class LoanController {
         if (client.getAccounts().stream().noneMatch(chocolate -> chocolate.getNumber().equals(loanApplicationDTO.getDestinationAcc()))) {
             return new ResponseEntity<>("Account do not belongs to the client", HttpStatus.FORBIDDEN);
         }
-        double plusPercentage = (loanApplicationDTO.getAmount() * 20 / 100) + (loanApplicationDTO.getAmount());
-        ClientLoan newLoan = new ClientLoan(plusPercentage, loanApplicationDTO.getPayments());
-        Transaction newTransaction = new Transaction(loanApplicationDTO.getAmount(), loanType.getName() + ": " + "loan approved", TransactionType.CREDIT, LocalDateTime.now(), account.getBalance() + loanApplicationDTO.getAmount());
+        double plusPercentage = (loanApplicationDTO.getAmount() * loanType.getPercentage() / 100) + (loanApplicationDTO.getAmount());
+        ClientLoan newLoan = new ClientLoan(plusPercentage, loanApplicationDTO.getPayments(), plusPercentage, loanApplicationDTO.getPayments());
+        Transaction newTransaction = new Transaction(loanApplicationDTO.getAmount(), loanType.getName() + ": " + "loan approved", TransactionType.CREDIT, LocalDateTime.now(), account.getBalance() + loanApplicationDTO.getAmount(), true);
         account.setBalance(account.getBalance() + loanApplicationDTO.getAmount());
         account.addTransaction(newTransaction);
         client.addClientLoan(newLoan);
@@ -71,5 +74,10 @@ public class LoanController {
         loanService.save(loanType);
         clientService.save(client);
         return new ResponseEntity<>("Loan added to the account", HttpStatus.CREATED);
+    }
+    @GetMapping("/clients/current/loans")
+    public List<ClientLoanDTO> getLoans(Authentication authentication) {
+        Client client = clientService.findByEmail(authentication.getName());
+        return client.getClientLoans().stream().map(loan -> new ClientLoanDTO(loan)).collect(Collectors.toList());
     }
 }

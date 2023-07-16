@@ -3,6 +3,7 @@ import com.mindhub.homebanking.Services.AccountService;
 import com.mindhub.homebanking.Services.ClientService;
 import com.mindhub.homebanking.dtos.ClientDTO;
 import com.mindhub.homebanking.models.Account;
+import com.mindhub.homebanking.models.AccountType;
 import com.mindhub.homebanking.models.Client;
 import com.mindhub.homebanking.utils.Utilities;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +49,7 @@ public class ClientController {
         String encodedPass = passwordEncoder.encode(password);
         Client clientRegister = new Client(firstName, lastName, email, encodedPass);
         clientService.save(clientRegister);
-        Account account = new Account("", LocalDate.now(),0.0);
+        Account account = new Account("", AccountType.SAVINGS, LocalDate.now(),0.0, true);
         clientRegister.addAccount(account);
         accountService.save(account);
         account.setNumber(Utilities.numberAccountGenerator(account));

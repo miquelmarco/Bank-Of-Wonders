@@ -10,6 +10,10 @@ public class TransactionServiceImplement implements TransactionService {
     @Autowired
     private TransactionRepository transactionRepository;
     @Override
+    public List<Transaction> findAll() {
+        return transactionRepository.findAll();
+    }
+    @Override
     public void save(Transaction transaction) {
         transactionRepository.save(transaction);
     }

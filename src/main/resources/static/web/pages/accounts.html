@@ -16,8 +16,22 @@
     <title>Accounts</title>
 </head>
 
-<body id="bodyAccounts">
+<body id="bodyAccounts" v-cloak>
     <div id="app">
+        <style>
+            [v-cloak]>* {
+                display: none;
+            }
+
+            [v-cloak]::before {
+                content: "LOADING...";
+                font-family: 'Orbitron', sans-serif;
+                font-size: 2rem;
+                font-weight: 700;
+                color: #32aa14 !important;
+                text-shadow: 2px 4px 3px rgb(0, 0, 0);
+            }
+        </style>
         <header class="d-flex justify-content-around align-items-center">
             <img id="headerLogo" src="../assets/images/logonuevo.png" alt="banklogo">
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -54,45 +68,67 @@
                 </div>
             </nav>
         </header>
-        <main class="mainAccounts d-flex flex-column align-items-center">
+        <main class="mainAccounts d-flex flex-column align-items-center justify-content-around">
             <section id="accountsH1" class="m-5 text-center p-2 rounded">
                 <h1 class="m-3 accountsTitle">MY PERSONAL INFORMATION</h1>
                 <p id="accountsTitleDesc">Hello <span class="spanInformation">{{clientName}}</span>, in this page you
-                    can
-                    see your accounts and loans information</p>
+                    can see your accounts and loans information</p>
             </section>
-            <div id="mainInfo" class="w-100 d-flex justify-content-around flex-wrap">
-                <section class="m-1 d-flex flex-column align-items-center">
+            <div id="mainInfo" class="w-100 d-flex flex-column justify-content-around flex-wrap">
+                <section class="m-1 d-flex flex-column align-items-center accountsSection">
                     <h2 class="infoTitle m-2 text-center">Accounts Information</h2>
-                    <div v-if="accounts.length != 0" v-for="account of accounts"
-                        class="bg-white m-3 p-2 card accountsCards">
-                        <p class="pinfo"><span class="spanInformation">Account Number: </span>{{account.number}}</p>
-                        <p class="pinfo"><span class="spanInformation">Balance: </span> $
-                            {{account.balance.toLocaleString()}}</p>
-                        <p class="pinfo"><span class="spanInformation">Account opening date:
-                            </span>{{account.creationDate}}</p>
-                        <div class="d-flex justify-content-end m-2">
-                            <a class="text-decoration-none fw-bold text-info"
-                                v-bind:href="`./account.html?id=${account.id}`">SEE DETAILS</a>
+                    <div v-if="accounts.length < 3">
+                        <form class="d-flex flex-column justify-content-center align-items-center">
+                            <label class="accountTypeLabel" for="accountType">Select an <span class="spanAbout">account
+                                    type</span> to create a new one</label>
+                            <select v-model="accountType" name="accountType" id="accountType">
+                                <option class="selectBox" selected disabled>Select an Account Type</option>
+                                <option class="selectBox" value="SAVINGS">Savings Account</option>
+                                <option class="selectBox" value="CURRENT">Current Account</option>
+                            </select>
+                            <input @click.prevent="createAccount()" v-if="accountType != ''" class="btn btn-success m-2"
+                                type="submit" name="createAccount" id="createAccount" value="Create New Account">
+                        </form>
+                    </div>
+                    <div class="d-flex flex-wrap align-items-center justify-content-center">
+                        <div v-if="accounts.length != 0" v-for="account of accounts" class="m-3 p-2 card accountsCards"
+                            v-bind:key="account.number">
+                            <p class="pinfo textSeparator"><span class="spanAccInformation">Number:
+                                </span>{{account.number}}</p>
+                            <p class="pinfo textSeparator"><span class="spanAccInformation">Type:
+                                </span>{{account.type}}</p>
+                            <p class="pinfo textSeparator"><span class="spanAccInformation">Balance: </span> $
+                                {{account.balance.toLocaleString()}}</p>
+                            <p class="pinfo textSeparator"><span class="spanAccInformation">opening date:
+                                </span>{{account.creationDate}}</p>
+                            <div class="d-flex justify-content-end m-2">
+                                <a class="text-decoration-none fw-bold seeDetailsBtn"
+                                    v-bind:href="`./account.html?id=${account.id}`">SEE DETAILS</a>
+                            </div>
+                            <i class="bi bi-x-octagon-fill bi-lg text-danger deleteAccountIcon"
+                                @click="deleteAccount(account.number)">Delete</i>
                         </div>
                     </div>
-                    <p v-else>You don't have accounts!</p>
-                    <div>
-                        <input @click.prevent="createAccount()" v-if="accounts.length < 3" class="btn btn-success"
-                            type="submit" name="createAccount" id="createAccount" value="Create New Account">
-                    </div>
+                    <p v-if="accounts.length == 0">You don't have accounts!</p>
                 </section>
-                <section class="m-1">
+                <section class="m-1 d-flex flex-column">
                     <h2 class="infoTitle m-2 text-center">Loans Information</h2>
-                    <div v-if="loans.length != 0" v-for="loan of loans" class="bg-white m-3 p-2 card accountsCards">
-                        <p class="pinfo"><span class="spanInformation">Loan: </span>{{loan.name}}</p>
-                        <p class="pinfo"><span class="spanInformation">Amount: </span> $
-                            {{loan.amount.toLocaleString()}}</p>
-                        <p class="pinfo"><span class="spanInformation">Monthly: </span> $
-                            {{paymentsCalculator(loan.amount, loan.payments)}}</p>
-                        <p class="pinfo"><span class="spanInformation">Payments: </span>{{loan.payments}}</p>
+                    <div class="d-flex justify-content-center align-items-center flex-wrap">
+                        <div v-if="loans.length != 0" v-for="loan of loans" class="bg-white m-3 p-2 card loanCards">
+                            <p class="pinfo textSeparator"><span class="spanLoanInformation">Loan: </span>{{loan.name}}
+                            </p>
+                            <p class="pinfo textSeparator"><span class="spanLoanInformation">Amount: </span> $
+                                {{loan.remainAmount.toLocaleString()}}</p>
+                            <p class="pinfo textSeparator"><span class="spanLoanInformation">Monthly: </span> $
+                                {{paymentsCalculator(loan.amount, loan.payments)}}</p>
+                            <p class="pinfo textSeparator"><span class="spanLoanInformation">Payments:
+                                </span>{{loan.remainPayments}} remains</p>
+                            <div>
+                                <a class="text-decoration-none fw-bold seeDetailsBtn" :href="`./loanPayment.html?id=${loan.id}`">Make a Payment</a>
+                            </div>
+                        </div>
                     </div>
-                    <p v-else>"You don't have loans!"</p>
+                    <p v-if="loans.length == 0">"You don't have loans!"</p>
                 </section>
             </div>
         </main>

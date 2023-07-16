@@ -16,8 +16,22 @@
     <title>Transfers</title>
 </head>
 
-<body id="bodyTransfers">
+<body id="bodyTransfers" v-cloak>
     <div id="app">
+        <style>
+            [v-cloak]>* {
+                display: none;
+            }
+
+            [v-cloak]::before {
+                content: "LOADING...";
+                font-family: 'Orbitron', sans-serif;
+                font-size: 2rem;
+                font-weight: 700;
+                color: #32aa14 !important;
+                text-shadow: 2px 4px 3px rgb(0, 0, 0);
+            }
+        </style>
         <header class="d-flex justify-content-around align-items-center">
             <img id="headerLogo" src="../assets/images/logonuevo.png" alt="banklogo">
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -63,7 +77,12 @@
                     <option value="third">Third Party Accounts</option>
                 </select>
             </div>
-            <div v-if="selectedOption == 'own'" id="transferContainer" class="d-flex flex-column justify-content-center align-items-center gap-3">
+            <div v-if="selectedOption == ''">
+                <p class="m-3 my-5 createCardTopMsg">Select destination to start<span class="spanInformation"> a
+                        transfer</span></p>
+            </div>
+            <div v-if="selectedOption == 'own'" id="transferContainer"
+                class="d-flex flex-column justify-content-center align-items-center gap-3">
                 <h2>To Your <span class="loanSpanP">Own</span> Accounts!</h2>
                 <form class="d-flex flex-column gap-2 justify-content-center align-items-center">
                     <label for="originAccountNumber">Select origin account:</label>
@@ -85,7 +104,8 @@
                     <button class="transferBtn" @click.prevent="makeTransaction()">Confirm Transaction</button>
                 </form>
             </div>
-            <div v-if="selectedOption == 'third'" id="transferContainer2" class="d-flex flex-column justify-content-center align-items-center gap-3">
+            <div v-if="selectedOption == 'third'" id="transferContainer2"
+                class="d-flex flex-column justify-content-center align-items-center gap-3">
                 <h2>To <span class="loanSpanP">Third Party</span> Accounts</h2>
                 <form class="d-flex flex-column gap-2 justify-content-center align-items-center">
                     <label for="originAccountNumber">Select origin account:</label>

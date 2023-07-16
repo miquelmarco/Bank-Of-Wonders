@@ -25,6 +25,7 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml'
+//	implementation group: 'com.lowagie', name: 'itext', version: '2.1.7'
 }
 
 tasks.named('test') {

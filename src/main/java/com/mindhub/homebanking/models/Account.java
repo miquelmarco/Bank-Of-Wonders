@@ -15,20 +15,22 @@ public class Account {
     private String number;
     private LocalDate creationDate;
     private Double balance;
+    private boolean isActive;
+    private AccountType type;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "owner_id")
     private Client owner;
     @OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
     private Set<Transaction> transactions = new HashSet<>();
-    //Constructores
     public Account() {
     }
-    public Account(String number, LocalDate creationDate, Double balance) {
+    public Account(String number, AccountType type, LocalDate creationDate, Double balance, boolean isActive) {
         this.number = number;
         this.creationDate = creationDate;
         this.balance = balance;
+        this.isActive = isActive;
+        this.type = type;
     }
-    //Accesores
     public String getNumber() {
         return number;
     }
@@ -49,6 +51,18 @@ public class Account {
     }
     public Long getId() {
         return id;
+    }
+    public boolean isActive() {
+        return isActive;
+    }
+    public void setActive(boolean isActive) {
+        this.isActive = isActive;
+    }
+    public AccountType getType() {
+        return type;
+    }
+    public void setType(AccountType type) {
+        this.type = type;
     }
     @JsonIgnore
     public Client getOwner() {
@@ -72,7 +86,6 @@ public class Account {
             this.addTransaction(transaction);
         }
     }
-    //impresores
     @Override
     public String toString() {
         return "Account{" +

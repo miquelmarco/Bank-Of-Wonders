@@ -9,6 +9,7 @@ public class TransactionDTO {
     private TransactionType type;
     private LocalDateTime date;
     private Double actualAmount;
+    private boolean isActive;
     //constructor
     public TransactionDTO() {
     }
@@ -19,6 +20,7 @@ public class TransactionDTO {
         this.type = transaction.getType();
         this.date = transaction.getDate();
         this.actualAmount = transaction.getActualAmount();
+        this.isActive = transaction.isActive();
     }
     public long getId() {
         return id;
@@ -37,5 +39,8 @@ public class TransactionDTO {
     }
     public Double getActualAmount() {
         return actualAmount;
+    }
+    public boolean isActive() {
+        return isActive;
     }
 }

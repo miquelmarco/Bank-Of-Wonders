@@ -45,15 +45,14 @@ public class TransactionController {
         }
         Account originAccount = accountService.findByNumber(originAccountNumber);
         Account destinyAccount = accountService.findByNumber(destinyAccountNumber);
-//        if (originAccount == null || destinyAccount == null) {
-//            return new ResponseEntity<>("Account do not exist!", HttpStatus.FORBIDDEN);
-//        }
-        // separar la condición anterior para que el cliente tenga mayor info.
         if (originAccount == null) {
             return new ResponseEntity<>("Origin account do not exist", HttpStatus.FORBIDDEN);
         }
         if (destinyAccount == null) {
             return new ResponseEntity<>("Destination account do not exist", HttpStatus.FORBIDDEN);
+        }
+        if (!destinyAccount.isActive()) {
+            return new ResponseEntity<>("Inactive account", HttpStatus.FORBIDDEN);
         }
         if (clientService.findByEmail(authentication.getName()).getAccounts().stream().noneMatch(account -> account.getNumber().equals(originAccountNumber))) {
             return new ResponseEntity<>("Not your account!", HttpStatus.FORBIDDEN);
@@ -61,8 +60,8 @@ public class TransactionController {
         if (originAccount.getBalance() < amount) {
             return new ResponseEntity<>("Insufficient funds", HttpStatus.FORBIDDEN);
         }
-        Transaction debit = new Transaction(Double.parseDouble("-" + amount), "To " + destinyAccountNumber + ": " + description, TransactionType.DEBIT, LocalDateTime.now(), originAccount.getBalance() - amount);
-        Transaction credit = new Transaction(Double.parseDouble("+" + amount), "From " + originAccountNumber + ": " + description, TransactionType.CREDIT, LocalDateTime.now(), destinyAccount.getBalance() + amount);
+        Transaction debit = new Transaction(Double.parseDouble("-" + amount), "To " + destinyAccountNumber + ": " + description, TransactionType.DEBIT, LocalDateTime.now(), originAccount.getBalance() - amount, true);
+        Transaction credit = new Transaction(Double.parseDouble("+" + amount), "From " + originAccountNumber + ": " + description, TransactionType.CREDIT, LocalDateTime.now(), destinyAccount.getBalance() + amount, true);
         originAccount.addTransaction(debit);
         destinyAccount.addTransaction(credit);
         originAccount.setBalance(originAccount.getBalance() - amount);

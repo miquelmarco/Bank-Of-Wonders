@@ -19,8 +19,22 @@
     <title>Cards</title>
 </head>
 
-<body id="bodyCards">
+<body id="bodyCards" v-cloak>
     <div id="app">
+        <style>
+            [v-cloak]>* {
+                display: none;
+            }
+
+            [v-cloak]::before {
+                content: "LOADING...";
+                font-family: 'Orbitron', sans-serif;
+                font-size: 2rem;
+                font-weight: 700;
+                color: #32aa14 !important;
+                text-shadow: 2px 4px 3px rgb(0, 0, 0);
+            }
+        </style>
         <header class="d-flex justify-content-around align-items-center">
             <img id="headerLogo" src="../assets/images/logonuevo.png" alt="banklogo">
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -59,7 +73,8 @@
         </header>
         <main class="mainAccounts d-flex flex-column align-items-center justify-content-around">
             <div class="d-flex justify-content-around align-items-center">
-                <p class="m-3 my-5 createCardTopMsg">If one of your cards expires you can delete it and request a <span class="spanInformation">new one</span></p>
+                <p class="m-3 my-5 createCardTopMsg">If one of your cards expires you can delete it and request a <span
+                        class="spanInformation">new one</span></p>
                 <a href="./create-cards.html" v-if="activeCreditCards.length < 3 || activeDebitCards.length < 3"
                     class="createCardBtn text-decoration-none my-5">Card Application</a>
             </div>

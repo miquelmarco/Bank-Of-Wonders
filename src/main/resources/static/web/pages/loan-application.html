@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,8 +15,23 @@
     <link rel="shortcut icon" href="../assets/images/faviconnuevo.png" type="image/x-icon">
     <title>Loan Application</title>
 </head>
-<body id="bodyLoanApplication">
+
+<body id="bodyLoanApplication" v-cloak>
     <div id="app">
+        <style>
+            [v-cloak]>* {
+                display: none;
+            }
+
+            [v-cloak]::before {
+                content: "LOADING...";
+                font-family: 'Orbitron', sans-serif;
+                font-size: 2rem;
+                font-weight: 700;
+                color: #32aa14 !important;
+                text-shadow: 2px 4px 3px rgb(0, 0, 0);
+            }
+        </style>
         <header class="d-flex justify-content-around align-items-center">
             <img id="headerLogo" src="../assets/images/logonuevo.png" alt="banklogo">
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -136,6 +152,7 @@
                         <span class="loanSpanP">{{mortgageLoan.payments.join(", ")}}</span>
                         payments and has a maximum amount of <span
                             class="loanSpanP">${{mortgageLoan.maxAmount.toLocaleString()}}</span>
+                        This loan will have a surcharge of <span class="loanSpanP">{{mortgageLoan.percentage}}%</span>
                     </p>
                     <p class="loanSelectorPDetails text-justify" v-if="loanType == '2'"><span
                             class="loanSpanP">{{personalLoan.name}}</span> loan can be
@@ -143,6 +160,7 @@
                         <span class="loanSpanP">{{personalLoan.payments.join(", ")}}</span>
                         payments and has a maximum amount of <span
                             class="loanSpanP">${{personalLoan.maxAmount.toLocaleString()}}</span>
+                        This loan will have a surcharge of <span class="loanSpanP">{{personalLoan.percentage}}%</span>
                     </p>
                     <p class="loanSelectorPDetails text-justify" v-if="loanType == '3'"><span
                             class="loanSpanP">{{automotiveLoan.name}}</span> loan can be
@@ -150,10 +168,10 @@
                         <span class="loanSpanP">{{automotiveLoan.payments.join(", ")}}</span>
                         payments and has a maximum amount of <span
                             class="loanSpanP">${{automotiveLoan.maxAmount.toLocaleString()}}</span>
+                        This loan will have a surcharge of <span class="loanSpanP">{{automotiveLoan.percentage}}%</span>
                     </p>
-                    <p class="loanSelectorPDetails text-justify mt-5" v-if="loanType == ''">All loans have a <span
-                            class="loanSpanP">surcharge</span>
-                        of <span class="loanSpanP">20%</span> on the final amount</p>
+                    <p class="loanSelectorPDetails2 text-justify mt-5" v-if="loanType == ''">Select a <span
+                            class="loanSpanP">Loan Type</span> to start</p>
                 </section>
             </div>
         </main>
@@ -180,4 +198,5 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../assets/scripts/loan-application.js"></script>
 </body>
+
 </html>

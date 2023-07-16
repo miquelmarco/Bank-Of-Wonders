@@ -1,13 +1,16 @@
 /* * { */
-    /* padding: 0 !important; */
-    /* margin: 0 !important; */
-    /* box-sizing: border-box !important; */
-    /* border: solid red 1px; */
-    /* clip-path: circle(100% at top left); */
-    /* font-family: 'Caveat', cursive; */
-    /* font-family: 'Orbitron', sans-serif; */
-    /* font-family: 'Bruno Ace SC', cursive; */
+/* padding: 0 !important; */
+/* margin: 0 !important; */
+/* box-sizing: border-box !important; */
+/* clip-path: circle(100% at top left); */
+/* font-family: 'Caveat', cursive; */
+/* font-family: 'Orbitron', sans-serif; */
+/* font-family: 'Bruno Ace SC', cursive; */
 /* } */
+
+/* * {
+    border: solid red 1px !important;
+} */
 
 /* body edits */
 
@@ -53,6 +56,11 @@
 
 #bodyLoanApplication {
     background-image: url(../images/loanBg.jpg);
+    background-size: cover;
+}
+
+#bodyLoanPayment {
+    background-image: url(../images/lp1.jpg);
     background-size: cover;
 }
 
@@ -244,10 +252,6 @@ footer {
     color: #eb0808;
 }
 
-.pinfo {
-    margin: 0.3rem;
-}
-
 #mainInfo {
     background: rgb(209, 209, 192);
     background: linear-gradient(0deg, rgba(209, 209, 192, 0.767) 0%, rgba(222, 218, 204, 0.678) 100%);
@@ -283,10 +287,96 @@ footer {
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px !important;
 }
 
-.accountsCards {
-    background-image: url("../images/accountDivBg.jpg");
-    background-size: cover;
+.seeDetailsBtn {
+    font-family: 'Orbitron', sans-serif;
+    color: white;
+    background-color: #2c6e1a;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-radius: 1rem;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    opacity: 0.8;
 }
+
+.seeDetailsBtn:hover {
+    color: yellow;
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.deleteAccountIcon {
+    width: 6rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-radius: 1rem;
+}
+
+.deleteAccountIcon:hover {
+    color: white !important;
+    transition: 0.5s !important;
+    cursor: pointer;
+    background-color: red;
+}
+
+.accountsCards {
+    background-image: url("../images/bgBlanco.jpg");
+    background-size: cover;
+    border-style: outset !important;
+    border: 3rem !important;
+    font-family: 'Orbitron', sans-serif;
+    color: #32aa14 !important;
+    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+    font-size: medium;
+    width: 20rem;
+}
+
+.spanAccInformation {
+    color: White;
+    font-size: small;
+}
+
+.spanLoanInformation {
+    color: red;
+    font-size: small;
+}
+
+.loanCards {
+    background-image: url("../images/bgSkyPink.jpg");
+    background-size: cover;
+    filter: sepia(0.5);
+    width: 20rem;
+    height: 12rem;
+}
+
+.textSeparator {
+    display: flex;
+    justify-content: space-between;
+}
+
+.pinfo {
+    margin: 0.3rem;
+}
+
+.accountsCards:hover,
+.loanCards:hover {
+    transform: scale(1.2);
+    transition: 0.5s;
+    z-index: 1;
+}
+
+.accountTypeLabel {
+    font-family: 'Orbitron', sans-serif;
+    color: #32aa14 !important;
+    font-size: 1.1rem;
+    text-shadow: 2px 1px 2px rgb(0, 0, 0);
+    text-align: center;
+}
+
+/* .accountsSection {
+    width: 65%;
+} */
 
 /* table details edit */
 
@@ -708,7 +798,7 @@ textarea {
 
 .loanSelectorContainer {
     width: 40rem;
-    height: 30rem;
+    height: 35rem;
     background-color: #24741198;
     border-radius: 1rem;
     box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
@@ -737,7 +827,8 @@ textarea {
     box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
 }
 
-.loanSelectorPDetails {
+.loanSelectorPDetails,
+.loanSelectorPDetails2 {
     width: 30rem;
     height: 5rem;
     font-family: 'Orbitron', sans-serif;
@@ -745,6 +836,10 @@ textarea {
     text-align: center;
     text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
     color: #caeece;
+}
+
+.loanSelectorPDetails2 {
+    font-size: 2rem;
 }
 
 .loanSpanP {
@@ -763,10 +858,79 @@ textarea {
     box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
 }
 
-/* custom alert */
+/* loan payments edit */
 
-/* navbar */
+.pLoanPayment {
+    width: 35rem;
+    height: 10rem;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #3ee90f !important;
+    text-shadow: 2px 4px 3px rgb(0, 0, 0);
+    margin: 2rem;
+    /* border-radius: 1rem;
+    background: rgba(4, 79, 30, 0.342);
+    background: linear-gradient(0deg, rgba(7, 70, 29, 0.363) 0%, rgba(6, 143, 17, 0.363) 100%);
+    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591; */
+}
 
+.formLoanPaymentsContainer {
+    width: 40rem;
+    height: 15rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    background: rgba(4, 79, 30, 0.61);
+    background: linear-gradient(0deg, rgba(7, 70, 29, 0.692) 0%, rgba(6, 143, 17, 0.705) 100%);
+    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
+}
+
+.formLoanPayments {
+    margin: 0.5rem;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #3ee90f !important;
+    text-shadow: 2px 4px 3px rgb(0, 0, 0);
+}
+
+.selectLoanPayments {
+    width: 35rem;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #3ee90f !important;
+    text-shadow: 2px 4px 3px rgb(0, 0, 0);
+}
+
+.btnLoanPayments {
+    margin: 1rem;
+    border-radius: 1rem;
+    background-color: #32aa14;
+    text-align: center;
+    width: 11rem;
+    height: 2rem;
+    font-family: 'Orbitron', sans-serif;
+    color: white;
+}
+
+.btnLoanPayments:hover {
+    color: yellow;
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+
+.loanPaymentMsgContainer {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #3ee90f !important;
+    text-shadow: 2px 4px 3px rgb(0, 0, 0);
+}
 /* @media only screen and (max-width: 990px) {
     
 } */

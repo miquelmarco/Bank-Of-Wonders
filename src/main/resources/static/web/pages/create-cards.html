@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,8 +15,23 @@
     <link rel="shortcut icon" href="../assets/images/faviconnuevo.png" type="image/x-icon">
     <title>Create Card</title>
 </head>
-<body id="bodyCreateCards">
+
+<body id="bodyCreateCards" v-cloak>
     <div id="app">
+        <style>
+            [v-cloak]>* {
+                display: none;
+            }
+
+            [v-cloak]::before {
+                content: "LOADING...";
+                font-family: 'Orbitron', sans-serif;
+                font-size: 2rem;
+                font-weight: 700;
+                color: #32aa14 !important;
+                text-shadow: 2px 4px 3px rgb(0, 0, 0);
+            }
+        </style>
         <header class="d-flex justify-content-around align-items-center">
             <img id="headerLogo" src="../assets/images/logonuevo.png" alt="banklogo">
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -64,7 +80,7 @@
                 </div>
                 <div class="selectContainer">
                     <label class="mx-5" for="colorCards">Select card color</label>
-                    <select class="selectBox" name="colorCards"  id="colorCards" v-model="cardColor">
+                    <select class="selectBox" name="colorCards" id="colorCards" v-model="cardColor">
                         <option class="selectBox" value="#" disabled selected>Select Color</option>
                         <option class="selectBox" value="SILVER">SILVER</option>
                         <option class="selectBox" value="GOLD">GOLD</option>
@@ -72,7 +88,7 @@
                     </select>
                 </div>
                 <input @click.prevent="createCard()" class="btn btn-danger" type="submit" name="createDCCard"
-                id="createDCCards2" value="Create Card">
+                    id="createDCCards2" value="Create Card">
             </div>
         </main>
         <footer class="d-flex justify-content-between align-items-center">
@@ -98,4 +114,5 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../assets/scripts/create-cards.js"></script>
 </body>
+
 </html>

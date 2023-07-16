@@ -14,19 +14,19 @@ public class Loan {
     private long id;
     private String name;
     private double maxAmount;
+    private Integer percentage;
     @ElementCollection
     private List<Integer> payments;
     @OneToMany (mappedBy = "loan", fetch = FetchType.EAGER)
     private List<ClientLoan> clientLoans = new ArrayList<>();
-    // constructores
     public Loan() {
     }
-    public Loan(String name, double maxAmount, List<Integer> payments) {
+    public Loan(String name, double maxAmount, Integer percentage, List<Integer> payments) {
         this.name = name;
         this.maxAmount = maxAmount;
         this.payments = payments;
+        this.percentage = percentage;
     }
-    // accesores
     public long getId() {
         return id;
     }
@@ -41,6 +41,12 @@ public class Loan {
     }
     public void setMaxAmount(double maxAmount) {
         this.maxAmount = maxAmount;
+    }
+    public Integer getPercentage() {
+        return percentage;
+    }
+    public void setPercentage(Integer percentage) {
+        this.percentage = percentage;
     }
     public List<Integer> getPayments() {
         return payments;
@@ -58,7 +64,6 @@ public class Loan {
     public Set<Client> getClients() {
         return clientLoans.stream().map(clientLoan -> clientLoan.getClient()).collect(Collectors.toSet());
     }
-    //métodos add
     public void addClientLoan(ClientLoan clientLoan) {
         clientLoan.setLoan(this);
         this.clientLoans.add(clientLoan);
