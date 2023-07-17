@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Orbitron&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/styles/style.css">
+    <link rel="shortcut icon" href="../assets/images/faviconnuevo.png" type="image/x-icon">
+    <title>Cards</title>
+</head>
+
+<body id="bodyCards" v-cloak>
+    <div id="app">
+        <style>
+            [v-cloak]>* {
+                display: none;
+            }
+
+            [v-cloak]::before {
+                content: "LOADING...";
+                font-family: 'Orbitron', sans-serif;
+                font-size: 2rem;
+                font-weight: 700;
+                color: #32aa14 !important;
+                text-shadow: 2px 4px 3px rgb(0, 0, 0);
+            }
+        </style>
+        <header class="d-flex justify-content-around align-items-center">
+            <img id="headerLogo" src="../assets/images/logonuevo.png" alt="banklogo">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                    <a class="navbar-brand mx-3" href="#">Menu-> </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav gap-3">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="./myProfile.html">MY PROFILE |</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./accounts.html">ACCOUNTS |</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">CARDS |</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./transfers.html">TRANSFERS |</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./loan-application.html">LOAN APPLICATION |</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./aboutUs.html">ABOUT US |</a>
+                            </li>
+                            <input @click.prevent="sessionLogOut()" class="btn btn-danger" type="submit"
+                                name="sendLogout" id="sendLogout" value="LOG OUT">
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main class="mainAccounts d-flex flex-column align-items-center justify-content-around">
+            <div class="d-flex justify-content-around align-items-center">
+                <p class="m-3 my-5 createCardTopMsg">If one of your cards expires you can delete it and request a <span
+                        class="spanInformation">new one</span></p>
+                <a href="./create-cards.html" v-if="activeCreditCards.length < 3 || activeDebitCards.length < 3"
+                    class="createCardBtn text-decoration-none my-5">Card Application</a>
+            </div>
+            <div id="mainInfo" class="w-100 d-flex justify-content-around flex-wrap">
+                <section class="m-1">
+                    <h2 class="infoTitle m-2 text-center">Your Credit Cards</h2>
+                    <div id="creditCardModel" v-if="activeCreditCards.length != 0" v-for="card of activeCreditCards"
+                        v-bind:class="changeCardColor(card)" v-bind:key="card.number">
+                        <div class="d-flex justify-content-between">
+                            <img class="contactless" src="../assets/images/contactless.png" alt="contactless">
+                            <img class="cardLogo" src="../assets/images/wonderFaviconNobg.png" alt="logo">
+                        </div>
+                        <div>
+                            <p class="m-1 mx-3">{{card.number}}</p>
+                            <p class="mx-4 my-0">{{card.cardHolder.toUpperCase()}}</p>
+                            <div class="d-flex justify-content-end">
+                                <div>
+                                    <p class="cardTxt goodThru">Good</p>
+                                    <p class="cardTxt goodThru">Thru</p>
+                                </div>
+                                <p class="expDate">{{card.thruDate.slice(5,10)}}</p>
+                            </div>
+                            <p class="d-none">{{card.color}}</p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <img class="chip mx-3 my-2" src="../assets/images/chip.png" alt="chip">
+                            <p class="mx-3 my-2">CVV {{card.cvv}}</p>
+                            <img class="mastercardLogo mx-3 my-2" src="../assets/images/masterlogo.png"
+                                alt="mastercardLogo">
+                            <img class="holoLogo mx-3 my-2" src="../assets/images/holoLogo.png" alt="holoLogo">
+                        </div>
+                        <i class="bi bi-x-octagon-fill text-danger deleteCardIcon" @click="deleteCard(card.number)"></i>
+                    </div>
+                    <p v-else class="text-center">You don't have credit cards!</p>
+                </section>
+                <section class="m-1">
+                    <h2 class="infoTitle m-2 text-center">Your Debit Cards</h2>
+                    <div id="debitCardModel" v-if="activeDebitCards.length != 0" v-for="card of activeDebitCards"
+                        v-bind:class="changeCardColor(card)" v-bind:key="card.number">
+                        <div class="d-flex justify-content-between">
+                            <img class="contactless" src="../assets/images/contactless.png" alt="contactless">
+                            <img class="cardLogo" src="../assets/images/wonderFaviconNobg.png" alt="logo">
+                        </div>
+                        <div>
+                            <p class="m-1 mx-3">{{card.number}}</p>
+                            <p class="mx-4 my-0">{{card.cardHolder.toUpperCase()}}</p>
+                            <div class="d-flex justify-content-end">
+                                <div>
+                                    <p class="cardTxt goodThru">Good</p>
+                                    <p class="cardTxt goodThru">Thru</p>
+                                </div>
+                                <p class="expDate">{{card.thruDate.slice(5,7)}} {{card.thruDate.slice(8,10)}}</p>
+                            </div>
+                            <p class="d-none">{{card.color}}</p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <img class="chip mx-3 my-2" src="../assets/images/chip.png" alt="chip">
+                            <p class="mx-3 my-2">CVV {{card.cvv}}</p>
+                            <img class="mastercardLogo mx-3 my-2" src="../assets/images/masterlogo.png"
+                                alt="mastercardLogo">
+                            <img class="holoLogo mx-3 my-2" src="../assets/images/holoLogo.png" alt="holoLogo">
+                        </div>
+                        <i class="bi bi-x-octagon-fill bi-lg text-danger deleteCardIcon"
+                            @click="deleteCard(card.number)"></i>
+                    </div>
+                    <p v-else class="text-center">You don't have debit cards!</p>
+                </section>
+            </div>
+        </main>
+        <footer class="d-flex justify-content-between align-items-center">
+            <div id="footerTxt" class="d-flex flex-column m-3">
+                <p class="footerP text-white">Follow us for daily updates</p>
+                <p class="footerP text-white">Privacy and Security Policies</p>
+                <p class="footerP text-white">Code of Conduct and Good Practices for Banks and Financial Institutions
+                </p>
+                <p class="footerP text-white">©DevByMarcoMiquel</p>
+            </div>
+            <div id="footerAnchorContainer">
+                <a class="footerAnchor" href="mailto:customerservice@bankofwonders.com">SEND US A MAIL!</a>
+                <a class="footerAnchor" href="tel:+123 45678945">GIVE US A CALL!</a>
+                <img id="footerLogo" class="m-3" src="../assets/images/faviconnuevo.png" alt="logo">
+            </div>
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../assets/scripts/cards.js"></script>
+</body>
+
+</html>

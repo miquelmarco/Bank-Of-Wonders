@@ -12,12 +12,20 @@ repositories {
 	mavenCentral()
 }
 
+bootRun {
+	sourceResources sourceSets.main
+}
+
 dependencies {
+//	implementation 'org.postgresql:postgresql'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	runtimeOnly 'com.h2database:h2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml'
+//	implementation group: 'com.lowagie', name: 'itext', version: '2.1.7'
 }
 
 tasks.named('test') {

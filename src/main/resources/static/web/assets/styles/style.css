@@ -1,0 +1,967 @@
+/* * { */
+/* padding: 0 !important; */
+/* margin: 0 !important; */
+/* box-sizing: border-box !important; */
+/* clip-path: circle(100% at top left); */
+/* font-family: 'Caveat', cursive; */
+/* font-family: 'Orbitron', sans-serif; */
+/* font-family: 'Bruno Ace SC', cursive; */
+/* } */
+
+/* * {
+    border: solid red 1px !important;
+} */
+
+/* body edits */
+
+#bodyIndex {
+    background-image: url(../images/bruce-mars-S8ffHr_dxHo-unsplash.jpg);
+    background-size: cover;
+}
+
+#bodyAccounts {
+    background-image: url(../images/fondoBGBGB.jpg);
+    background-size: cover;
+}
+
+#bodyCards {
+    background-image: url(../images/cardBg.jpg);
+    background-size: cover;
+}
+
+#bodyAccount {
+    background-image: url(../images/bodyAccount.jpg);
+    background-size: cover;
+}
+
+#bodyAboutUs {
+    background-image: url(../images/about2.jpg);
+    background-size: cover;
+}
+
+#bodyMyProfile {
+    background-image: url(../images/bodyProfile.jpg);
+    background-size: cover;
+}
+
+#bodyCreateCards {
+    background-image: url(../images/fondoooooooo.jpg);
+    background-size: cover;
+}
+
+#bodyTransfers {
+    background-image: url(../images/fondoTransfers.jpg);
+    background-size: cover;
+}
+
+#bodyLoanApplication {
+    background-image: url(../images/loanBg.jpg);
+    background-size: cover;
+}
+
+#bodyLoanPayment {
+    background-image: url(../images/lp1.jpg);
+    background-size: cover;
+}
+
+header {
+    min-height: 10vh;
+    background: rgba(4, 79, 30, 0.808);
+    background: linear-gradient(0deg, rgba(4, 79, 30, 0.884) 0%, rgba(18, 142, 28, 0.877) 100%);
+    box-shadow: rgb(10, 10, 10) 30px 30px 30px -10px;
+}
+
+main {
+    min-height: 80vh;
+}
+
+footer {
+    min-height: 10vh;
+    background: rgba(4, 79, 30, 0.808);
+    background: linear-gradient(0deg, rgba(4, 79, 30, 0.884) 0%, rgba(18, 142, 28, 0.877) 100%);
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(3, 3, 3) 0px 0px 0px 1px inset;
+}
+
+.notDisplay {
+    display: none;
+}
+
+/* header edit */
+
+#headerLogo {
+    width: 11rem;
+    height: 5rem;
+    background: rgb(4, 79, 30);
+    background: linear-gradient(0deg, rgba(4, 79, 30, 0.958420868347339) 0%, rgba(18, 142, 28, 1) 100%);
+    border-radius: 1.5rem;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.navbar {
+    padding: 1rem !important;
+    background: rgb(4, 79, 30);
+    background: linear-gradient(0deg, rgba(4, 79, 30, 0.958420868347339) 0%, rgba(18, 142, 28, 1) 100%);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    border-radius: 1rem;
+}
+
+.nav-link,
+.navbar-brand {
+    color: white !important;
+    font-weight: 400;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.nav-link:hover {
+    color: rgb(212, 209, 26) !important;
+    transform: scale(1.15);
+    font-weight: 900;
+    transition: 0.5s;
+}
+
+#sendLogout {
+    box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+    border: outset 4px black !important;
+}
+
+#sendLogout:hover {
+    transform: scale(1.2);
+    transition: 0.5s;
+}
+
+.pagSelected {
+    background-color: red;
+    padding: 0.7rem !important;
+    border-radius: 1rem !important;
+}
+
+/* footer edit */
+
+.footerP {
+    margin: 0rem !important;
+    font-size: x-small;
+    color: white !important;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 200;
+}
+
+#footerLogo {
+    width: 4.5rem;
+    height: 3rem;
+}
+
+#footerAnchorContainer {
+    width: 30%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.footerAnchor {
+    text-decoration: none;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+/* main edit */
+
+#mainTitle {
+    text-shadow: black 1px 3px;
+    color: #606C5D !important;
+}
+
+#titleContainer {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 800;
+    background: rgb(208, 207, 96);
+    background: linear-gradient(0deg, rgba(208, 206, 96, 0.329) 0%, rgba(207, 187, 108, 0.397) 100%);
+    border-radius: 0.3rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.titleContainerHome {
+    height: 40rem;
+    width: 30rem;
+}
+
+.mainHomeTxt {
+    color: #606C5D !important;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+#indexFormsContainer {
+    min-height: 35rem;
+    min-width: 45rem;
+}
+
+.inputLabelIndex {
+    width: 20rem;
+    height: 2rem;
+    border-radius: 1rem;
+    margin: 0.5rem !important;
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.363);
+}
+
+#sendLogin,
+#sendRegister {
+    color: black;
+    font-weight: 900;
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.363);
+    background: rgb(208, 207, 96);
+    background: linear-gradient(0deg, rgba(208, 206, 96, 0.76) 0%, rgba(207, 187, 108, 0.822) 100%);
+}
+
+.formIndividualContainers {
+    background: rgb(4, 79, 30);
+    background: linear-gradient(0deg, rgba(7, 70, 29, 0.849) 0%, rgba(6, 143, 17, 0.829) 100%);
+    padding: 2rem !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    color: white !important;
+    font-weight: 900;
+    font-style: italic;
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.363);
+    border-radius: 1rem;
+    box-shadow: rgb(10, 10, 10) 30px 30px 30px -10px;
+    border: rgb(255, 246, 123) 8px inset;
+}
+
+#indexText {
+    font-family: 'Orbitron', sans-serif;
+    color: #32aa14 !important;
+    font-size: 2.5rem;
+    width: 42rem;
+    text-align: end;
+    margin-top: 18rem !important;
+    text-shadow: 2px 4px 3px rgb(0, 0, 0);
+}
+
+/* accounts edit */
+
+.mainAccounts {
+    color: #606C5D !important;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.spanInformation {
+    color: #eb0808;
+}
+
+#mainInfo {
+    background: rgb(209, 209, 192);
+    background: linear-gradient(0deg, rgba(209, 209, 192, 0.767) 0%, rgba(222, 218, 204, 0.678) 100%);
+}
+
+.infoTitle {
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+    color: #3a4438;
+}
+
+.accountsTitle {
+    font-family: 'Orbitron', sans-serif;
+    color: #32aa14 !important;
+    font-size: 2.5rem;
+    text-shadow: 2px 4px 3px rgb(0, 0, 0);
+}
+
+#accountsH1 {
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+    background: rgb(209, 209, 192);
+    background: linear-gradient(0deg, rgba(209, 209, 192, 0.5102415966386555) 0%, rgba(222, 218, 204, 0.5242471988795518) 100%);
+}
+
+#accountsTitleDesc {
+    color: white;
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+    background-color: rgba(12, 12, 12, 0.349);
+    border-radius: 0.5rem;
+    padding: 0.3rem !important;
+}
+
+.card {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px !important;
+}
+
+.seeDetailsBtn {
+    font-family: 'Orbitron', sans-serif;
+    color: white;
+    background-color: #2c6e1a;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-radius: 1rem;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    opacity: 0.8;
+}
+
+.seeDetailsBtn:hover {
+    color: yellow;
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.deleteAccountIcon {
+    width: 6rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-radius: 1rem;
+}
+
+.deleteAccountIcon:hover {
+    color: white !important;
+    transition: 0.5s !important;
+    cursor: pointer;
+    background-color: red;
+}
+
+.accountsCards {
+    background-image: url("../images/bgBlanco.jpg");
+    background-size: cover;
+    border-style: outset !important;
+    border: 3rem !important;
+    font-family: 'Orbitron', sans-serif;
+    color: #32aa14 !important;
+    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+    font-size: medium;
+    width: 20rem;
+}
+
+.spanAccInformation {
+    color: White;
+    font-size: small;
+}
+
+.spanLoanInformation {
+    color: red;
+    font-size: small;
+}
+
+.loanCards {
+    background-image: url("../images/bgSkyPink.jpg");
+    background-size: cover;
+    filter: sepia(0.5);
+    width: 20rem;
+    height: 12rem;
+}
+
+.textSeparator {
+    display: flex;
+    justify-content: space-between;
+}
+
+.pinfo {
+    margin: 0.3rem;
+}
+
+.accountsCards:hover,
+.loanCards:hover {
+    transform: scale(1.2);
+    transition: 0.5s;
+    z-index: 1;
+}
+
+.accountTypeLabel {
+    font-family: 'Orbitron', sans-serif;
+    color: #32aa14 !important;
+    font-size: 1.1rem;
+    text-shadow: 2px 1px 2px rgb(0, 0, 0);
+    text-align: center;
+}
+
+/* .accountsSection {
+    width: 65%;
+} */
+
+/* table details edit */
+
+#accountH1 {
+    background: rgb(4, 79, 30);
+    background: linear-gradient(0deg, rgba(7, 70, 29, 0.849) 0%, rgba(6, 143, 17, 0.829) 100%);
+    color: white;
+}
+
+th,
+td {
+    width: 20rem;
+    height: 2rem;
+    border: #606C5D 1px solid;
+    font-family: 'Orbitron', sans-serif;
+}
+
+#captionAccountDetails {
+    font-family: 'Orbitron', sans-serif;
+    caption-side: top;
+    background-color: white;
+    color: #606C5D !important;
+    font-size: 2rem !important;
+    border: #606C5D 1px solid;
+}
+
+.debit {
+    color: rgb(241, 20, 20);
+}
+
+.credit {
+    color: rgb(6, 221, 6);
+}
+
+.goBackBtn {
+    width: 8rem;
+    height: 3rem;
+    text-align: center;
+    border-radius: 0.5rem;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem !important;
+    background-color: rgb(226, 224, 72) !important;
+    color: #606C5D !important;
+    border-style: outset !important;
+    margin-top: 2rem;
+}
+
+.goBackBtn:hover {
+    color: White !important;
+    background-color: rgba(255, 145, 0, 0.89) !important;
+}
+
+/* about us edit */
+
+.h1About {
+    font-family: 'Orbitron', sans-serif;
+    color: #32aa14 !important;
+    font-size: 2rem;
+    text-align: center;
+}
+
+#aboutContainer1 {
+    min-height: 100vh;
+}
+
+#aboutContainer2 {
+    min-height: 100vh;
+}
+
+#aboutContainer3 {
+    min-height: 100vh;
+}
+
+#topcontainerAbout {
+    clip-path: circle(50% at right);
+    width: 60rem;
+    height: 40rem;
+    background-image: url(../images/about1.jpg);
+    background-size: cover;
+    border: solid green 3px;
+    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
+}
+
+.h2AboutTop {
+    margin: 1rem !important;
+    height: 8rem;
+    width: 25rem;
+    font-family: 'Orbitron', sans-serif;
+    color: #32aa14 !important;
+    font-size: 2.5rem;
+    text-align: left;
+    text-shadow: 2px 4px 3px rgb(0, 0, 0);
+}
+
+.h2About2Top {
+    width: 20rem;
+    height: 8rem;
+    text-align: right;
+    display: flex;
+    align-self: self-end;
+
+}
+
+#topcontainerAbout:hover {
+    clip-path: circle(80%);
+    border-top-left-radius: 10rem;
+    border-bottom-left-radius: 10rem;
+    border: 10px rgba(26, 185, 11, 0.603);
+    border-style: outset;
+    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
+    transition: 1s;
+}
+
+#h1AboutUs {
+    font-family: 'Orbitron', sans-serif;
+    color: #32aa14 !important;
+    font-size: 2.5rem;
+    margin: 10rem !important;
+    width: 42rem;
+    text-shadow: 2px 4px 3px rgb(0, 0, 0);
+}
+
+#botcontainerAbout {
+    clip-path: circle(50% at left);
+    background-image: url(../images/about3.jpg);
+    background-size: cover;
+    border: solid green 3px;
+    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
+}
+
+.h2AboutBot {
+    margin: 1rem !important;
+    height: 18rem;
+    width: 60rem;
+    font-family: 'Orbitron', sans-serif;
+    color: #32aa14 !important;
+    font-size: 2.5rem;
+    text-shadow: 2px 4px 3px rgb(0, 0, 0);
+}
+
+.h2About2Bot {
+    width: 25rem;
+    display: flex;
+    text-align: right;
+    float: right;
+}
+
+#botcontainerAbout:hover {
+    clip-path: circle(80%);
+    transition: 1s;
+    border-top-right-radius: 10rem;
+    border-bottom-right-radius: 10rem;
+    border: 10px rgba(26, 185, 11, 0.603);
+    border-style: outset;
+    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
+}
+
+#contactContainer {
+    width: 60rem;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    color: #32aa14 !important;
+    font-size: 2rem;
+    text-shadow: 2px 4px 3px rgb(0, 0, 0);
+}
+
+.spanAbout {
+    color: red;
+}
+
+#map {
+    width: 45rem;
+    height: 30rem;
+    padding: 1rem;
+    border: 10px rgba(26, 185, 11, 0.603);
+    border-style: outset;
+    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+}
+
+/* cards edit */
+
+#creditCardModel,
+#debitCardModel {
+    color: white;
+    font-family: 'Bruno Ace SC', cursive;
+    font-size: 1rem !important;
+    font-weight: 800;
+    text-shadow: 1.5px 1.5px 1.5px rgb(0, 0, 0);
+    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
+    background-image: url(../images/silverBg.jpg);
+    background-size: cover;
+    width: 370px;
+    height: 230px;
+    border: 2px;
+    border-style: outset !important;
+    border-radius: 1rem;
+    margin: 2rem !important;
+}
+
+#creditCardModel:hover,
+#debitCardModel:hover {
+    transform: scale(1.2);
+    transition: 0.3s;
+}
+
+.createCardTopMsg {
+    text-align: center;
+    margin: 1rem !important;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #32aa14 !important;
+    text-shadow: 2px 4px 3px rgb(0, 0, 0);
+}
+
+/* #debitCardModel:hover {
+    transform: scale(5);
+    transition: 10s
+} */
+
+.chip,
+.mastercardLogo,
+.cardLogo,
+.contactless {
+    width: 4rem;
+    height: 3rem;
+}
+
+.cardTxt {
+    margin: 0rem !important;
+}
+
+.expDate {
+    margin-right: 1rem;
+}
+
+.chip {
+    width: 7rem;
+}
+
+.cardLogo {
+    background-color: #02020294;
+    border-radius: 1rem;
+    margin: 5px !important;
+}
+
+.contactless {
+    margin: 5px !important;
+    width: 3rem;
+    height: 3rem;
+}
+
+.holoLogo {
+    border-radius: 1rem;
+    border: 0.5px;
+    border-style: outset;
+    width: 4.5rem;
+    height: 3rem;
+}
+
+.goodThru {
+    font-size: x-small;
+    margin-right: 0.5rem !important;
+}
+
+.silverBg {
+    background-image: url(../images/silverBg.jpg) !important;
+    background-size: cover;
+}
+
+.goldBg {
+    background-image: url(../images/goldBg.jpg) !important;
+    background-size: cover;
+}
+
+.titaniumBg {
+    background-image: url(../images/platinumBg.jpg) !important;
+    background-size: cover;
+}
+
+.createCardBtn {
+    color: white;
+    font-weight: 500;
+    background-color: green;
+    padding: 0.5rem !important;
+    border-radius: 1rem !important;
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
+}
+
+.createCardBtn:hover {
+    color: rgb(212, 209, 26) !important;
+    transform: scale(1.15);
+    transition: 0.5s;
+}
+
+.deleteCardIcon:hover {
+    color: yellow !important;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+/* create cards part 2 edit */
+
+.bodyCreateCards {
+    min-height: 80vh;
+}
+
+#createCardsMainContainer {
+    width: 45rem;
+    height: 20rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    background: rgb(4, 79, 30);
+    background: linear-gradient(0deg, rgba(7, 70, 29, 0.849) 0%, rgba(6, 143, 17, 0.829) 100%);
+    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
+}
+
+.selectContainer {
+    text-align: center;
+    margin: 1rem !important;
+    font-family: 'Orbitron', sans-serif;
+    color: white;
+    font-size: 2rem;
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+}
+
+.selectBox {
+    text-align: center;
+    width: 15rem;
+    height: 3rem;
+}
+
+#createDCCards2 {
+    width: 10rem;
+    height: 3rem;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    background-color: #70be5a;
+    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
+}
+
+#createDCCards2:hover {
+    transition: 0.5s;
+    background-color: yellow;
+    color: rgb(196, 14, 14);
+    font-weight: bolder;
+}
+
+.expiredCard {
+    background-color: rgb(209, 51, 51) !important;
+    background-image: url(../images/expiredBlue.png) !important;
+    background-size: contain;
+    opacity: 0.7;
+    filter: sepia(1);
+    /* filter: blur(3px); */
+    /* filter: grayscale(100%); */
+    /* filter: hue-rotate(90deg); */
+    /* filter: grayscale(1) brightness(0.8); */
+}
+
+/* transfer edit */
+
+textarea {
+    width: 28rem;
+    height: 10rem;
+    resize: none;
+}
+
+#transferContainer,
+#transferContainer2 {
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    color: white;
+    min-height: 30rem !important;
+    width: 30rem;
+    border-radius: 1rem;
+    background: rgb(4, 79, 30);
+    background: linear-gradient(0deg, rgba(7, 70, 29, 0.849) 0%, rgba(6, 143, 17, 0.829) 100%);
+    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
+}
+
+.transferBtn {
+    width: 10rem;
+    height: 3rem;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    background-color: #70be5a;
+    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
+}
+
+#labeltransfersContainer {
+    width: 15rem;
+    height: 3rem;
+    border-radius: 0.5rem;
+    color: white;
+    font-weight: 700;
+    text-align: center;
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+    font-family: 'Orbitron', sans-serif;
+    background-color: #70be5a;
+    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
+}
+
+/* loan application edit */
+
+.loanAppContainer {
+    min-height: 80vh;
+    min-width: 80vw;
+}
+
+.loanSelectorContainer {
+    width: 40rem;
+    height: 35rem;
+    background-color: #24741198;
+    border-radius: 1rem;
+    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
+}
+
+.loanTypeSelector {
+    width: 30rem;
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    color: white;
+    border-radius: 1rem;
+    background: rgb(4, 79, 30);
+    background: linear-gradient(0deg, rgba(7, 70, 29, 0.849) 0%, rgba(6, 143, 17, 0.829) 100%);
+    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
+}
+
+.loanDetailsSelector {
+    width: 35rem;
+    height: 20rem;
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    color: white;
+    border-radius: 1rem;
+    background: rgb(4, 79, 30);
+    background: linear-gradient(0deg, rgba(7, 70, 29, 0.849) 0%, rgba(6, 143, 17, 0.829) 100%);
+    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
+}
+
+.loanSelectorPDetails,
+.loanSelectorPDetails2 {
+    width: 30rem;
+    height: 5rem;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 800;
+    text-align: center;
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+    color: #caeece;
+}
+
+.loanSelectorPDetails2 {
+    font-size: 2rem;
+}
+
+.loanSpanP {
+    color: rgb(148, 8, 8);
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* my profile edit */
+
+#profileContainer {
+    min-height: 80vh;
+    font-family: 'Orbitron', sans-serif;
+    color: #2c6e1a;
+    font-size: 0.8rem;
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
+}
+
+/* loan payments edit */
+
+.pLoanPayment {
+    width: 35rem;
+    height: 10rem;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #3ee90f !important;
+    text-shadow: 2px 4px 3px rgb(0, 0, 0);
+    margin: 2rem;
+    /* border-radius: 1rem;
+    background: rgba(4, 79, 30, 0.342);
+    background: linear-gradient(0deg, rgba(7, 70, 29, 0.363) 0%, rgba(6, 143, 17, 0.363) 100%);
+    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591; */
+}
+
+.formLoanPaymentsContainer {
+    width: 40rem;
+    height: 15rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    background: rgba(4, 79, 30, 0.61);
+    background: linear-gradient(0deg, rgba(7, 70, 29, 0.692) 0%, rgba(6, 143, 17, 0.705) 100%);
+    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
+}
+
+.formLoanPayments {
+    margin: 0.5rem;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #3ee90f !important;
+    text-shadow: 2px 4px 3px rgb(0, 0, 0);
+}
+
+.selectLoanPayments {
+    width: 35rem;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #3ee90f !important;
+    text-shadow: 2px 4px 3px rgb(0, 0, 0);
+}
+
+.btnLoanPayments {
+    margin: 1rem;
+    border-radius: 1rem;
+    background-color: #32aa14;
+    text-align: center;
+    width: 11rem;
+    height: 2rem;
+    font-family: 'Orbitron', sans-serif;
+    color: white;
+}
+
+.btnLoanPayments:hover {
+    color: yellow;
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+
+.loanPaymentMsgContainer {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #3ee90f !important;
+    text-shadow: 2px 4px 3px rgb(0, 0, 0);
+}
+/* @media only screen and (max-width: 990px) {
+    
+} */
+
+/* all page and profile query edit */
+
+/* @media only screen and (max-width: 650px) {
+    footer {
+        min-height: 20vh !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    header {
+        min-height: 20vh !important;
+        flex-direction: column;
+    }
+
+    .footerAnchorContainer {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    
+    .footerAnchor {
+        margin: 1rem 1rem !important;
+        min-width: 12rem !important;
+        font-size: 0.8rem;
+        text-align: center;
+    }
+
+    .profileContainer {
+        flex-wrap: wrap;
+    }
+} */

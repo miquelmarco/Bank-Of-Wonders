@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Orbitron&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/styles/style.css">
+    <link rel="shortcut icon" href="../assets/images/faviconnuevo.png" type="image/x-icon">
+    <title>Transfers</title>
+</head>
+
+<body id="bodyTransfers" v-cloak>
+    <div id="app">
+        <style>
+            [v-cloak]>* {
+                display: none;
+            }
+
+            [v-cloak]::before {
+                content: "LOADING...";
+                font-family: 'Orbitron', sans-serif;
+                font-size: 2rem;
+                font-weight: 700;
+                color: #32aa14 !important;
+                text-shadow: 2px 4px 3px rgb(0, 0, 0);
+            }
+        </style>
+        <header class="d-flex justify-content-around align-items-center">
+            <img id="headerLogo" src="../assets/images/logonuevo.png" alt="banklogo">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                    <a class="navbar-brand mx-3" href="#">Menu-> </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav gap-3">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="./myProfile.html">MY PROFILE |</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./accounts.html">ACCOUNTS |</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./cards.html">CARDS |</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">TRANSFERS |</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./loan-application.html">LOAN APPLICATION |</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./aboutUs.html">ABOUT US |</a>
+                            </li>
+                            <input @click.prevent="sessionLogOut()" class="btn btn-danger" type="submit"
+                                name="sendLogout" id="sendLogout" value="LOG OUT">
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main class="d-flex flex-column justify-content-center align-items-center">
+            <div id="labeltransfersContainer" class="d-flex flex-column m-3">
+                <label id="labeltransfers" for="selectedOption">Select Destination</label>
+                <select v-model="selectedOption" name="selectedOption" id="selectedOption">
+                    <option value="#" selected disabled>Select Destination</option>
+                    <option value="own">Own Accounts</option>
+                    <option value="third">Third Party Accounts</option>
+                </select>
+            </div>
+            <div v-if="selectedOption == ''">
+                <p class="m-3 my-5 createCardTopMsg">Select destination to start<span class="spanInformation"> a
+                        transfer</span></p>
+            </div>
+            <div v-if="selectedOption == 'own'" id="transferContainer"
+                class="d-flex flex-column justify-content-center align-items-center gap-3">
+                <h2>To Your <span class="loanSpanP">Own</span> Accounts!</h2>
+                <form class="d-flex flex-column gap-2 justify-content-center align-items-center">
+                    <label for="originAccountNumber">Select origin account:</label>
+                    <select v-model="originAccountNumber" name="originAccountNumber" id="originAccountNumber">
+                        <option value="#" disabled selected>Select an account</option>
+                        <option v-for="account in accounts" :value="account.number" :key="account.number">
+                            {{account.number}}</option>
+                    </select>
+                    <label for="originAccountNumber">Select destination account:</label>
+                    <select v-model="destinyAccountNumber" name="destinyAccountNumber" id="destinyAccountNumber">
+                        <option value="#" disabled selected>Select an account</option>
+                        <option v-for="account in accounts" :value="account.number" :key="account.number">
+                            {{account.number}}</option>
+                    </select>
+                    <label for="amount">Enter the amount to transfer</label>
+                    <input v-model="amount" type="number" id="amount" step="0.01" min="0.01">
+                    <label for="description">Description</label>
+                    <textarea v-model="description" name="description" id="description" cols="40" rows="3"></textarea>
+                    <button class="transferBtn" @click.prevent="makeTransaction()">Confirm Transaction</button>
+                </form>
+            </div>
+            <div v-if="selectedOption == 'third'" id="transferContainer2"
+                class="d-flex flex-column justify-content-center align-items-center gap-3">
+                <h2>To <span class="loanSpanP">Third Party</span> Accounts</h2>
+                <form class="d-flex flex-column gap-2 justify-content-center align-items-center">
+                    <label for="originAccountNumber">Select origin account:</label>
+                    <select v-model="originAccountNumber" name="originAccountNumber" id="originAccountNumber">
+                        <option value="#" disabled selected>Select an account</option>
+                        <option v-for="account in accounts" :value="account.number" :key="account.number">
+                            {{account.number}}</option>
+                    </select>
+                    <label for="destinyAccountNumber">Enter destination account</label>
+                    <input v-model="destinyAccountNumber" type="text" id="destinyAccountNumber">
+                    <label for="amount">Enter the amount to transfer</label>
+                    <input v-model="amount" type="number" id="amount" step="0.01" min="0.01">
+                    <label for="description">Description</label>
+                    <textarea v-model="description" name="description" id="description" cols="40" rows="3"></textarea>
+                    <button class="transferBtn" @click.prevent="makeTransaction()">Confirm Transaction</button>
+                </form>
+            </div>
+        </main>
+        <footer class="d-flex justify-content-between align-items-center">
+            <div id="footerTxt" class="d-flex flex-column m-3">
+                <p class="footerP text-white">Follow us for daily updates</p>
+                <p class="footerP text-white">Privacy and Security Policies</p>
+                <p class="footerP text-white">Code of Conduct and Good Practices for Banks and Financial Institutions
+                </p>
+                <p class="footerP text-white">©DevByMarcoMiquel</p>
+            </div>
+            <div id="footerAnchorContainer">
+                <a class="footerAnchor" href="mailto:customerservice@bankofwonders.com">SEND US A MAIL!</a>
+                <a class="footerAnchor" href="tel:+123 45678945">GIVE US A CALL!</a>
+                <img id="footerLogo" class="m-3" src="../assets/images/faviconnuevo.png" alt="logo">
+            </div>
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../assets/scripts/transfer.js"></script>
+</body>
+
+</html>
