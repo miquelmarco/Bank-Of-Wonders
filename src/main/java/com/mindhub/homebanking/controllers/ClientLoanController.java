@@ -1,8 +1,8 @@
 package com.mindhub.homebanking.controllers;
-import com.mindhub.homebanking.Services.AccountService;
-import com.mindhub.homebanking.Services.ClientLoanService;
-import com.mindhub.homebanking.Services.ClientService;
-import com.mindhub.homebanking.Services.TransactionService;
+import com.mindhub.homebanking.services.AccountService;
+import com.mindhub.homebanking.services.ClientLoanService;
+import com.mindhub.homebanking.services.ClientService;
+import com.mindhub.homebanking.services.TransactionService;
 import com.mindhub.homebanking.dtos.ClientLoanDTO;
 import com.mindhub.homebanking.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,10 +47,14 @@ public class ClientLoanController {
         if (accToPay.getBalance() < payment) {
             return new ResponseEntity<>("Insufficient amount", HttpStatus.FORBIDDEN);
         }
-        Transaction newTransaction = new Transaction(payment, "Loan Payment", TransactionType.DEBIT, LocalDateTime.now(), clientLoan.getAmount() - payment, true);
+        if (clientLoan.getRemainAmount() <= 0) {
+            return new ResponseEntity<>("Fully paid loan", HttpStatus.FORBIDDEN);
+        }
+        Transaction newTransaction = new Transaction(payment, "Loan Payment", TransactionType.DEBIT, LocalDateTime.now(), accToPay.getBalance() - payment, true);
         accToPay.setBalance(accToPay.getBalance() - payment);
         clientLoan.setRemainPayments(clientLoan.getRemainPayments() - 1);
         clientLoan.setRemainAmount(clientLoan.getRemainAmount() - payment);
+
         accToPay.addTransaction(newTransaction);
         accountService.save(accToPay);
         clientLoanService.save(clientLoan);

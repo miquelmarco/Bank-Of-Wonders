@@ -1,5 +1,5 @@
 package com.mindhub.homebanking.controllers;
-import com.mindhub.homebanking.Services.*;
+import com.mindhub.homebanking.services.*;
 import com.mindhub.homebanking.dtos.ClientLoanDTO;
 import com.mindhub.homebanking.dtos.LoanApplicationDTO;
 import com.mindhub.homebanking.dtos.LoanDTO;

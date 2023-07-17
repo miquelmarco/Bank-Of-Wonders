@@ -1,5 +1,5 @@
-package com.mindhub.homebanking.Services.Implement;
-import com.mindhub.homebanking.Services.ClientService;
+package com.mindhub.homebanking.services.Implement;
+import com.mindhub.homebanking.services.ClientService;
 import com.mindhub.homebanking.dtos.ClientDTO;
 import com.mindhub.homebanking.models.Client;
 import com.mindhub.homebanking.repositories.ClientRepository;

@@ -44,22 +44,22 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav gap-3">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="./myProfile.html">MY PROFILE |</a>
+                                <a class="nav-link active" aria-current="page" href="./myProfile.html">MY PROFILE</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">ACCOUNTS |</a>
+                                <a class="nav-link" href="#">ACCOUNTS</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./cards.html">CARDS |</a>
+                                <a class="nav-link" href="./cards.html">CARDS</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./transfers.html">TRANSFERS |</a>
+                                <a class="nav-link" href="./transfers.html">TRANSFERS</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./loan-application.html">LOAN APPLICATION |</a>
+                                <a class="nav-link" href="./loan-application.html">LOAN APPLICATION</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./aboutUs.html">ABOUT US |</a>
+                                <a class="nav-link" href="./aboutUs.html">ABOUT US</a>
                             </li>
                             <input @click.prevent="sessionLogOut()" class="btn btn-danger" type="submit"
                                 name="sendLogout" id="sendLogout" value="LOG OUT">
@@ -114,7 +114,7 @@
                 <section class="m-1 d-flex flex-column">
                     <h2 class="infoTitle m-2 text-center">Loans Information</h2>
                     <div class="d-flex justify-content-center align-items-center flex-wrap">
-                        <div v-if="loans.length != 0" v-for="loan of loans" class="bg-white m-3 p-2 card loanCards">
+                        <div v-if="loans.length != 0" v-for="loan of loans" v-bind:class="changeLoanPaid(loan)" class="bg-white m-3 p-2 card loanCards">
                             <p class="pinfo textSeparator"><span class="spanLoanInformation">Loan: </span>{{loan.name}}
                             </p>
                             <p class="pinfo textSeparator"><span class="spanLoanInformation">Amount: </span> $
@@ -123,7 +123,7 @@
                                 {{paymentsCalculator(loan.amount, loan.payments)}}</p>
                             <p class="pinfo textSeparator"><span class="spanLoanInformation">Payments:
                                 </span>{{loan.remainPayments}} remains</p>
-                            <div>
+                            <div v-if="loan.remainAmount != 0">
                                 <a class="text-decoration-none fw-bold seeDetailsBtn" :href="`./loanPayment.html?id=${loan.id}`">Make a Payment</a>
                             </div>
                         </div>

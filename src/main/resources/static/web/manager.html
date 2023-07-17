@@ -47,6 +47,9 @@
                         <label for="email">Email:</label>
                         <input v-model="newClient.email" type="email" id="email" name="email"
                             placeholder="Enter the email">
+                        <label for="password">Password:</label>
+                        <input v-model="newClient.password" type="password" id="password" name="password"
+                            placeholder="Enter the password">
                         <input @click="addClient()" class="buttonAdd bg-success text-center" type="button"
                             value="add client">
                     </form>

@@ -8,9 +8,9 @@
 /* font-family: 'Bruno Ace SC', cursive; */
 /* } */
 
-/* * {
+* {
     border: solid red 1px !important;
-} */
+}
 
 /* body edits */
 
@@ -306,11 +306,21 @@ footer {
     transition: 0.5s;
 }
 
-.deleteAccountIcon {
-    width: 6rem;
+.deleteAccountIcon,
+.renewCardIcon,
+.deleteCardIcon {
+    width: 8rem;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     border-radius: 1rem;
+    text-align: center;
+}
+
+.deleteCardIcon:hover{
+    color: white !important;
+    background-color: red;
+    transition: 0.5s !important;
+    cursor: pointer;
 }
 
 .deleteAccountIcon:hover {
@@ -318,6 +328,13 @@ footer {
     transition: 0.5s !important;
     cursor: pointer;
     background-color: red;
+}
+
+.renewCardIcon:hover {
+    background-color: green;
+    color: yellow;
+    transition: 0.5s !important;
+    cursor: pointer;
 }
 
 .accountsCards {
@@ -339,7 +356,8 @@ footer {
 
 .spanLoanInformation {
     color: red;
-    font-size: small;
+    font-size: medium;
+    font-weight: 800;
 }
 
 .loanCards {
@@ -372,6 +390,12 @@ footer {
     font-size: 1.1rem;
     text-shadow: 2px 1px 2px rgb(0, 0, 0);
     text-align: center;
+}
+
+.loanPaidCls {
+    background-image: url(../images/fullypaid.png);
+    color: rgb(133, 2, 2);
+    filter: sepia(1);
 }
 
 /* .accountsSection {
@@ -583,7 +607,7 @@ iframe {
 
 #creditCardModel:hover,
 #debitCardModel:hover {
-    transform: scale(1.2);
+    transform: scale(1.02);
     transition: 0.3s;
 }
 
@@ -678,11 +702,11 @@ iframe {
     transition: 0.5s;
 }
 
-.deleteCardIcon:hover {
+/* .deleteCardIcon:hover {
     color: yellow !important;
     transition: 0.5s;
     cursor: pointer;
-}
+} */
 
 /* create cards part 2 edit */
 
@@ -739,7 +763,7 @@ iframe {
     background-image: url(../images/expiredBlue.png) !important;
     background-size: contain;
     opacity: 0.7;
-    filter: sepia(1);
+    filter: sepia(0.9);
     /* filter: blur(3px); */
     /* filter: grayscale(100%); */
     /* filter: hue-rotate(90deg); */
@@ -931,6 +955,7 @@ textarea {
     color: #3ee90f !important;
     text-shadow: 2px 4px 3px rgb(0, 0, 0);
 }
+
 /* @media only screen and (max-width: 990px) {
     
 } */

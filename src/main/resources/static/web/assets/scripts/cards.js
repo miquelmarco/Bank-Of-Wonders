@@ -5,7 +5,9 @@ setTimeout(() => {
             return {
                 activeDebitCards: [],
                 activeCreditCards: [],
-                selectedCardToDelete: ''
+                selectedCardToDelete: '',
+                renewNumber: '',
+                renewCardError: ''
             }
         },
         created() {
@@ -37,7 +39,7 @@ setTimeout(() => {
                 }).then((result) => {
                     if (result.isConfirmed) {
                         this.selectedCardToDelete = cardNumber
-                        axios.delete(`/api/clients/current/cards?cardNumber=${this.selectedCardToDelete}`)
+                        axios.patch(`/api/clients/current/cards?cardNumber=${this.selectedCardToDelete}`)
                             .then(res => {
                                 Swal.fire({
                                     position: 'center',
@@ -60,6 +62,49 @@ setTimeout(() => {
                             })
                     } else if (result.isDenied) {
                         Swal.fire('Card not deleted', '', 'info')
+                    }
+                })
+            },
+            renewCard(renewNumber) {
+                Swal.fire({
+                    title: 'Do you want to renew the card?',
+                    showDenyButton: true,
+                    showCancelButton: true,
+                    confirmButtonText: 'Renew',
+                    denyButtonText: `Don't renew`,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        this.renewNumber = renewNumber
+                        axios.post(`/api/cards/renew?number=${this.renewNumber}`)
+                            .then(res => {
+                                Swal.fire({
+                                    position: 'center',
+                                    icon: 'success',
+                                    title: 'Renewed card ok',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                                setTimeout(() => {
+                                    window.location.reload()
+                                }, 1900)
+                            }).catch(err => {
+                                this.renewCardError = err.response.data
+                                Swal.fire({
+                                    position: 'center',
+                                    icon: 'error',
+                                    title: `${this.renewCardError}`,
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                            })
+                    } else if (result.isDenied) {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'info',
+                            title: 'Changes are not saved',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
                     }
                 })
             },

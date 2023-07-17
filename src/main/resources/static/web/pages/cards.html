@@ -47,22 +47,22 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav gap-3">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="./myProfile.html">MY PROFILE |</a>
+                                <a class="nav-link active" aria-current="page" href="./myProfile.html">MY PROFILE</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./accounts.html">ACCOUNTS |</a>
+                                <a class="nav-link" href="./accounts.html">ACCOUNTS</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">CARDS |</a>
+                                <a class="nav-link" href="#">CARDS</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./transfers.html">TRANSFERS |</a>
+                                <a class="nav-link" href="./transfers.html">TRANSFERS</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./loan-application.html">LOAN APPLICATION |</a>
+                                <a class="nav-link" href="./loan-application.html">LOAN APPLICATION</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./aboutUs.html">ABOUT US |</a>
+                                <a class="nav-link" href="./aboutUs.html">ABOUT US</a>
                             </li>
                             <input @click.prevent="sessionLogOut()" class="btn btn-danger" type="submit"
                                 name="sendLogout" id="sendLogout" value="LOG OUT">
@@ -73,7 +73,7 @@
         </header>
         <main class="mainAccounts d-flex flex-column align-items-center justify-content-around">
             <div class="d-flex justify-content-around align-items-center">
-                <p class="m-3 my-5 createCardTopMsg">If one of your cards expires you can delete it and request a <span
+                <p class="m-3 my-5 createCardTopMsg">If one of your cards is expired you can request a <span
                         class="spanInformation">new one</span></p>
                 <a href="./create-cards.html" v-if="activeCreditCards.length < 3 || activeDebitCards.length < 3"
                     class="createCardBtn text-decoration-none my-5">Card Application</a>
@@ -106,7 +106,11 @@
                                 alt="mastercardLogo">
                             <img class="holoLogo mx-3 my-2" src="../assets/images/holoLogo.png" alt="holoLogo">
                         </div>
-                        <i class="bi bi-x-octagon-fill text-danger deleteCardIcon" @click="deleteCard(card.number)"></i>
+                        <div class="d-flex justify-content-between">
+                            <i class="bi bi-x-octagon-fill text-danger deleteCardIcon"
+                                @click="deleteCard(card.number)">delete</i>
+                            <i class="bi bi-arrow-clockwise renewCardIcon" @click="renewCard(card.number)">renew</i>
+                        </div>
                     </div>
                     <p v-else class="text-center">You don't have credit cards!</p>
                 </section>
@@ -137,8 +141,11 @@
                                 alt="mastercardLogo">
                             <img class="holoLogo mx-3 my-2" src="../assets/images/holoLogo.png" alt="holoLogo">
                         </div>
-                        <i class="bi bi-x-octagon-fill bi-lg text-danger deleteCardIcon"
-                            @click="deleteCard(card.number)"></i>
+                        <div class="d-flex justify-content-between">
+                            <i class="bi bi-x-octagon-fill text-danger deleteCardIcon"
+                                @click="deleteCard(card.number)">delete</i>
+                            <i class="bi bi-arrow-clockwise renewCardIcon" @click="renewCard(card.number)">renew</i>
+                        </div>
                     </div>
                     <p v-else class="text-center">You don't have debit cards!</p>
                 </section>

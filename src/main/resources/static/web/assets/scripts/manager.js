@@ -4,8 +4,7 @@ setTimeout(() => {
         data() {
             return {
                 clients: [],
-                // todoJSON: "",
-                newClient: { firstName: '', lastName: '', email: '' }
+                newClient: { firstName: '', lastName: '', email: '', password: ''}
             }
         },
         created() {
@@ -21,14 +20,14 @@ setTimeout(() => {
                     }).catch(err => console.error(err))
             },
             addClient() {
-                if (this.newClient.firstName !== "" && this.newClient.lastName !== "" && this.newClient.email !== "") {
+                if (this.newClient.firstName !== "" && this.newClient.lastName !== "" && this.newClient.email !== "" && this,newClient.password !== "") {
                     this.postClient();
                 } else {
                     alert("All fields are necessary");
                 }
             },
             postClient() {
-                axios.post(`http://localhost:8080/rest/clients`, { firstName: this.newClient.firstName, lastName: this.newClient.lastName, email: this.newClient.email })
+                axios.post(`http://localhost:8080/rest/clients`, { firstName: this.newClient.firstName, lastName: this.newClient.lastName, email: this.newClient.email, password: this.newClient.password })
                     .then(res => {
                         this.loadData()
                         this.eraseFields()

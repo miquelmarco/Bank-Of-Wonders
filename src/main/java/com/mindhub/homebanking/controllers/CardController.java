@@ -1,6 +1,6 @@
 package com.mindhub.homebanking.controllers;
-import com.mindhub.homebanking.Services.CardService;
-import com.mindhub.homebanking.Services.ClientService;
+import com.mindhub.homebanking.services.CardService;
+import com.mindhub.homebanking.services.ClientService;
 import com.mindhub.homebanking.dtos.CardDTO;
 import com.mindhub.homebanking.models.Card;
 import com.mindhub.homebanking.models.CardColor;
@@ -48,7 +48,7 @@ public class CardController {
         }
         return new ResponseEntity<>("Card Approved", HttpStatus.OK);
     }
-    @DeleteMapping("/clients/current/cards")
+    @PatchMapping("/clients/current/cards")
     public ResponseEntity<Object> deleteCard(@RequestParam String cardNumber, Authentication authentication) {
         if (cardNumber.isBlank()) {
             return new ResponseEntity<>("Missing card data", HttpStatus.FORBIDDEN);
@@ -64,5 +64,26 @@ public class CardController {
         card.setActive(false);
         cardService.save(card);
         return new ResponseEntity<>("Card deleted", HttpStatus.OK);
+    }
+    @PostMapping("/cards/renew")
+    public ResponseEntity<Object> renewCard(Authentication authentication, @RequestParam String number) {
+        if (authentication.getName().isBlank()) {
+            return new ResponseEntity<>("Client must be authenticated",HttpStatus.FORBIDDEN);
+        }
+        if (number.isBlank()) {
+            return  new ResponseEntity<>("Error, try again!", HttpStatus.FORBIDDEN);
+        }
+        Client client = clientService.findByEmail(authentication.getName());
+        Card card = cardService.findByNumber(number);
+        if (!client.getCards().contains(card)) {
+            return new ResponseEntity<>("Not your card!", HttpStatus.FORBIDDEN);
+        }
+        if (!card.getThruDate().isBefore(LocalDate.now())) {
+            return new ResponseEntity<>("Card is not expired!", HttpStatus.FORBIDDEN);
+        }
+        card.setActive(false);
+        cardService.save(card);
+        createCard(card.getType(), card.getColor(), authentication);
+        return new ResponseEntity<>("Card renew", HttpStatus.OK);
     }
 }

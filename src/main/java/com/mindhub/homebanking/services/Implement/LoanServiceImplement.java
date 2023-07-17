@@ -1,5 +1,5 @@
-package com.mindhub.homebanking.Services.Implement;
-import com.mindhub.homebanking.Services.LoanService;
+package com.mindhub.homebanking.services.Implement;
+import com.mindhub.homebanking.services.LoanService;
 import com.mindhub.homebanking.dtos.LoanDTO;
 import com.mindhub.homebanking.models.Loan;
 import com.mindhub.homebanking.repositories.LoanRepository;

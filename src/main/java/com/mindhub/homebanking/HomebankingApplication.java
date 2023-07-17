@@ -1,5 +1,5 @@
 package com.mindhub.homebanking;
-import com.mindhub.homebanking.Services.*;
+import com.mindhub.homebanking.services.*;
 import com.mindhub.homebanking.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -52,7 +52,7 @@ public class HomebankingApplication {
             ClientLoan clientLoan2 = new ClientLoan(50000.0, 12, 30000.0, 12);
             ClientLoan clientLoan3 = new ClientLoan(100000.0, 24, 12211.0, 12);
             ClientLoan clientLoan4 = new ClientLoan(200000.0, 36, 12112.0, 12);
-            Card card1 = new Card(client1.getFirstName() + " " + client1.getLastName(), CardType.CREDIT, CardColor.GOLD, "1234-5678-9101-1121", (short) 894, LocalDate.now(), LocalDate.now().plusYears(5), true);
+            Card card1 = new Card(client1.getFirstName() + " " + client1.getLastName(), CardType.CREDIT, CardColor.GOLD, "1234-5678-9101-1121", (short) 894, LocalDate.now(), LocalDate.now().minusDays(5), true);
             Card card2 = new Card(client1.getFirstName() + " " + client1.getLastName(), CardType.CREDIT, CardColor.TITANIUM, "9874-5256-3652-5412", (short) 256, LocalDate.now(), LocalDate.now().plusYears(5), false);
             Card card3 = new Card(client1.getFirstName() + " " + client1.getLastName(), CardType.DEBIT, CardColor.SILVER, "5542-3636-5441-5545", (short) 441, LocalDate.now(), LocalDate.now().minusDays(10), true);
             Card card4 = new Card((client2.getFirstName() + " " + client2.getLastName()), CardType.CREDIT, CardColor.GOLD, "5512-9856-8745-3652", (short) 885, LocalDate.now(), LocalDate.now().plusYears(5), true);

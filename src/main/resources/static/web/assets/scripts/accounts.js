@@ -20,7 +20,7 @@ setTimeout(() => {
             getActiveAccounts() {
                 axios.get(`/api/clients/current/accounts`)
                     .then(res => {
-                        this.accounts = res.data.sort((a, b) => a.id - b.id)
+                        this.accounts = res.data.sort((a, b) => b.id - a.id)
                     }).catch(err => console.log(err))
             },
             getLoans() {
@@ -73,7 +73,7 @@ setTimeout(() => {
                 }).then((res) => {
                     if (res.isConfirmed) {
                         this.selectedAccountToDelete = accountNumber
-                        axios.delete(`/api/clients/current/accounts?number=${this.selectedAccountToDelete}`)
+                        axios.patch(`/api/clients/current/accounts?number=${this.selectedAccountToDelete}`)
                             .then(res => {
                                 Swal.fire({
                                     position: 'center',
@@ -120,6 +120,10 @@ setTimeout(() => {
                         }
                         console.log(res)
                     }).catch(err => { console.log(err) })
+            },
+            changeLoanPaid(loan) {
+                if (loan.remainAmount <= 0)
+                return 'loanPaidCls'
             },
         },
     },
