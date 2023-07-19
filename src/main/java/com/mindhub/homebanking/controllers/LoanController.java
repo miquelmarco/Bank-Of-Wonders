@@ -1,4 +1,5 @@
 package com.mindhub.homebanking.controllers;
+import com.mindhub.homebanking.dtos.LoanPaymentDTO;
 import com.mindhub.homebanking.services.*;
 import com.mindhub.homebanking.dtos.ClientLoanDTO;
 import com.mindhub.homebanking.dtos.LoanApplicationDTO;
@@ -11,9 +12,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-
 @RestController
 @RequestMapping("/api")
 public class LoanController {
@@ -79,5 +81,30 @@ public class LoanController {
     public List<ClientLoanDTO> getLoans(Authentication authentication) {
         Client client = clientService.findByEmail(authentication.getName());
         return client.getClientLoans().stream().map(loan -> new ClientLoanDTO(loan)).collect(Collectors.toList());
+    }
+    @PostMapping("/loans/new")
+    public ResponseEntity<Object> createLoan(Authentication authentication, @RequestBody LoanPaymentDTO loanPaymentDTO) {
+        if (loanPaymentDTO.getName().isBlank() || loanPaymentDTO.getMaxPayment().isEmpty() || loanPaymentDTO.getPercentage() == null || loanPaymentDTO.getMaxAmount().isNaN()) {
+            return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
+        }
+        if (!authentication.isAuthenticated()) {
+            return new ResponseEntity<>("Admin must be authenticated", HttpStatus.FORBIDDEN);
+        }
+//        List<Integer> payments = new ArrayList<>();
+//        if (loanPaymentDTO.getMaxPayment().equals("12")) {
+//            payments.addAll(Arrays.asList(3, 6, 12));
+//        }
+//        if (loanPaymentDTO.getMaxPayment().equals("24")) {
+//            payments.addAll(Arrays.asList(3, 6, 12, 24));
+//        }
+//        if (loanPaymentDTO.getMaxPayment().equals("36")) {
+//            payments.addAll(Arrays.asList(3, 6, 12, 24, 36));
+//        }
+//        if (loanPaymentDTO.getMaxPayment().equals("48")) {
+//            payments.addAll(Arrays.asList(3, 6, 12, 24, 36, 48));
+//        }
+        Loan newLoan = new Loan(loanPaymentDTO.getName(), loanPaymentDTO.getMaxAmount(), loanPaymentDTO.getPercentage(), loanPaymentDTO.getMaxPayment());
+        loanService.save(newLoan);
+        return new ResponseEntity<>("Loan created ok", HttpStatus.CREATED);
     }
 }

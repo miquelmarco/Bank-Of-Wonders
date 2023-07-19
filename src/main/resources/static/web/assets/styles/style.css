@@ -8,9 +8,9 @@
 /* font-family: 'Bruno Ace SC', cursive; */
 /* } */
 
-* {
+/* * {
     border: solid red 1px !important;
-}
+} */
 
 /* body edits */
 
@@ -829,7 +829,7 @@ textarea {
 }
 
 .loanTypeSelector {
-    width: 30rem;
+    width: 50rem;
     font-family: 'Orbitron', sans-serif;
     text-align: center;
     color: white;
@@ -853,22 +853,31 @@ textarea {
 
 .loanSelectorPDetails,
 .loanSelectorPDetails2 {
-    width: 30rem;
+    width: 40rem;
     height: 5rem;
     font-family: 'Orbitron', sans-serif;
     font-weight: 800;
     text-align: center;
     text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
     color: #caeece;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .loanSelectorPDetails2 {
     font-size: 2rem;
 }
 
-.loanSpanP {
-    color: rgb(148, 8, 8);
-    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+.loanBtn {
+    background-color: #32aa14;
+    font-weight: 800;
+}
+
+.loanBtn:hover {
+    color: red;
+    transform: scale(1.03);
+    background-color: yellow;
 }
 
 /* my profile edit */

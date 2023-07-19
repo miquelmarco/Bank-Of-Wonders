@@ -17,7 +17,6 @@ public class Transaction {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "account_id")
     private Account account;
-    //Constructores
     public Transaction() {
     }
     public Transaction(Double amount, String description, TransactionType type, LocalDateTime date, Double actualAmount, boolean isActive) {
@@ -28,7 +27,6 @@ public class Transaction {
         this.actualAmount = actualAmount;
         this.isActive = isActive;
     }
-    //accesores
     public long getId() {
         return id;
     }
@@ -68,7 +66,6 @@ public class Transaction {
     public void setActive(boolean isActive) {
         this.isActive = isActive;
     }
-    //accesores relacionales
     public Account getAccount() {
         return account;
     }

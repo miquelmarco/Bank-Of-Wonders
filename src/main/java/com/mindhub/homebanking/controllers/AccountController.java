@@ -94,9 +94,8 @@ public class AccountController {
         if (account.getBalance() != 0) {
             return new ResponseEntity<>("Account balance must be 0 to delete", HttpStatus.FORBIDDEN);
         }
-        transactions.forEach(transaction -> transaction.setActive(false));
+        transactions.forEach(transaction -> {transaction.setActive(false); transactionService.save(transaction);});
         account.setActive(false);
-        transactionService.saveAll(transactions);
         accountService.save(account);
         return new ResponseEntity<>("Account deleted", HttpStatus.OK);
     }

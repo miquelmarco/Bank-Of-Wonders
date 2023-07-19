@@ -4,7 +4,11 @@ setTimeout(() => {
         data() {
             return {
                 clients: [],
-                newClient: { firstName: '', lastName: '', email: '', password: ''}
+                newClient: { firstName: '', lastName: '', email: '', password: '' },
+                loanName: '',
+                loanMaxamount: null,
+                loanPayments: [],
+                loanPercentage: null
             }
         },
         created() {
@@ -14,13 +18,11 @@ setTimeout(() => {
             loadData() {
                 axios.get(`http://localhost:8080/api/clients`)
                     .then(res => {
-                        // this.todoJSON = res.data
                         this.clients = res.data
-                        console.log(this.clients)
                     }).catch(err => console.error(err))
             },
             addClient() {
-                if (this.newClient.firstName !== "" && this.newClient.lastName !== "" && this.newClient.email !== "" && this,newClient.password !== "") {
+                if (this.newClient.firstName !== "" && this.newClient.lastName !== "" && this.newClient.email !== "" && this, newClient.password !== "") {
                     this.postClient();
                 } else {
                     alert("All fields are necessary");
@@ -33,12 +35,27 @@ setTimeout(() => {
                         this.eraseFields()
                     }).catch(err => console.log(err))
             },
+            sendLoan() {
+                console.log(this.loanName, this.loanMaxamount, this.loanPayments, this.loanPercentage)
+                axios.post("/api/loans/new",
+                    {
+                        name: `${this.loanName}`,
+                        maxPayment: `${this.loanPayments}`,
+                        maxAmount: `${this.loanMaxamount}`,
+                        percentage: `${this.loanPercentage}`
+                    })
+                    .then(res => {
+                        console.log(res)
+                    }).catch(err => {
+                        console.log(err)
+                    })
+            },
             sessionLogOut() {
                 axios.post("/api/logout")
                     .then(res => {
                         if (res.status == 200) {
                             Swal.fire({
-                                position: 'top-center',
+                                position: 'center',
                                 icon: 'success',
                                 title: 'Bye bye!',
                                 showConfirmButton: false,
@@ -62,6 +79,6 @@ setTimeout(() => {
                         this.loadData()
                     }).catch(err => console.log(err))
             },
-        }
+        },
     }).mount("#app")
 }, 1000)

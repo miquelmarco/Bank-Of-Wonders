@@ -95,7 +95,7 @@
                                     <p class="cardTxt goodThru">Good</p>
                                     <p class="cardTxt goodThru">Thru</p>
                                 </div>
-                                <p class="expDate">{{card.thruDate.slice(5,10)}}</p>
+                                <p class="expDate">{{card.thruDate.slice(5,7)}} {{card.thruDate.slice(8,10)}}</p>
                             </div>
                             <p class="d-none">{{card.color}}</p>
                         </div>
@@ -109,7 +109,7 @@
                         <div class="d-flex justify-content-between">
                             <i class="bi bi-x-octagon-fill text-danger deleteCardIcon"
                                 @click="deleteCard(card.number)">delete</i>
-                            <i class="bi bi-arrow-clockwise renewCardIcon" @click="renewCard(card.number)">renew</i>
+                            <i class="bi bi-arrow-clockwise renewCardIcon" v-if="checkDateExp(card.thruDate)" @click="renewCard(card.number)">renew</i>
                         </div>
                     </div>
                     <p v-else class="text-center">You don't have credit cards!</p>
@@ -144,7 +144,7 @@
                         <div class="d-flex justify-content-between">
                             <i class="bi bi-x-octagon-fill text-danger deleteCardIcon"
                                 @click="deleteCard(card.number)">delete</i>
-                            <i class="bi bi-arrow-clockwise renewCardIcon" @click="renewCard(card.number)">renew</i>
+                            <i class="bi bi-arrow-clockwise renewCardIcon" v-if="checkDateExp(card.thruDate)" @click="renewCard(card.number)">renew</i>
                         </div>
                     </div>
                     <p v-else class="text-center">You don't have debit cards!</p>

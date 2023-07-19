@@ -26,8 +26,7 @@ public class CardController {
     @GetMapping("/clients/current/cards")
     public List<CardDTO> getCurrentClientCards(Authentication authentication) {
         Client client = clientService.findByEmail(authentication.getName());
-        List<CardDTO> cards = client.getCards().stream().map(card -> new CardDTO(card)).collect(Collectors.toList());
-        return cards.stream().filter(cardDTO -> cardDTO.getActive()).collect(Collectors.toList());
+        return client.getCards().stream().filter(cardDTO -> cardDTO.getActive()).map(card -> new CardDTO(card)).collect(Collectors.toList());
     }
     @PostMapping("/clients/current/cards")
     public ResponseEntity<Object> createCard(@RequestParam CardType cardType, @RequestParam CardColor cardColor, Authentication authentication) {

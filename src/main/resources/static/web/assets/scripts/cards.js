@@ -108,6 +108,11 @@ setTimeout(() => {
                     }
                 })
             },
+            checkDateExp(thruDate){
+                let currentDate = new Date()
+                let formatThrudate = new Date(thruDate)
+                return formatThrudate < currentDate
+            },
             changeCardColor(card) {
                 let currentDate = new Date()
                 if (card.color === 'SILVER') {
