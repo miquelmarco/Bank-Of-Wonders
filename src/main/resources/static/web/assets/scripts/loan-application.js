@@ -3,12 +3,6 @@ setTimeout(() => {
     createApp({
         data() {
             return {
-                // mortgageLoan: {},
-                // personalLoan: {},
-                // automotiveLoan: {},
-                // mortgagePayments: [],
-                // personalPayments: [],
-                // automotivePayments: [],
                 accounts: [],
                 loanTypeData: [],
                 destAcc: '',
@@ -27,6 +21,7 @@ setTimeout(() => {
                 axios.get("/api/loans")
                     .then(res => {
                         this.loanTypeData = res.data
+                        console.log(this.loanTypeData, this.loanType)
                     })
             },
             getClientAccounts() {
@@ -69,19 +64,17 @@ setTimeout(() => {
                                     }).catch(err => {
                                         this.errMsg = err.response.data
                                         Swal.fire({
+                                            position: 'center',
+                                            icon: 'error',
                                             title: `${this.errMsg}`,
-                                            showClass: {
-                                                popup: 'animate__animated animate__fadeInDown'
-                                            },
-                                            hideClass: {
-                                                popup: 'animate__animated animate__fadeOutUp'
-                                            }
+                                            showConfirmButton: false,
+                                            timer: 1500
                                         })
                                     })
                             } else {
                                 Swal.fire({
                                     position: 'center',
-                                    icon: 'error',
+                                    icon: 'warning',
                                     title: 'Loan not requested',
                                     showConfirmButton: false,
                                     timer: 1500

@@ -10,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
-
 import java.time.LocalDateTime;
 @RequestMapping("/api")
 @RestController
@@ -24,7 +23,7 @@ public class ClientLoanController {
     @Autowired
     private TransactionService transactionService;
     @PostMapping("/clientLoan/payments")
-    public ResponseEntity<Object> payLoan(Authentication authentication, @RequestParam Long loanToPay, String account) {
+    public ResponseEntity<Object> payLoan(Authentication authentication, @RequestParam Long loanToPay, @RequestParam String account) {
         if (authentication == null) {
             return new ResponseEntity<>("Client must be authenticated", HttpStatus.FORBIDDEN);
         }
@@ -54,7 +53,6 @@ public class ClientLoanController {
         accToPay.setBalance(accToPay.getBalance() - payment);
         clientLoan.setRemainPayments(clientLoan.getRemainPayments() - 1);
         clientLoan.setRemainAmount(clientLoan.getRemainAmount() - payment);
-
         accToPay.addTransaction(newTransaction);
         accountService.save(accToPay);
         clientLoanService.save(clientLoan);

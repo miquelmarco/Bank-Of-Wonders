@@ -34,7 +34,7 @@
         </style>
         <header class="d-flex justify-content-around align-items-center">
             <img id="headerLogo" src="../assets/images/logonuevo.png" alt="banklogo">
-            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary m-2">
                 <div class="container-fluid">
                     <a class="navbar-brand mx-3" href="#">Menu-> </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -43,9 +43,6 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav gap-3">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="./myProfile.html">MY PROFILE</a>
-                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="./accounts.html">ACCOUNTS</a>
                             </li>
@@ -57,9 +54,6 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">LOAN APPLICATION</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./aboutUs.html">ABOUT US</a>
                             </li>
                             <input @click.prevent="sessionLogOut()" class="btn btn-danger" type="submit"
                                 name="sendLogout" id="sendLogout" value="LOG OUT">
@@ -99,41 +93,16 @@
                         </select>
                     </form>
                     <button @click.prevent="loanRequest()" class="btn btn-success m-3 loanBtn">Request Loan</button>
+                    <p class="loanPContainer" v-if="loanType != null"><span
+                            class="spanLoanP">{{selectedLoanType.name}}</span> loan have a
+                        <span class="spanLoanP">{{selectedLoanType.percentage}}%</span> of
+                        interest, a maximun amount of <span
+                            class="spanLoanP">${{selectedLoanType.maxAmount.toLocaleString()}}</span> and can be paid in
+                        <span class="spanLoanP">{{selectedLoanType.payments.join(', ')}}</span> payments!
+                    </p>
                 </div>
             </div>
         </main>
-
-
-
-
-
-
-        <!-- <p class="loanSelectorPDetails text-justify" v-if="loanType == '1'"><span
-                            class="loanSpanP">{{mortgageLoan.name}}</span> loan can be requested in
-                        <span class="loanSpanP">{{mortgageLoan.payments.join(", ")}}</span>
-                        payments and has a maximum amount of <span
-                            class="loanSpanP">${{mortgageLoan.maxAmount.toLocaleString()}}</span>
-                        This loan will have a surcharge of <span class="loanSpanP">{{mortgageLoan.percentage}}%</span>
-                    </p>
-                    <p class="loanSelectorPDetails text-justify" v-if="loanType == '2'"><span
-                            class="loanSpanP">{{personalLoan.name}}</span> loan can be
-                        requested in
-                        <span class="loanSpanP">{{personalLoan.payments.join(", ")}}</span>
-                        payments and has a maximum amount of <span
-                            class="loanSpanP">${{personalLoan.maxAmount.toLocaleString()}}</span>
-                        This loan will have a surcharge of <span class="loanSpanP">{{personalLoan.percentage}}%</span>
-                    </p>
-                    <p class="loanSelectorPDetails text-justify" v-if="loanType == '3'"><span
-                            class="loanSpanP">{{automotiveLoan.name}}</span> loan can be
-                        requested in
-                        <span class="loanSpanP">{{automotiveLoan.payments.join(", ")}}</span>
-                        payments and has a maximum amount of <span
-                            class="loanSpanP">${{automotiveLoan.maxAmount.toLocaleString()}}</span>
-                        This loan will have a surcharge of <span class="loanSpanP">{{automotiveLoan.percentage}}%</span>
-                    </p>
-                    
-                </section>
-            </div>  -->
         <footer class="d-flex justify-content-between align-items-center">
             <div id="footerTxt" class="d-flex flex-column m-3">
                 <p class="footerP text-white">Follow us for daily updates</p>
@@ -142,8 +111,8 @@
                 </p>
                 <p class="footerP text-white">©DevByMarcoMiquel</p>
             </div>
-            <div id="footerAnchorContainer">
-                <a class="footerAnchor" href="mailto:customerservice@bankofwonders.com">SEND US A MAIL!</a>
+            <div id="footerAnchorContainer" class="gap-2">
+                <a class="footerAnchor m-2" href="mailto:customerservice@bankofwonders.com">SEND US A MAIL!</a>
                 <a class="footerAnchor" href="tel:+123 45678945">GIVE US A CALL!</a>
                 <img id="footerLogo" class="m-3" src="../assets/images/faviconnuevo.png" alt="logo">
             </div>

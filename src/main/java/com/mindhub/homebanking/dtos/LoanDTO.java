@@ -7,6 +7,7 @@ public class LoanDTO {
     private Double maxAmount;
     private Integer percentage;
     private List<Integer> payments;
+    public LoanDTO(){}
     public LoanDTO(Loan loan) {
         this.id = loan.getId();
         this.name = loan.getName();

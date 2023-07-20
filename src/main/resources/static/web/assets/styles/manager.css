@@ -109,8 +109,22 @@ h1 {
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
-@media only screen and (max-width: 1300px){
-    main{
+/* container details edit */
+
+#loanPayments,
+#loanPercentage {
+    width: 5rem;
+}
+
+@media only screen and (max-width: 700px) {
+    .logOutContainer {
+        display: flex;
         flex-direction: column;
+    }
+    h1 {
+        width: 20rem;
+    }
+    #loanCreationContainer {
+        width: 26rem;
     }
 }

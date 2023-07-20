@@ -1,17 +1,19 @@
 package com.mindhub.homebanking.controllers;
+import com.mindhub.homebanking.dtos.CardPaymentDTO;
+import com.mindhub.homebanking.models.*;
+import com.mindhub.homebanking.services.AccountService;
 import com.mindhub.homebanking.services.CardService;
 import com.mindhub.homebanking.services.ClientService;
 import com.mindhub.homebanking.dtos.CardDTO;
-import com.mindhub.homebanking.models.Card;
-import com.mindhub.homebanking.models.CardColor;
-import com.mindhub.homebanking.models.CardType;
-import com.mindhub.homebanking.models.Client;
+import com.mindhub.homebanking.services.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+import javax.transaction.Transactional;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 import static com.mindhub.homebanking.utils.Utilities.cardNumberGenerator;
@@ -23,6 +25,10 @@ public class CardController {
     private ClientService clientService;
     @Autowired
     private CardService cardService;
+    @Autowired
+    private TransactionService transactionService;
+    @Autowired
+    private AccountService accountService;
     @GetMapping("/clients/current/cards")
     public List<CardDTO> getCurrentClientCards(Authentication authentication) {
         Client client = clientService.findByEmail(authentication.getName());
@@ -67,10 +73,10 @@ public class CardController {
     @PostMapping("/cards/renew")
     public ResponseEntity<Object> renewCard(Authentication authentication, @RequestParam String number) {
         if (authentication.getName().isBlank()) {
-            return new ResponseEntity<>("Client must be authenticated",HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("Client must be authenticated", HttpStatus.FORBIDDEN);
         }
         if (number.isBlank()) {
-            return  new ResponseEntity<>("Error, try again!", HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("Error, try again!", HttpStatus.FORBIDDEN);
         }
         Client client = clientService.findByEmail(authentication.getName());
         Card card = cardService.findByNumber(number);
@@ -85,4 +91,79 @@ public class CardController {
         createCard(card.getType(), card.getColor(), authentication);
         return new ResponseEntity<>("Card renew", HttpStatus.OK);
     }
+
+    @Transactional
+    @CrossOrigin(origins = "http://127.0.0.1:5501")
+    @PostMapping("/cards/payments")
+    public ResponseEntity<?> makePayment(@RequestBody CardPaymentDTO cardPaymentDTO) {
+        if (cardPaymentDTO.getNumber().length() != 19) {
+            return new ResponseEntity<>("Invalid Card Number", HttpStatus.FORBIDDEN);
+        }
+        if (cardPaymentDTO.getAmount() <= 0) {
+            return new ResponseEntity<>("Invalid Amount", HttpStatus.FORBIDDEN);
+        }
+        if (cardPaymentDTO.getCvv().toString().length() < 3) {
+            return new ResponseEntity<>("Invalid Cvv", HttpStatus.FORBIDDEN);
+        }
+        if (cardPaymentDTO.getDescription().isBlank()) {
+            return new ResponseEntity<>("Empty Description", HttpStatus.FORBIDDEN);
+        }
+        Card card = cardService.findByNumber(cardPaymentDTO.getNumber());
+        if (card.getType() != CardType.DEBIT) {
+            return new ResponseEntity<>("Not a debit card", HttpStatus.FORBIDDEN);
+        }
+        if (card.getThruDate().isBefore(LocalDate.now())) {
+            return new ResponseEntity<>("Card is expired!", HttpStatus.FORBIDDEN);
+        }
+        if (!String.valueOf(card.getCvv()).equals(String.valueOf(cardPaymentDTO.getCvv()))) {
+            return new ResponseEntity<>("Invalid Cvv", HttpStatus.FORBIDDEN);
+        }
+        Account account = card.getCardOwner().getAccounts().stream().filter(account1 -> account1.getBalance() > cardPaymentDTO.getAmount()).collect(Collectors.toList()).get(0);
+        if (account.getBalance() < cardPaymentDTO.getAmount()) {
+            return new ResponseEntity<>("Insufficient money in your account", HttpStatus.FORBIDDEN);
+        }
+        Transaction newTransaction = new Transaction(cardPaymentDTO.getAmount(), "Payment: " + cardPaymentDTO.getDescription(), TransactionType.DEBIT, LocalDateTime.now(), account.getBalance() - cardPaymentDTO.getAmount(), true);
+        account.addTransaction(newTransaction);
+        account.setBalance(account.getBalance() - cardPaymentDTO.getAmount());
+        transactionService.save(newTransaction);
+        accountService.save(account);
+        return new ResponseEntity<>("Payment Complete", HttpStatus.OK);
+    }
+//    @Transactional
+//    @CrossOrigin
+//    @PostMapping("/cards/payments")
+//    public ResponseEntity<?> makePayment(@RequestParam String number, String description, Short cvv, Double amount) {
+//        if (number.length() != 19) {
+//            return new ResponseEntity<>("Invalid Card Number", HttpStatus.FORBIDDEN);
+//        }
+//        if (amount <= 0) {
+//            return new ResponseEntity<>("Invalid Amount", HttpStatus.FORBIDDEN);
+//        }
+//        if (cvv.toString().length() < 3) {
+//            return new ResponseEntity<>("Invalid Cvv", HttpStatus.FORBIDDEN);
+//        }
+//        if (description.isBlank()) {
+//            return new ResponseEntity<>("Empty Description", HttpStatus.FORBIDDEN);
+//        }
+//        Card card = cardService.findByNumber(number);
+//        if (card.getType() != CardType.DEBIT) {
+//            return new ResponseEntity<>("Not a debit card", HttpStatus.FORBIDDEN);
+//        }
+//        if (card.getThruDate().isBefore(LocalDate.now())) {
+//            return new ResponseEntity<>("Card is expired!", HttpStatus.FORBIDDEN);
+//        }
+//        if (!String.valueOf(card.getCvv()).equals(String.valueOf(cvv))) {
+//            return new ResponseEntity<>("Invalid Cvv", HttpStatus.FORBIDDEN);
+//        }
+//        Account account = card.getCardOwner().getAccounts().stream().filter(account1 -> account1.getBalance() > amount).collect(Collectors.toList()).get(0);
+//        if (account.getBalance() < amount) {
+//            return new ResponseEntity<>("Insufficient money in your account", HttpStatus.FORBIDDEN);
+//        }
+//        Transaction newTransaction = new Transaction(amount, "Payment: " + description, TransactionType.DEBIT, LocalDateTime.now(), account.getBalance() - amount, true);
+//        account.addTransaction(newTransaction);
+//        account.setBalance(account.getBalance() - amount);
+//        transactionService.save(newTransaction);
+//        accountService.save(account);
+//        return new ResponseEntity<>("Payment Complete", HttpStatus.OK);
+//    }
 }

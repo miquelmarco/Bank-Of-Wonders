@@ -7,4 +7,5 @@ public interface LoanService {
     Loan findById(Long id);
     void save(Loan loan);
     void saveAll(List<Loan> loans);
+    Loan findByName(String string);
 }

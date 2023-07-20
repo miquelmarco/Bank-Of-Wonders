@@ -34,16 +34,6 @@
     background-size: cover;
 }
 
-#bodyAboutUs {
-    background-image: url(../images/about2.jpg);
-    background-size: cover;
-}
-
-#bodyMyProfile {
-    background-image: url(../images/bodyProfile.jpg);
-    background-size: cover;
-}
-
 #bodyCreateCards {
     background-image: url(../images/fondoooooooo.jpg);
     background-size: cover;
@@ -151,7 +141,6 @@ footer {
 }
 
 #footerAnchorContainer {
-    width: 30%;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -170,6 +159,10 @@ footer {
 #mainTitle {
     text-shadow: black 1px 3px;
     color: #606C5D !important;
+}
+
+.spanAbout {
+    color: red;
 }
 
 #titleContainer {
@@ -316,7 +309,7 @@ footer {
     text-align: center;
 }
 
-.deleteCardIcon:hover{
+.deleteCardIcon:hover {
     color: white !important;
     background-color: red;
     transition: 0.5s !important;
@@ -338,15 +331,21 @@ footer {
 }
 
 .accountsCards {
-    background-image: url("../images/bgBlanco.jpg");
+    background-image: url("../images/ahorro.jpg");
     background-size: cover;
     border-style: outset !important;
     border: 3rem !important;
     font-family: 'Orbitron', sans-serif;
-    color: #32aa14 !important;
+    color: #ffffff !important;
     text-shadow: 1px 1px 2px rgb(0, 0, 0);
     font-size: medium;
     width: 20rem;
+}
+
+.accountsCards p {
+    background-color: #fefffe5e;
+    padding: 0.1rem;
+    border-radius: 0.3rem;
 }
 
 .spanAccInformation {
@@ -397,10 +396,6 @@ footer {
     color: rgb(133, 2, 2);
     filter: sepia(1);
 }
-
-/* .accountsSection {
-    width: 65%;
-} */
 
 /* table details edit */
 
@@ -453,137 +448,15 @@ td {
     background-color: rgba(255, 145, 0, 0.89) !important;
 }
 
-/* about us edit */
-
-.h1About {
-    font-family: 'Orbitron', sans-serif;
-    color: #32aa14 !important;
-    font-size: 2rem;
-    text-align: center;
-}
-
-#aboutContainer1 {
-    min-height: 100vh;
-}
-
-#aboutContainer2 {
-    min-height: 100vh;
-}
-
-#aboutContainer3 {
-    min-height: 100vh;
-}
-
-#topcontainerAbout {
-    clip-path: circle(50% at right);
-    width: 60rem;
-    height: 40rem;
-    background-image: url(../images/about1.jpg);
-    background-size: cover;
-    border: solid green 3px;
-    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
-}
-
-.h2AboutTop {
-    margin: 1rem !important;
-    height: 8rem;
-    width: 25rem;
-    font-family: 'Orbitron', sans-serif;
-    color: #32aa14 !important;
-    font-size: 2.5rem;
-    text-align: left;
-    text-shadow: 2px 4px 3px rgb(0, 0, 0);
-}
-
-.h2About2Top {
-    width: 20rem;
-    height: 8rem;
-    text-align: right;
+/* .tableContainer {
     display: flex;
-    align-self: self-end;
-
-}
-
-#topcontainerAbout:hover {
-    clip-path: circle(80%);
-    border-top-left-radius: 10rem;
-    border-bottom-left-radius: 10rem;
-    border: 10px rgba(26, 185, 11, 0.603);
-    border-style: outset;
-    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
-    transition: 1s;
-}
-
-#h1AboutUs {
-    font-family: 'Orbitron', sans-serif;
-    color: #32aa14 !important;
-    font-size: 2.5rem;
-    margin: 10rem !important;
-    width: 42rem;
-    text-shadow: 2px 4px 3px rgb(0, 0, 0);
-}
-
-#botcontainerAbout {
-    clip-path: circle(50% at left);
-    background-image: url(../images/about3.jpg);
-    background-size: cover;
-    border: solid green 3px;
-    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
-}
-
-.h2AboutBot {
-    margin: 1rem !important;
-    height: 18rem;
-    width: 60rem;
-    font-family: 'Orbitron', sans-serif;
-    color: #32aa14 !important;
-    font-size: 2.5rem;
-    text-shadow: 2px 4px 3px rgb(0, 0, 0);
-}
-
-.h2About2Bot {
-    width: 25rem;
-    display: flex;
-    text-align: right;
-    float: right;
-}
-
-#botcontainerAbout:hover {
-    clip-path: circle(80%);
-    transition: 1s;
-    border-top-right-radius: 10rem;
-    border-bottom-right-radius: 10rem;
-    border: 10px rgba(26, 185, 11, 0.603);
-    border-style: outset;
-    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
-}
-
-#contactContainer {
-    width: 60rem;
-    text-align: center;
-    font-family: 'Orbitron', sans-serif;
-    color: #32aa14 !important;
-    font-size: 2rem;
-    text-shadow: 2px 4px 3px rgb(0, 0, 0);
-}
-
-.spanAbout {
-    color: red;
-}
-
-#map {
-    width: 45rem;
-    height: 30rem;
-    padding: 1rem;
-    border: 10px rgba(26, 185, 11, 0.603);
-    border-style: outset;
-    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
-}
-
-iframe {
+    white-space: nowrap;
     width: 100%;
-    height: 100%;
 }
+
+#accountDetailsTable {
+    width: 100%;
+} */
 
 /* cards edit */
 
@@ -702,12 +575,6 @@ iframe {
     transition: 0.5s;
 }
 
-/* .deleteCardIcon:hover {
-    color: yellow !important;
-    transition: 0.5s;
-    cursor: pointer;
-} */
-
 /* create cards part 2 edit */
 
 .bodyCreateCards {
@@ -764,10 +631,6 @@ iframe {
     background-size: contain;
     opacity: 0.7;
     filter: sepia(0.9);
-    /* filter: blur(3px); */
-    /* filter: grayscale(100%); */
-    /* filter: hue-rotate(90deg); */
-    /* filter: grayscale(1) brightness(0.8); */
 }
 
 /* transfer edit */
@@ -880,15 +743,13 @@ textarea {
     background-color: yellow;
 }
 
-/* my profile edit */
+.loanPContainer {
+    width: 35rem;
+}
 
-#profileContainer {
-    min-height: 80vh;
-    font-family: 'Orbitron', sans-serif;
-    color: #2c6e1a;
-    font-size: 0.8rem;
-    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
-    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591;
+.spanLoanP {
+    color: rgb(233, 146, 146) !important;
+    font-weight: 900;
 }
 
 /* loan payments edit */
@@ -902,10 +763,6 @@ textarea {
     color: #3ee90f !important;
     text-shadow: 2px 4px 3px rgb(0, 0, 0);
     margin: 2rem;
-    /* border-radius: 1rem;
-    background: rgba(4, 79, 30, 0.342);
-    background: linear-gradient(0deg, rgba(7, 70, 29, 0.363) 0%, rgba(6, 143, 17, 0.363) 100%);
-    box-shadow: 5px -5px 4px #44444160, -5px 5px 4px #05050591; */
 }
 
 .formLoanPaymentsContainer {
@@ -965,37 +822,231 @@ textarea {
     text-shadow: 2px 4px 3px rgb(0, 0, 0);
 }
 
-/* @media only screen and (max-width: 990px) {
-    
-} */
+/* media querys */
 
-/* all page and profile query edit */
-
-/* @media only screen and (max-width: 650px) {
-    footer {
-        min-height: 20vh !important;
-        display: flex !important;
-        flex-direction: column !important;
+@media only screen and (max-width: 1800px) {
+    .mainIndex {
+        display: flex;
+        flex-direction: column-reverse;
     }
+    #indexText {
+        margin-top: 2rem !important;
+    }
+}
+
+@media only screen and (max-width: 1400px) {
 
     header {
-        min-height: 20vh !important;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    li a {
+        font-size: 0.7rem !important;
+    }
+
+    .cardsTitle {
+        display: flex;
         flex-direction: column;
     }
 
-    .footerAnchorContainer {
-        display: flex !important;
-        flex-direction: column !important;
+    .createCardBtn {
+        margin: 0.5rem !important;
     }
-    
-    .footerAnchor {
-        margin: 1rem 1rem !important;
-        min-width: 12rem !important;
-        font-size: 0.8rem;
+}
+
+@media only screen and (max-width: 950px) {
+    header {
         text-align: center;
     }
 
-    .profileContainer {
-        flex-wrap: wrap;
+    footer {
+        flex-direction: column;
     }
-} */
+
+    .createCardTopMsg {
+        font-size: 1.6rem;
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    .loanTypeSelector {
+        width: 35rem;
+    }
+    .tableContainer {
+        display: none;
+    }
+    .accountDetailsTable {
+        display: none;
+    }
+    #createCardsMainContainer {
+        display: flex;
+        flex-direction: column;
+        font-size: 1rem;
+        width: 30rem;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .createCardTopMsg {
+        font-size: 1.3rem;
+    }
+
+    .loanSelectorPDetails2 {
+        font-size: 1.4rem;
+        width: 22rem;
+    }
+    .pLoanPayment {
+        font-size: 1.5rem;
+    }
+    .formLoanPaymentsContainer {
+        width: 30rem;
+    }
+    .selectLoanPayments {
+        width: 30rem;
+    }
+    #indexText {
+        font-size: 2rem;
+        text-align: center;
+        width: 20rem;
+    }
+    #indexFormsContainer {
+        min-width: 0rem;
+        width: 30rem !important;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .loanTypeSelector {
+        width: 27rem;
+    }
+
+    .loanPContainer {
+        font-size: 0.9rem;
+        width: 20rem;
+    }
+    .pLoanPayment {
+        width: 25rem;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .pLoanPayment {
+        width: 15rem;
+    }
+    .selectLoanPayments {
+        font-size: 1rem;
+        width: 15rem;
+    }
+    .formLoanPaymentsContainer {
+        width: 13rem;
+    }
+    .formIndividualContainers {
+        width: 18rem;
+    }
+    .inputLabelIndex {
+        width: 13rem;
+    }
+    #indexFormsContainer {
+        width: 18rem !important;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+
+    #footerAnchorContainer {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    #transferContainer,
+    #transferContainer2 {
+        width: 20rem;
+    }
+
+    #description {
+        width: 20rem;
+    }
+
+    .createCardTopMsg {
+        font-size: 1.1rem;
+    }
+    .tableNone {
+        display: none !important;
+    }
+    #createCardsMainContainer {
+        width: 15rem;
+    }
+    .selectContainer {
+        font-size: 1rem !important;
+    }
+    .labelCards {
+        margin-left: 0.5rem !important;
+        margin-right: 0.5rem !important;
+    }
+    #typeCards,
+    #colorCards {
+        font-size: 1rem !important;
+        height: 2rem;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .createCardTopMsg {
+        font-size: 0.8rem;
+    }
+
+    #debitCardModel,
+    #creditCardModel {
+        width: 16rem;
+        height: 11rem;
+    }
+
+    .chip,
+    .mastercardLogo,
+    .holoLogo,
+    .contactless,
+    .cardLogo {
+        width: 2rem;
+        height: 1.5rem;
+    }
+
+    .cardDataContainer {
+        font-size: 0.75rem;
+    }
+
+    .loanTypeSelector {
+        width: 20rem;
+    }
+
+    .loanSelectorPDetails2 {
+        font-size: 0.85rem;
+        width: 13rem;
+    }
+}
+
+@media only screen and (max-width: 420px) {
+    .accountsTitle {
+        font-size: 1rem;
+    }
+
+    .accountsCards,
+    .loanCards {
+        width: 17rem;
+    }
+
+    #transferContainer,
+    #transferContainer2 {
+        width: 15.5rem;
+    }
+
+    #description {
+        width: 15.5rem;
+    }
+    .tableContainer {
+        font-size: 0.6rem;
+    }
+    #captionAccountDetails {
+        font-size: 0.9rem !important;
+    }
+}

@@ -30,4 +30,8 @@ public class LoanServiceImplement implements LoanService {
             this.save(loan);
         }
     }
+    @Override
+    public Loan findByName(String string) {
+        return loanRepository.findByName(string);
+    }
 }

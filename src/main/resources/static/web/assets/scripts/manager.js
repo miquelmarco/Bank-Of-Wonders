@@ -6,9 +6,16 @@ setTimeout(() => {
                 clients: [],
                 newClient: { firstName: '', lastName: '', email: '', password: '' },
                 loanName: '',
-                loanMaxamount: null,
+                loanMaxAmount: null,
                 loanPayments: [],
-                loanPercentage: null
+                loanPercentage: null,
+                loanDTO: {
+                    name: '',
+                    payments: [],
+                    maxAmount: null,
+                    percentage: null
+                },
+                inputNumber: null
             }
         },
         created() {
@@ -36,19 +43,69 @@ setTimeout(() => {
                     }).catch(err => console.log(err))
             },
             sendLoan() {
-                console.log(this.loanName, this.loanMaxamount, this.loanPayments, this.loanPercentage)
                 axios.post("/api/loans/new",
                     {
                         name: `${this.loanName}`,
                         maxPayment: `${this.loanPayments}`,
-                        maxAmount: `${this.loanMaxamount}`,
+                        maxAmount: `${this.loanMaxAmount}`,
                         percentage: `${this.loanPercentage}`
                     })
                     .then(res => {
-                        console.log(res)
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Loan Created',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        this.eraseFields()
                     }).catch(err => {
-                        console.log(err)
+                        this.error = err.response.data
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'error',
+                            title: `${this.error} Try again!`,
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
                     })
+            },
+            sendLoan2() {
+                axios.post("/api/loans/new", this.loanDTO)
+                    .then(res => {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Loan Created',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        this.clearForm()
+                    }).catch(err => {
+                        this.error = err.response.data
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'error',
+                            title: `${this.error} Try again!`,
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    })
+            },
+            addNumber() {
+                if (this.inputNumber !== null) {
+                    this.loanDTO.payments.push(this.inputNumber)
+                    this.inputNumber = null
+                }
+            },
+            clearPayments() {
+                this.loanDTO.payments = []
+            },
+            clearForm() {
+                this.loanDTO.name = ''
+                this.loanDTO.payments = []
+                this.loanDTO.maxAmount = null
+                this.loanDTO.percentage = null
             },
             sessionLogOut() {
                 axios.post("/api/logout")

@@ -34,7 +34,7 @@
         </style>
         <header class="d-flex justify-content-around align-items-center">
             <img id="headerLogo" src="../assets/images/logonuevo.png" alt="banklogo">
-            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary m-2">
                 <div class="container-fluid">
                     <a class="navbar-brand mx-3" href="#">Menu-> </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -43,9 +43,6 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav gap-3">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="./myProfile.html">MY PROFILE</a>
-                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">ACCOUNTS</a>
                             </li>
@@ -58,9 +55,6 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="./loan-application.html">LOAN APPLICATION</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./aboutUs.html">ABOUT US</a>
-                            </li>
                             <input @click.prevent="sessionLogOut()" class="btn btn-danger" type="submit"
                                 name="sendLogout" id="sendLogout" value="LOG OUT">
                         </ul>
@@ -71,7 +65,7 @@
         <main class="mainAccounts d-flex flex-column align-items-center justify-content-around">
             <section id="accountsH1" class="m-5 text-center p-2 rounded">
                 <h1 class="m-3 accountsTitle">MY PERSONAL INFORMATION</h1>
-                <p id="accountsTitleDesc">Hello <span class="spanInformation">{{clientName}}</span>, in this page you
+                <p id="accountsTitleDesc">Hello, in this page you
                     can see your accounts and loans information</p>
             </section>
             <div id="mainInfo" class="w-100 d-flex flex-column justify-content-around flex-wrap">
@@ -140,8 +134,8 @@
                 </p>
                 <p class="footerP text-white">©DevByMarcoMiquel</p>
             </div>
-            <div id="footerAnchorContainer">
-                <a class="footerAnchor" href="mailto:customerservice@bankofwonders.com">SEND US A MAIL!</a>
+            <div id="footerAnchorContainer" class="gap-2">
+                <a class="footerAnchor m-2" href="mailto:customerservice@bankofwonders.com">SEND US A MAIL!</a>
                 <a class="footerAnchor" href="tel:+123 45678945">GIVE US A CALL!</a>
                 <img id="footerLogo" class="m-3" src="../assets/images/faviconnuevo.png" alt="logo">
             </div>
