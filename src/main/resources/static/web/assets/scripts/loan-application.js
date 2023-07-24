@@ -113,9 +113,9 @@ setTimeout(() => {
             },
             eraseFields() {
                 this.amou = null,
-                    this.loanType = 0,
+                    this.loanType = null,
                     this.destAcc = '',
-                    this.paym = 0
+                    this.paym = null
             },
         },
         computed: {

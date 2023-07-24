@@ -88,25 +88,23 @@ createApp({
                                 Swal.fire({
                                     position: 'center',
                                     icon: 'success',
-                                    title: 'Welcome!',
+                                    title: 'Resgistered, Welcome!',
                                     showConfirmButton: false,
-                                    timer: 1500
+                                    timer: 2000
                                 })
                                 setTimeout(() => {
                                     window.location.href = "/web/pages/accounts.html";
-                                }, 1800)
+                                }, 2100)
                             }
                         }).catch(err => { console.error(err) })
                 }).catch(err => {
                     this.errMsg = err.response.data
                     Swal.fire({
+                        position: 'center',
+                        icon: 'error',
                         title: `${this.errMsg}`,
-                        showClass: {
-                            popup: 'animate__animated animate__fadeInDown'
-                        },
-                        hideClass: {
-                            popup: 'animate__animated animate__fadeOutUp'
-                        }
+                        showConfirmButton: false,
+                        timer: 2000
                     })
                 })
         }

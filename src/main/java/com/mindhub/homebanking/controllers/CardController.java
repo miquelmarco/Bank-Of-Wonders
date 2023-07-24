@@ -91,7 +91,6 @@ public class CardController {
         createCard(card.getType(), card.getColor(), authentication);
         return new ResponseEntity<>("Card renew", HttpStatus.OK);
     }
-
     @Transactional
     @CrossOrigin(origins = "http://127.0.0.1:5501")
     @PostMapping("/cards/payments")

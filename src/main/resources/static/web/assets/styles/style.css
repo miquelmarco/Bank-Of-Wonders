@@ -520,7 +520,7 @@ td {
 }
 
 .cardLogo {
-    background-color: #02020294;
+    /* background-color: #02020294; */
     border-radius: 1rem;
     margin: 5px !important;
 }
@@ -988,6 +988,12 @@ textarea {
     #colorCards {
         font-size: 1rem !important;
         height: 2rem;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .selectLoanPayments {
+        width: 12rem;
     }
 }
 

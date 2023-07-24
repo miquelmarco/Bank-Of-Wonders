@@ -5,7 +5,6 @@ import com.mindhub.homebanking.repositories.CardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
-
 @Service
 public class CardServiceImplement implements CardService {
     @Autowired

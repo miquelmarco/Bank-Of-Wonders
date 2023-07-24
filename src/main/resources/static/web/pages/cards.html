@@ -79,7 +79,7 @@
                         v-bind:class="changeCardColor(card)" v-bind:key="card.number">
                         <div class="d-flex justify-content-between">
                             <img class="contactless" src="../assets/images/contactless.png" alt="contactless">
-                            <img class="cardLogo" src="../assets/images/wonderFaviconNobg.png" alt="logo">
+                            <img class="cardLogo" src="../assets/images/faviconnuevo2.png" alt="logo">
                         </div>
                         <div class="cardDataContainer">
                             <p class="m-1 mx-3">{{card.number}}</p>
@@ -89,7 +89,7 @@
                                     <p class="cardTxt goodThru">Good</p>
                                     <p class="cardTxt goodThru">Thru</p>
                                 </div>
-                                <p class="expDate">{{card.thruDate.slice(5,7)}} {{card.thruDate.slice(8,10)}}</p>
+                                <p class="expDate">{{card.thruDate.slice(2,7)}}</p>
                             </div>
                             <p class="d-none">{{card.color}}</p>
                         </div>
@@ -114,7 +114,7 @@
                         v-bind:class="changeCardColor(card)" v-bind:key="card.number">
                         <div class="d-flex justify-content-between">
                             <img class="contactless" src="../assets/images/contactless.png" alt="contactless">
-                            <img class="cardLogo" src="../assets/images/wonderFaviconNobg.png" alt="logo">
+                            <img class="cardLogo" src="../assets/images/faviconNuevo2.png" alt="logo">
                         </div>
                         <div class="cardDataContainer">
                             <p class="m-1 mx-3">{{card.number}}</p>
@@ -124,7 +124,7 @@
                                     <p class="cardTxt goodThru">Good</p>
                                     <p class="cardTxt goodThru">Thru</p>
                                 </div>
-                                <p class="expDate">{{card.thruDate.slice(5,7)}} {{card.thruDate.slice(8,10)}}</p>
+                                <p class="expDate">{{card.thruDate.slice(2,7)}}</p>
                             </div>
                             <p class="d-none">{{card.color}}</p>
                         </div>
