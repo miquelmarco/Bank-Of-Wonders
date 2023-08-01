@@ -92,7 +92,7 @@ public class CardController {
         return new ResponseEntity<>("Card renew", HttpStatus.OK);
     }
     @Transactional
-    @CrossOrigin(origins = "http://127.0.0.1:5501")
+    @CrossOrigin(origins = "http://localhost:8080")
     @PostMapping("/cards/payments")
     public ResponseEntity<?> makePayment(@RequestBody CardPaymentDTO cardPaymentDTO) {
         if (cardPaymentDTO.getNumber().length() != 19) {
@@ -128,41 +128,4 @@ public class CardController {
         accountService.save(account);
         return new ResponseEntity<>("Payment Complete", HttpStatus.OK);
     }
-//    @Transactional
-//    @CrossOrigin
-//    @PostMapping("/cards/payments")
-//    public ResponseEntity<?> makePayment(@RequestParam String number, String description, Short cvv, Double amount) {
-//        if (number.length() != 19) {
-//            return new ResponseEntity<>("Invalid Card Number", HttpStatus.FORBIDDEN);
-//        }
-//        if (amount <= 0) {
-//            return new ResponseEntity<>("Invalid Amount", HttpStatus.FORBIDDEN);
-//        }
-//        if (cvv.toString().length() < 3) {
-//            return new ResponseEntity<>("Invalid Cvv", HttpStatus.FORBIDDEN);
-//        }
-//        if (description.isBlank()) {
-//            return new ResponseEntity<>("Empty Description", HttpStatus.FORBIDDEN);
-//        }
-//        Card card = cardService.findByNumber(number);
-//        if (card.getType() != CardType.DEBIT) {
-//            return new ResponseEntity<>("Not a debit card", HttpStatus.FORBIDDEN);
-//        }
-//        if (card.getThruDate().isBefore(LocalDate.now())) {
-//            return new ResponseEntity<>("Card is expired!", HttpStatus.FORBIDDEN);
-//        }
-//        if (!String.valueOf(card.getCvv()).equals(String.valueOf(cvv))) {
-//            return new ResponseEntity<>("Invalid Cvv", HttpStatus.FORBIDDEN);
-//        }
-//        Account account = card.getCardOwner().getAccounts().stream().filter(account1 -> account1.getBalance() > amount).collect(Collectors.toList()).get(0);
-//        if (account.getBalance() < amount) {
-//            return new ResponseEntity<>("Insufficient money in your account", HttpStatus.FORBIDDEN);
-//        }
-//        Transaction newTransaction = new Transaction(amount, "Payment: " + description, TransactionType.DEBIT, LocalDateTime.now(), account.getBalance() - amount, true);
-//        account.addTransaction(newTransaction);
-//        account.setBalance(account.getBalance() - amount);
-//        transactionService.save(newTransaction);
-//        accountService.save(account);
-//        return new ResponseEntity<>("Payment Complete", HttpStatus.OK);
-//    }
 }
