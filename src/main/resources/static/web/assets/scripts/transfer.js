@@ -45,7 +45,7 @@ setTimeout(() => {
                                                 position: 'center',
                                                 title: `${this.resMsg}`,
                                                 showConfirmButton: false,
-                                                timer: 1500
+                                                timer: 1900
                                             })
                                             this.eraseFields()
                                         }
@@ -57,7 +57,7 @@ setTimeout(() => {
                                                 icon: 'error',
                                                 title: `${this.errMsg}`,
                                                 showConfirmButton: false,
-                                                timer: 1500
+                                                timer: 1900
                                             })
                                             this.eraseFields()
                                         }
@@ -69,7 +69,7 @@ setTimeout(() => {
                             position: 'center',
                             title: 'Please complete all data',
                             showConfirmButton: false,
-                            timer: 1500
+                            timer: 1900
                         })
                     }
                 }
@@ -89,11 +89,11 @@ setTimeout(() => {
                                 icon: 'success',
                                 title: 'Bye bye!',
                                 showConfirmButton: false,
-                                timer: 1500
+                                timer: 1900
                             })
                             setTimeout(() => {
                                 window.location.href = "/web/index.html";
-                            }, 1800)
+                            }, 2000)
                         }
                         console.log(res)
                     }).catch(err => { console.log(err) })

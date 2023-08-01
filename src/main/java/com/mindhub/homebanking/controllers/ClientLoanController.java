@@ -1,8 +1,8 @@
 package com.mindhub.homebanking.controllers;
-import com.mindhub.homebanking.Services.AccountService;
-import com.mindhub.homebanking.Services.ClientLoanService;
-import com.mindhub.homebanking.Services.ClientService;
-import com.mindhub.homebanking.Services.TransactionService;
+import com.mindhub.homebanking.services.AccountService;
+import com.mindhub.homebanking.services.ClientLoanService;
+import com.mindhub.homebanking.services.ClientService;
+import com.mindhub.homebanking.services.TransactionService;
 import com.mindhub.homebanking.dtos.ClientLoanDTO;
 import com.mindhub.homebanking.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
-
 import java.time.LocalDateTime;
 @RequestMapping("/api")
 @RestController
@@ -24,7 +23,7 @@ public class ClientLoanController {
     @Autowired
     private TransactionService transactionService;
     @PostMapping("/clientLoan/payments")
-    public ResponseEntity<Object> payLoan(Authentication authentication, @RequestParam Long loanToPay, String account) {
+    public ResponseEntity<Object> payLoan(Authentication authentication, @RequestParam Long loanToPay, @RequestParam String account) {
         if (authentication == null) {
             return new ResponseEntity<>("Client must be authenticated", HttpStatus.FORBIDDEN);
         }
@@ -47,7 +46,10 @@ public class ClientLoanController {
         if (accToPay.getBalance() < payment) {
             return new ResponseEntity<>("Insufficient amount", HttpStatus.FORBIDDEN);
         }
-        Transaction newTransaction = new Transaction(payment, "Loan Payment", TransactionType.DEBIT, LocalDateTime.now(), clientLoan.getAmount() - payment, true);
+        if (clientLoan.getRemainAmount() <= 0) {
+            return new ResponseEntity<>("Fully paid loan", HttpStatus.FORBIDDEN);
+        }
+        Transaction newTransaction = new Transaction(payment, "Loan Payment", TransactionType.DEBIT, LocalDateTime.now(), accToPay.getBalance() - payment, true);
         accToPay.setBalance(accToPay.getBalance() - payment);
         clientLoan.setRemainPayments(clientLoan.getRemainPayments() - 1);
         clientLoan.setRemainAmount(clientLoan.getRemainAmount() - payment);

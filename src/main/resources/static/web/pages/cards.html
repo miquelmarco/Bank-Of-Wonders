@@ -37,7 +37,7 @@
         </style>
         <header class="d-flex justify-content-around align-items-center">
             <img id="headerLogo" src="../assets/images/logonuevo.png" alt="banklogo">
-            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary m-2">
                 <div class="container-fluid">
                     <a class="navbar-brand mx-3" href="#">Menu-> </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -47,22 +47,16 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav gap-3">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="./myProfile.html">MY PROFILE |</a>
+                                <a class="nav-link" href="./accounts.html">ACCOUNTS</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./accounts.html">ACCOUNTS |</a>
+                                <a class="nav-link" href="#">CARDS</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">CARDS |</a>
+                                <a class="nav-link" href="./transfers.html">TRANSFERS</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./transfers.html">TRANSFERS |</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./loan-application.html">LOAN APPLICATION |</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./aboutUs.html">ABOUT US |</a>
+                                <a class="nav-link" href="./loan-application.html">LOAN APPLICATION</a>
                             </li>
                             <input @click.prevent="sessionLogOut()" class="btn btn-danger" type="submit"
                                 name="sendLogout" id="sendLogout" value="LOG OUT">
@@ -72,8 +66,8 @@
             </nav>
         </header>
         <main class="mainAccounts d-flex flex-column align-items-center justify-content-around">
-            <div class="d-flex justify-content-around align-items-center">
-                <p class="m-3 my-5 createCardTopMsg">If one of your cards expires you can delete it and request a <span
+            <div class="cardsTitle d-flex justify-content-around align-items-center">
+                <p class="m-3 my-5 createCardTopMsg">If one of your cards is expired you can request a <span
                         class="spanInformation">new one</span></p>
                 <a href="./create-cards.html" v-if="activeCreditCards.length < 3 || activeDebitCards.length < 3"
                     class="createCardBtn text-decoration-none my-5">Card Application</a>
@@ -85,9 +79,9 @@
                         v-bind:class="changeCardColor(card)" v-bind:key="card.number">
                         <div class="d-flex justify-content-between">
                             <img class="contactless" src="../assets/images/contactless.png" alt="contactless">
-                            <img class="cardLogo" src="../assets/images/wonderFaviconNobg.png" alt="logo">
+                            <img class="cardLogo" src="../assets/images/faviconnuevo2.png" alt="logo">
                         </div>
-                        <div>
+                        <div class="cardDataContainer">
                             <p class="m-1 mx-3">{{card.number}}</p>
                             <p class="mx-4 my-0">{{card.cardHolder.toUpperCase()}}</p>
                             <div class="d-flex justify-content-end">
@@ -95,18 +89,22 @@
                                     <p class="cardTxt goodThru">Good</p>
                                     <p class="cardTxt goodThru">Thru</p>
                                 </div>
-                                <p class="expDate">{{card.thruDate.slice(5,10)}}</p>
+                                <p class="expDate">{{card.thruDate.slice(2,7)}}</p>
                             </div>
                             <p class="d-none">{{card.color}}</p>
                         </div>
                         <div class="d-flex justify-content-between">
                             <img class="chip mx-3 my-2" src="../assets/images/chip.png" alt="chip">
-                            <p class="mx-3 my-2">CVV {{card.cvv}}</p>
+                            <p class="cardDataContainer mx-3 my-2">CVV {{card.cvv}}</p>
                             <img class="mastercardLogo mx-3 my-2" src="../assets/images/masterlogo.png"
                                 alt="mastercardLogo">
                             <img class="holoLogo mx-3 my-2" src="../assets/images/holoLogo.png" alt="holoLogo">
                         </div>
-                        <i class="bi bi-x-octagon-fill text-danger deleteCardIcon" @click="deleteCard(card.number)"></i>
+                        <div class="d-flex justify-content-between">
+                            <i class="bi bi-x-octagon-fill text-danger deleteCardIcon"
+                                @click="deleteCard(card.number)">delete</i>
+                            <i class="bi bi-arrow-clockwise renewCardIcon" v-if="checkDateExp(card.thruDate)" @click="renewCard(card.number)">renew</i>
+                        </div>
                     </div>
                     <p v-else class="text-center">You don't have credit cards!</p>
                 </section>
@@ -116,9 +114,9 @@
                         v-bind:class="changeCardColor(card)" v-bind:key="card.number">
                         <div class="d-flex justify-content-between">
                             <img class="contactless" src="../assets/images/contactless.png" alt="contactless">
-                            <img class="cardLogo" src="../assets/images/wonderFaviconNobg.png" alt="logo">
+                            <img class="cardLogo" src="../assets/images/faviconNuevo2.png" alt="logo">
                         </div>
-                        <div>
+                        <div class="cardDataContainer">
                             <p class="m-1 mx-3">{{card.number}}</p>
                             <p class="mx-4 my-0">{{card.cardHolder.toUpperCase()}}</p>
                             <div class="d-flex justify-content-end">
@@ -126,19 +124,22 @@
                                     <p class="cardTxt goodThru">Good</p>
                                     <p class="cardTxt goodThru">Thru</p>
                                 </div>
-                                <p class="expDate">{{card.thruDate.slice(5,7)}} {{card.thruDate.slice(8,10)}}</p>
+                                <p class="expDate">{{card.thruDate.slice(2,7)}}</p>
                             </div>
                             <p class="d-none">{{card.color}}</p>
                         </div>
                         <div class="d-flex justify-content-between">
                             <img class="chip mx-3 my-2" src="../assets/images/chip.png" alt="chip">
-                            <p class="mx-3 my-2">CVV {{card.cvv}}</p>
+                            <p class="mx-3 my-2 cardDataContainer">CVV {{card.cvv}}</p>
                             <img class="mastercardLogo mx-3 my-2" src="../assets/images/masterlogo.png"
                                 alt="mastercardLogo">
                             <img class="holoLogo mx-3 my-2" src="../assets/images/holoLogo.png" alt="holoLogo">
                         </div>
-                        <i class="bi bi-x-octagon-fill bi-lg text-danger deleteCardIcon"
-                            @click="deleteCard(card.number)"></i>
+                        <div class="d-flex justify-content-between">
+                            <i class="bi bi-x-octagon-fill text-danger deleteCardIcon"
+                                @click="deleteCard(card.number)">delete</i>
+                            <i class="bi bi-arrow-clockwise renewCardIcon" v-if="checkDateExp(card.thruDate)" @click="renewCard(card.number)">renew</i>
+                        </div>
                     </div>
                     <p v-else class="text-center">You don't have debit cards!</p>
                 </section>
@@ -152,8 +153,8 @@
                 </p>
                 <p class="footerP text-white">©DevByMarcoMiquel</p>
             </div>
-            <div id="footerAnchorContainer">
-                <a class="footerAnchor" href="mailto:customerservice@bankofwonders.com">SEND US A MAIL!</a>
+            <div id="footerAnchorContainer" class="gap-2">
+                <a class="footerAnchor m-2" href="mailto:customerservice@bankofwonders.com">SEND US A MAIL!</a>
                 <a class="footerAnchor" href="tel:+123 45678945">GIVE US A CALL!</a>
                 <img id="footerLogo" class="m-3" src="../assets/images/faviconnuevo.png" alt="logo">
             </div>

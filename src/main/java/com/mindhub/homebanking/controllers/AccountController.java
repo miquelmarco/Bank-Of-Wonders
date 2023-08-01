@@ -1,7 +1,7 @@
 package com.mindhub.homebanking.controllers;
-import com.mindhub.homebanking.Services.AccountService;
-import com.mindhub.homebanking.Services.ClientService;
-import com.mindhub.homebanking.Services.TransactionService;
+import com.mindhub.homebanking.services.AccountService;
+import com.mindhub.homebanking.services.ClientService;
+import com.mindhub.homebanking.services.TransactionService;
 import com.mindhub.homebanking.dtos.AccountDTO;
 import com.mindhub.homebanking.models.Account;
 import com.mindhub.homebanking.models.AccountType;
@@ -81,7 +81,7 @@ public class AccountController {
         List<Account> accounts = client.getAccounts().stream().filter(account -> account.isActive()).collect(Collectors.toList());
         return accounts.stream().map(account -> new AccountDTO(account)).collect(Collectors.toList());
     }
-    @DeleteMapping("/clients/current/accounts")
+    @PatchMapping ("/clients/current/accounts")
     public ResponseEntity<Object> deleteAccount(Authentication authentication, @RequestParam String number) {
         if (authentication.getName() == null) {
             return new ResponseEntity<>("Client not authenticated", HttpStatus.FORBIDDEN);
@@ -94,9 +94,8 @@ public class AccountController {
         if (account.getBalance() != 0) {
             return new ResponseEntity<>("Account balance must be 0 to delete", HttpStatus.FORBIDDEN);
         }
-        transactions.forEach(transaction -> transaction.setActive(false));
+        transactions.forEach(transaction -> {transaction.setActive(false); transactionService.save(transaction);});
         account.setActive(false);
-        transactionService.saveAll(transactions);
         accountService.save(account);
         return new ResponseEntity<>("Account deleted", HttpStatus.OK);
     }

@@ -34,7 +34,7 @@
         </style>
         <header class="d-flex justify-content-around align-items-center">
             <img id="headerLogo" src="../assets/images/logonuevo.png" alt="banklogo">
-            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary m-2">
                 <div class="container-fluid">
                     <a class="navbar-brand mx-3" href="#">Menu-> </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -44,22 +44,16 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav gap-3">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="./myProfile.html">MY PROFILE |</a>
+                                <a class="nav-link" href="./accounts.html">ACCOUNTS</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./accounts.html">ACCOUNTS |</a>
+                                <a class="nav-link" href="./cards.html">CARDS</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./cards.html">CARDS |</a>
+                                <a class="nav-link" href="./transfers.html">TRANSFERS</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./transfers.html">TRANSFERS |</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./loan-application.html">LOAN APPLICATION |</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./aboutUs.html">ABOUT US |</a>
+                                <a class="nav-link" href="./loan-application.html">LOAN APPLICATION</a>
                             </li>
                             <input @click.prevent="sessionLogOut()" class="btn btn-danger" type="submit"
                                 name="sendLogout" id="sendLogout" value="LOG OUT">
@@ -71,7 +65,7 @@
         <main class="d-flex flex-column gap-5 justify-content-center align-items-center">
             <div id="createCardsMainContainer" class="gap-4">
                 <div class="selectContainer">
-                    <label class="mx-5" for="typeCards">Select card type</label>
+                    <label class="labelCards mx-5" for="typeCards">Select card type</label>
                     <select class="selectBox" name="typeCards" id="typeCards" v-model="cardType">
                         <option class="selectBox" value="#" disabled selected>Select Type</option>
                         <option class="selectBox" value="DEBIT">DEBIT</option>
@@ -79,7 +73,7 @@
                     </select>
                 </div>
                 <div class="selectContainer">
-                    <label class="mx-5" for="colorCards">Select card color</label>
+                    <label class="labelCards mx-5" for="colorCards">Select card color</label>
                     <select class="selectBox" name="colorCards" id="colorCards" v-model="cardColor">
                         <option class="selectBox" value="#" disabled selected>Select Color</option>
                         <option class="selectBox" value="SILVER">SILVER</option>
@@ -99,8 +93,8 @@
                 </p>
                 <p class="footerP text-white">©DevByMarcoMiquel</p>
             </div>
-            <div id="footerAnchorContainer">
-                <a class="footerAnchor" href="mailto:customerservice@bankofwonders.com">SEND US A MAIL!</a>
+            <div id="footerAnchorContainer" class="gap-2">
+                <a class="footerAnchor m-2" href="mailto:customerservice@bankofwonders.com">SEND US A MAIL!</a>
                 <a class="footerAnchor" href="tel:+123 45678945">GIVE US A CALL!</a>
                 <img id="footerLogo" class="m-3" src="../assets/images/faviconnuevo.png" alt="logo">
             </div>

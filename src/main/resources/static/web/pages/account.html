@@ -34,7 +34,7 @@
         </style>
         <header class="d-flex justify-content-around align-items-center">
             <img id="headerLogo" src="../assets/images/logonuevo.png" alt="banklogo">
-            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary m-2">
                 <div class="container-fluid">
                     <a class="navbar-brand mx-3" href="#">Menu-> </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -44,22 +44,16 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav gap-3">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="./myProfile.html">MY PROFILE |</a>
+                                <a class="nav-link" href="./accounts.html">ACCOUNTS</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./accounts.html">ACCOUNTS |</a>
+                                <a class="nav-link" href="./cards.html">CARDS</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./cards.html">CARDS |</a>
+                                <a class="nav-link" href="./transfers.html">TRANSFERS</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./transfers.html">TRANSFERS |</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./loan-application.html">LOAN APPLICATION |</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="./aboutUs.html">ABOUT US |</a>
+                                <a class="nav-link" href="./loan-application.html">LOAN APPLICATION</a>
                             </li>
                             <input @click.prevent="sessionLogOut()" class="btn btn-danger" type="submit"
                                 name="sendLogout" id="sendLogout" value="LOG OUT">
@@ -73,37 +67,36 @@
                 <h1 class="m-3">Account Details</h1>
                 <p id="accountsTitleDesc">Here you have details of your recent transactions</p>
             </section>
-            <div>
-                <div>
-                    <table id="accountDetailsTable" class="text-center bg-white">
-                        <caption id="captionAccountDetails" class="text-white text-center">Recent Transactions</caption>
-                        <thead>
-                            <tr>
-                                <th>Type</th>
-                                <th>Amount</th>
-                                <th>Description</th>
-                                <th>Date and Time</th>
-                                <th>ID</th>
-                                <th>Actual Balance</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="transaction of orderedTransactions"
-                                v-bind:class="changeClassByTransaction(transaction)">
-                                <td>{{transaction.type}}</td>
-                                <td>$ {{transaction.amount.toLocaleString()}}</td>
-                                <td>{{transaction.description}}</td>
-                                <td>{{transaction.date.slice(0, 19)}}</td>
-                                <td>{{transaction.id}}</td>
-                                <td>$ {{transaction.actualAmount.toLocaleString()}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+            <div class="tableContainer d-flex justify-content-center align-items-center">
+                <table id="accountDetailsTable" class="text-center bg-white col-10">
+                    <caption id="captionAccountDetails" class="text-white text-center">Recent Transactions</caption>
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Amount</th>
+                            <th class="tableNone">Description</th>
+                            <th class="tableNone">Date and Time</th>
+                            <th>ID</th>
+                            <th>Actual Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="transaction of orderedTransactions"
+                            v-bind:class="changeClassByTransaction(transaction)">
+                            <td>{{transaction.type}}</td>
+                            <td>$ {{transaction.amount.toLocaleString()}}</td>
+                            <td class="tableNone">{{transaction.description}}</td>
+                            <td class="tableNone">{{transaction.date.slice(0, 19)}}</td>
+                            <td>{{transaction.id}}</td>
+                            <td>$ {{transaction.actualAmount.toLocaleString()}}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
             <div class="accountBotInfoContainer d-flex">
-                <a class="d-flex align-items-center justify-content-center text-light fw-bold goBackBtn" id="cardBtn"
+                <a class="d-flex align-items-center justify-content-center text-light fw-bold goBackBtn m-2" id="cardBtn"
                     href="./accounts.html">Go Back</a>
+                    <!-- <button class="btn btn-success" @click="generatePDF()">Get PDF</button> -->
             </div>
         </main>
         <footer class="d-flex justify-content-between align-items-center">
@@ -114,8 +107,8 @@
                 </p>
                 <p class="footerP text-white">©DevByMarcoMiquel</p>
             </div>
-            <div id="footerAnchorContainer">
-                <a class="footerAnchor" href="mailto:customerservice@bankofwonders.com">SEND US A MAIL!</a>
+            <div id="footerAnchorContainer" class="gap-2">
+                <a class="footerAnchor m-2" href="mailto:customerservice@bankofwonders.com">SEND US A MAIL!</a>
                 <a class="footerAnchor" href="tel:+123 45678945">GIVE US A CALL!</a>
                 <img id="footerLogo" class="m-3" src="../assets/images/faviconnuevo.png" alt="logo">
             </div>

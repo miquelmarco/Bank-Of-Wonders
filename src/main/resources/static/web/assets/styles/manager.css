@@ -3,6 +3,7 @@
     margin: 0;
     box-sizing: border-box;
     /* border: 1px red solid; */
+    font-family: 'Orbitron', sans-serif;
 }
 
 body {
@@ -95,8 +96,35 @@ h1 {
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
-@media only screen and (max-width: 1300px){
-    main{
+#loanCreationContainer {
+    min-height: 80vh;
+    background: rgb(34, 193, 195);
+    background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(135, 45, 253, 1) 100%);
+    border-radius: 1rem;
+    border: none;
+    color: white;
+    font-weight: 500;
+    font-size: 1rem;
+    width: 40rem;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+/* container details edit */
+
+#loanPayments,
+#loanPercentage {
+    width: 5rem;
+}
+
+@media only screen and (max-width: 700px) {
+    .logOutContainer {
+        display: flex;
         flex-direction: column;
+    }
+    h1 {
+        width: 20rem;
+    }
+    #loanCreationContainer {
+        width: 26rem;
     }
 }

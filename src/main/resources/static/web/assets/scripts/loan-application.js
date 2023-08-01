@@ -4,18 +4,12 @@ setTimeout(() => {
         data() {
             return {
                 accounts: [],
-                mortgageLoan: {},
-                personalLoan: {},
-                automotiveLoan: {},
+                loanTypeData: [],
                 destAcc: '',
                 paym: 0,
                 amou: null,
-                loanType: 0,
-                loanTypeData: [],
-                mortgagePayments: [],
-                personalPayments: [],
-                automotivePayments: [],
-                errMsg: ''
+                loanType: null,
+                errMsg: '',
             }
         },
         created() {
@@ -27,12 +21,7 @@ setTimeout(() => {
                 axios.get("/api/loans")
                     .then(res => {
                         this.loanTypeData = res.data
-                        this.mortgageLoan = this.loanTypeData[0]
-                        this.personalLoan = this.loanTypeData[1]
-                        this.automotiveLoan = this.loanTypeData[2]
-                        this.mortgagePayments = this.loanTypeData[0].payments
-                        this.personalPayments = this.loanTypeData[1].payments
-                        this.automotivePayments = this.loanTypeData[2].payments
+                        console.log(this.loanTypeData, this.loanType)
                     })
             },
             getClientAccounts() {
@@ -45,6 +34,7 @@ setTimeout(() => {
                 if (this.amou < 10000) {
                     Swal.fire({
                         position: 'center',
+                        icon: 'warning',
                         title: 'the minimum amount to request is $10.000',
                         showConfirmButton: false,
                         timer: 1500
@@ -55,6 +45,7 @@ setTimeout(() => {
                             title: 'Do you want apply this loan?',
                             showDenyButton: true,
                             showCancelButton: true,
+                            icon: 'question',
                             confirmButtonText: 'Confirm request',
                             denyButtonText: `Go back`,
                         }).then((res) => {
@@ -64,6 +55,7 @@ setTimeout(() => {
                                     .then(res => {
                                         Swal.fire({
                                             position: 'center',
+                                            icon: 'success',
                                             title: 'LOAN APPROVED',
                                             showConfirmButton: false,
                                             timer: 1500
@@ -72,18 +64,17 @@ setTimeout(() => {
                                     }).catch(err => {
                                         this.errMsg = err.response.data
                                         Swal.fire({
+                                            position: 'center',
+                                            icon: 'error',
                                             title: `${this.errMsg}`,
-                                            showClass: {
-                                                popup: 'animate__animated animate__fadeInDown'
-                                            },
-                                            hideClass: {
-                                                popup: 'animate__animated animate__fadeOutUp'
-                                            }
+                                            showConfirmButton: false,
+                                            timer: 1500
                                         })
                                     })
                             } else {
                                 Swal.fire({
                                     position: 'center',
+                                    icon: 'warning',
                                     title: 'Loan not requested',
                                     showConfirmButton: false,
                                     timer: 1500
@@ -92,6 +83,14 @@ setTimeout(() => {
                             }
                         }
                         )
+                    } else {
+                        Swal.fire({
+                            icon: 'warning',
+                            position: 'center',
+                            title: 'Please complete all the data',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
                     }
                 }
             },
@@ -114,10 +113,18 @@ setTimeout(() => {
             },
             eraseFields() {
                 this.amou = null,
-                    this.loanType = 0,
+                    this.loanType = null,
                     this.destAcc = '',
-                    this.paym = 0
+                    this.paym = null
             },
-        }
+        },
+        computed: {
+            selectedLoanType() {
+                return this.loanTypeData.find(loanType => loanType.id === this.loanType);
+            },
+            selectedLoanTypePayments() {
+                return this.selectedLoanType ? this.selectedLoanType.payments : [];
+            },
+        },
     }).mount("#app")
 }, 1000)

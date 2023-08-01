@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Orbitron&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./assets/styles/manager.css">
     <link rel="shortcut icon" href="./assets/images/wonderFaviconNobg.png" type="image/x-icon">
@@ -14,7 +17,7 @@
 </head>
 
 <body>
-    <main id="app" class="d-flex gap-5 justify-content-center align-items-center">
+    <main id="app" class="d-flex flex-column justify-content-center align-items-center gap-5">
         <style>
             [v-cloak]>* {
                 display: none;
@@ -29,55 +32,105 @@
                 text-shadow: 2px 4px 3px rgb(0, 0, 0);
             }
         </style>
-        <div class="d-flex flex-column align-items-center">
-            <div>
-                <input @click.prevent="sessionLogOut()" class="btn btn-danger" type="submit" name="sendLogout"
-                    id="sendLogout" value="LOG OUT">
-            </div>
-            <div id="mainContainer" class="d-flex flex-column align-items-center" v-cloak>
-                <h1>CLIENT MANAGER</h1>
-                <div id="mainForm" class="d-flex justify-content-center align-items-center m-3">
-                    <form action="" method="" class="d-flex flex-column align-items-center text-center m-2">
-                        <label for="firstName">First Name:</label>
-                        <input v-model="newClient.firstName" type="text" id="firstName" name="firstName"
-                            placeholder="Enter first name">
-                        <label for="lastName">Last Name:</label>
-                        <input v-model="newClient.lastName" type="text" id="lastName" name="lastName"
-                            placeholder="Enter last name">
-                        <label for="email">Email:</label>
-                        <input v-model="newClient.email" type="email" id="email" name="email"
-                            placeholder="Enter the email">
-                        <input @click="addClient()" class="buttonAdd bg-success text-center" type="button"
-                            value="add client">
-                    </form>
+        <div class="logOutContainer text-center">
+            <input @click.prevent="sessionLogOut()" class="btn btn-danger" type="submit" name="sendLogout"
+                id="sendLogout" value="LOG OUT">
+            <a href="http://localhost:8080/h2-console">H2 Console</a>
+        </div>
+        <div>
+            <div id="mainContainer" v-cloak class="d-flex justify-content-around align-items-center gap-5 flex-wrap">
+                <div class="d-flex flex-column gap-5 justify-content-center align-items-center">
+                    <h1 class="text-center">CLIENT MANAGER</h1>
+                    <div id="mainForm">
+                        <form class="d-flex flex-column align-items-center">
+                            <label for="firstName">First Name:</label>
+                            <input v-model="newClient.firstName" type="text" id="firstName" name="firstName"
+                                placeholder="Enter first name">
+                            <label for="lastName">Last Name:</label>
+                            <input v-model="newClient.lastName" type="text" id="lastName" name="lastName"
+                                placeholder="Enter last name">
+                            <label for="email">Email:</label>
+                            <input v-model="newClient.email" type="email" id="email" name="email"
+                                placeholder="Enter the email">
+                            <label for="password">Password:</label>
+                            <input v-model="newClient.password" type="password" id="password" name="password"
+                                placeholder="Enter the password">
+                            <input @click="addClient()" class="buttonAdd bg-success text-center" type="button"
+                                value="add client">
+                        </form>
+                    </div>
+                    <div id="mainTable">
+                        <table class="text-center">
+                            <caption class="text-center">CLIENT LIST</caption>
+                            <thead>
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Email</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="client of clients">
+                                    <td>{{client.firstName}}</td>
+                                    <td>{{client.lastName}}</td>
+                                    <td>{{client.email}}</td>
+                                    <td><i @click="deleteClient(clients.id)" role="button" class="bi bi-file-x"></i>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                <div id="mainTable" class="text-center m-3">
-                    <table>
-                        <caption class="text-center">CLIENT LIST</caption>
-                        <thead>
-                            <tr>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Email</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="client of clients">
-                                <td>{{client.firstName}}</td>
-                                <td>{{client.lastName}}</td>
-                                <td>{{client.email}}</td>
-                                <td><i @click="deleteClient(clients.id)" role="button" class="bi bi-file-x"></i></td>
-                                <!-- <td><i @click="deleteClient()" role="button" class="bi bi-pencil-fill"></i></td> -->
-                            </tr>
-                        </tbody>
-                    </table>
+                <div v-cloak>
+                    <pre id="jsonContainer">
+                        {{clients}}
+                    </pre>
                 </div>
             </div>
         </div>
-        <div v-cloak>
-            <pre id="jsonContainer">
-                {{clients}}
-            </pre>
+        <!-- <div id="loanCreationContainer" class="d-flex justify-content-center align-items-center m-5">
+            <div class="d-flex flex-column">
+                <h2 class="text-center">Enter new loan</h2>
+                <form class="d-flex flex-column justify-content-center align-items-center gap-3">
+                    <label for="loanName">Enter Loan Name</label>
+                    <input v-model="loanName" type="text" id="loanName">
+                    <label for="loanMaxAmount">Enter max amount for new loan</label>
+                    <input v-model="loanMaxamount" type="number" id="loanMaxAmount">
+                    <label for="loanPayments">Enter max payments</label>
+                    <select v-model="loanPayments" name="loanPayments" id="loanPayments">
+                        <option value="12">12 payments</option>
+                        <option value="24">24 payments</option>
+                        <option value="36">36 payments</option>
+                        <option value="48">48 payments</option>
+                    </select>
+                    <label for="loanPercentage">Enter the interest percentage %</label>
+                    <input v-model="loanPercentage" type="number" name="loanPercentage" id="loanPercentage">
+                    <button class="btn btn-primary m-2" @click.prevent="sendLoan()">Add Loan</button>
+                </form>
+            </div>
+        </div> -->
+        <div id="loanCreationContainer" class="d-flex justify-content-center align-items-center m-5">
+            <div class="d-flex flex-column">
+                <h2 class="text-center">Enter new loan</h2>
+                <form class="d-flex flex-column justify-content-center align-items-center gap-3">
+                    <label for="loanName">Enter Loan Name</label>
+                    <input v-model="loanDTO.name" type="text" id="loanName">
+                    <label for="loanMaxAmount">Enter max amount for new loan</label>
+                    <input v-model="loanDTO.maxAmount" type="number" id="loanMaxAmount">
+                    <div>
+                        <label for="loanPayments">Enter payments one by one</label>
+                        <input v-model="inputNumber" type="number" id="loanPayments" name="loanPayments">
+                        <div class="d-flex flex-column gap-2">
+                            <button @click.prevent="addNumber()">Add payment</button>
+                            <button @click.prevent="clearPayments()">Clear payments</button>
+                        </div>
+                        <p class="text-center">Payments added: {{loanDTO.payments}}</p>
+                    </div>
+                    <label for="loanPercentage">Enter the interest percentage %</label>
+                    <input v-model="loanDTO.percentage" type="number" name="loanPercentage" id="loanPercentage">
+                    <button class="btn btn-primary m-2" @click.prevent="sendLoan2()">Add Loan</button>
+                </form>
+            </div>
         </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
